@@ -1,12 +1,9 @@
 
 #canvas {
     background-color: blanchedalmond;
-
-    width: 500px;
-    height: 500px;
 }
 
 .canvas-div {
-    flex: auto;
+    display: flex;
     justify-content: center;
 }
