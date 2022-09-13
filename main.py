@@ -29,8 +29,11 @@ def render(*args):
 def main():
     kdown_proxy = create_proxy(on_key_down)
     kup_proxy = create_proxy(on_key_up)
+    render_proxy = create_proxy(render)
     document.addEventListener("keydown", kdown_proxy)
     document.addEventListener("keyup", kup_proxy)
+    
+
 
 main()
  
