@@ -23,4 +23,6 @@ ACTIONS = {0: "FORWARD",
 ANGLES = [162.0, 234.0, 306.0, 18.0]
 RADIUS = -8 / math.cos(math.radians(54.0))
 ROT_SPEED = math.pi/20
-SHIP_SPEED = 2
+SHIP_SPEED = 8
+SHIP_ACC = 0.8
+SHIP_DEC = 0.4
