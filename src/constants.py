@@ -13,3 +13,4 @@ ACTIONS = {0: "FORWARD",
            3: "RIGHT",
            4: "FIRE",
            5: "IDLE"}
+ANGLES = [162.0, 234.0, 306.0, 18.0]

@@ -58,7 +58,6 @@ class Human(Agent):
         super(Human, self).__init__(ship)
    
     def act(self):
-        console.log(self.keysdown)
         if 'w' in self.keysdown:
             if 'a' in self.keysdown:
                 if ' ' in self.keysdown:

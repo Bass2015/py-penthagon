@@ -1,12 +1,13 @@
 from js import document, requestAnimationFrame
 from pyodide import create_proxy
-from objects import Circle, Rect
+from objects import Circle, Ship
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
 from agents import Human, RandomAI
+from geometry import Vector2
 
 keysdown = []
-circle = Circle(CANVAS.width/2, CANVAS.height/2)
-player1 = RandomAI(circle)
+circle = Circle(Vector2(CANVAS.width/2, CANVAS.height/2))
+player1 = Human(circle)
 
 def on_key_down(*args):
     if args[0].key not in keysdown:
