@@ -1,5 +1,6 @@
 import math
 from abc import ABC, abstractmethod
+from pickle import NEWOBJ_EX
 import constants
 from constants import CTX
 from geometry import Vector2
@@ -12,7 +13,9 @@ class GameObject(ABC):
         self.pos = init_pos
         self.points = points
         self.rotation = 0
+
     
+
     @abstractmethod
     def update(self):
         pass
@@ -66,7 +69,7 @@ class Ship(GameObject):
 
     def update(self):
         self.accelerate()
-        document.getElementById("output").innerHTML = len(self.points)
+        # document.getElementById("output").innerHTML = f'{self.pos.x}, {self.pos.y}'
         self.rotate()
         self.translate() 
         # self.next_moves.clear()
@@ -79,11 +82,38 @@ class Ship(GameObject):
             self.speed = self.speed - self.acceleration if self.speed > self.max_speed*-1 else self.max_speed*-1
         else:
             deceleration = constants.SHIP_DEC * -1 if self.speed < 0 else constants.SHIP_DEC
-            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, rel_tol=0.15) else 0
+            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, rel_tol=0.05) else self.speed * 0
 
     def translate(self):
-        self.pos.x += self.speed * math.sin(self.rotation)
-        self.pos.y -= self.speed * math.cos(self.rotation)
+        newx =  self.pos.x + self.speed * math.sin(self.rotation)
+        newy = self.pos.y - self.speed * math.cos(self.rotation)
+        # self.keep_in_screen(newx, newy)
+        if newx > constants.CANVAS.width + constants.RADIUS:
+            newx = constants.CANVAS.width + constants.RADIUS
+        if newx < 0 + constants.RADIUS * -1:
+            newx = constants.RADIUS * -1
+        if newy > constants.CANVAS.height + constants.RADIUS:
+            newy = constants.CANVAS.height + constants.RADIUS
+        if newy < 0 + constants.RADIUS * -1:
+            newy = constants.RADIUS * -1
+            document.getElementById("output").innerHTML = f'OOOUTTT, {newx}, {newy}' 
+        
+        self.pos.x = newx
+        self.pos.y = newy
+
+    def keep_in_screen(self, newx, newy):
+        if newx > constants.CANVAS.width - constants.RADIUS:
+            newx = constants.CANVAS.width - constants.RADIUS
+        if newx < 0 + constants.RADIUS:
+            newx = constants.RADIUS
+        if newy > constants.CANVAS.height - constants.RADIUS:
+            newy = constants.CANVAS.height - constants.RADIUS
+        if newy < 0 + constants.RADIUS:
+            document.getElementById("output").innerHTML = 'OOOOUT!!!'
+            newy = constants.RADIUS
+        
+        self.pos.x = newx
+        self.pos.y = newy
 
     def rotate(self):
         if constants.ACTIONS[2] in self.next_moves:
