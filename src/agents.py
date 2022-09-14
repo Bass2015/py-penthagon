@@ -57,7 +57,7 @@ class Human(Agent):
         self.keysdown = []
         super(Human, self).__init__(ship)
    
-    def act(self):
+    def act(self):  
         if 'w' in self.keysdown:
             if 'a' in self.keysdown:
                 if ' ' in self.keysdown:

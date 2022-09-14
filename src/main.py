@@ -6,7 +6,7 @@ from agents import Human, RandomAI
 from geometry import Vector2
 
 keysdown = []
-circle = Circle(Vector2(CANVAS.width/2, CANVAS.height/2))
+circle = Ship(Vector2(CANVAS.width/2, CANVAS.height/2))
 player1 = Human(circle)
 
 def on_key_down(*args):
