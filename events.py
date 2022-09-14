@@ -5,7 +5,6 @@ class Event(ABC):
     def __init__(self):
         self.observers = []
 
-    @abstractmethod
     def suscribe(self, observer):
         if observer not in self.observers:
             self.observers.append(observer)
@@ -19,12 +18,11 @@ class Event(ABC):
     def trigger(self):
         pass
 
-class UpdatesEvent(Event):
+class UpdateEvent(Event):
     def trigger(self):
         for observer in self.observers:
             observer.update()
-    def suscribe(self, observer):
-        super().suscribe(observer)
+    
     def unsuscribe(self, observer):
         super().unsuscribe(observer)
 
@@ -32,8 +30,7 @@ class RenderEvent(Event):
     def trigger(self):
         for observer in self.observers:
             observer.render()
-    def suscribe(self, observer):
-        super().suscribe(observer)
+  
     def unsuscribe(self, observer):
         super().unsuscribe(observer)
 

@@ -23,8 +23,8 @@ class Circle(GameObject):
        super(Circle, self).__init__(update_ev, render_ev, ctx)
     
     def update(self):
-        self.x += random.randint(-3,3)
-        self.y += random.randint(-3,3)
+        self.x += random.randint(-3, 3)
+        self.y += random.randint(-1,1)
         super().update()
 
     def render(self):
@@ -41,8 +41,6 @@ class Rect(GameObject):
        super(Rect, self).__init__(update_ev, render_ev, ctx)
     
     def update(self):
-        self.x += random.randint(-1,1)
-        self.y += random.randint(-1,1)
         super().update()
 
     def render(self):
