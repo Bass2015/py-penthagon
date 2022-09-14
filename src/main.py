@@ -1,33 +1,36 @@
 from js import document, requestAnimationFrame
 from pyodide import create_proxy
-from events import RenderEvent
-import events
 from objects import Circle, Rect
-import math
+from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
+from agents import Human, RandomAI
 
-canvas = document.getElementById("canvas")
-ctx = canvas.getContext("2d")
 keysdown = []
-update_ev = events.UpdateEvent()
-render_ev = RenderEvent()
-
+circle = Circle(CANVAS.width/2, CANVAS.height/2)
+player1 = RandomAI(circle)
 
 def on_key_down(*args):
     if args[0].key not in keysdown:
         keysdown.append(args[0].key) 
+    KEYDOWN.trigger(args[0].key)
    
 def on_key_up(*args):
-    keysdown.remove(args[0].key)
+    if args[0].key in keysdown:
+        keysdown.remove(args[0].key)
+    KEYUP.trigger(args[0].key)
 
 def render(*args):
-    ctx.clearRect(0, 0, canvas.width, canvas.height)
-    render_ev.trigger()
+    CTX.clearRect(0, 0, CANVAS.width, CANVAS.height)
+    RENDER.trigger()
 
 def update():
-    pass
+    UPDATE.trigger()
+
+def act_agents():
+    circle.next_moves.extend(player1.act())
 
 def game_loop(*args):
-    update_ev.trigger()
+    act_agents()
+    update()
     render()
     requestAnimationFrame(game_loop_proxy)
     

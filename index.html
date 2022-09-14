@@ -9,12 +9,14 @@
         <link href="style.css" rel="stylesheet"></link>
         <py-env>
             - paths:
-                - ./events.py
-                - ./objects.py
+                - ./src/events.py
+                - ./src/objects.py
+                - ./src/constants.py
+                - ./src/agents.py
         </py-env>
     </head>
-    <body id="body" pys-onClick="render">
-        <py-script src="./main.py">
+    <body id="body">
+        <py-script src="./src/main.py">
             
         </py-script>
         <div id="output">Output</div>
