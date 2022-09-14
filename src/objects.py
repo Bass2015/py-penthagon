@@ -1,6 +1,7 @@
 import math
 from abc import ABC, abstractmethod
 import constants
+from constants import CTX
 from geometry import Vector2
 from js import document
 
@@ -40,12 +41,12 @@ class Circle(GameObject):
         super().update()
 
     def render(self):
-        constants.CTX.beginPath()
-        constants.CTX.arc(self.pos.x, self.pos.y, 10, 0, math.pi*2)
-        constants.CTX.fillStyle = 'blue'
+        CTX.beginPath()
+        CTX.arc(self.pos.x, self.pos.y, 10, 0, math.pi*2)
+        CTX.fillStyle = 'blue'
         if constants.ACTIONS[4] in self.next_moves:
-            constants.CTX.fillStyle = 'red'
-        constants.CTX.fill()
+            CTX.fillStyle = 'red'
+        CTX.fill()
         #SACAR ESTO DE AQUÍ Y PONERLO EN UPDATE
         self.next_moves.clear()
         super().render()
@@ -64,18 +65,21 @@ class Ship(GameObject):
         super(Ship, self).__init__(init_pos, points)
 
     def update(self):
+        self.accelerate()
+        document.getElementById("output").innerHTML = len(self.points)
+        self.rotate()
+        self.translate() 
+        # self.next_moves.clear()
+        super().update()
+
+    def accelerate(self):
         if constants.ACTIONS[0] in self.next_moves:
             self.speed = self.speed + self.acceleration if self.speed < self.max_speed else self.max_speed
         elif constants.ACTIONS[1] in self.next_moves:
             self.speed = self.speed - self.acceleration if self.speed > self.max_speed*-1 else self.max_speed*-1
         else:
             deceleration = constants.SHIP_DEC * -1 if self.speed < 0 else constants.SHIP_DEC
-            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, rel_tol=0.1) else 0
-        document.getElementById("output").innerHTML = self.speed
-        self.rotate()
-        self.translate() 
-        # self.next_moves.clear()
-        super().update()
+            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, rel_tol=0.15) else 0
 
     def translate(self):
         self.pos.x += self.speed * math.sin(self.rotation)
@@ -88,18 +92,23 @@ class Ship(GameObject):
             self.rotation += self.rot_speed
     
     def render(self):
-        constants.CTX.save()
-        constants.CTX.translate(self.pos.x, self.pos.y)
-        constants.CTX.rotate(self.rotation)
-        constants.CTX.beginPath()
-        constants.CTX.moveTo(self.points[0].x, self.points[0].y)
+        CTX.save()
+        CTX.translate(self.pos.x, self.pos.y)
+        CTX.rotate(self.rotation)
+        CTX.beginPath()
+        CTX.moveTo(self.points[0].x, self.points[0].y)
         for point in self.points[1:]:
-            constants.CTX.lineTo(point.x, point.y)
-        constants.CTX.fillStyle = 'blue'
+            CTX.lineTo(point.x, point.y)
+        CTX.fillStyle = 'lightcyan'
+        CTX.fill()
+        CTX.moveTo(self.points[0].x, self.points[0].y)
+        CTX.lineTo(self.points[3].x, self.points[3].y)
+        CTX.lineTo(self.points[2].x, self.points[2].y)
+        CTX.fillStyle = 'coral'
+        CTX.fill()  
         if constants.ACTIONS[4] in self.next_moves:
-            constants.CTX.fillStyle = 'red'
-        constants.CTX.fill()
-        constants.CTX.restore()
+            CTX.fillStyle = 'red'
+        CTX.restore()
         #SACAR ESTO DE AQUÍ Y PONERLO EN UPDATE
         self.next_moves.clear()
         super().render()
