@@ -13,8 +13,25 @@ class GameObject(ABC):
         self.pos = init_pos
         self.points = points
         self.rotation = 0
+        self.active = True
 
-    
+    def translate(self):
+        self.pos.x += self.speed * math.sin(self.rotation)
+        self.pos.y -= self.speed * math.cos(self.rotation)
+        self.keep_in_screen()
+
+    def keep_in_screen(self):
+        if self.pos.x > constants.CANVAS.width + constants.RADIUS:
+            self.pos.x = constants.CANVAS.width + constants.RADIUS
+        if self.pos.x < 0 + constants.RADIUS * -1:
+            self.pos.x = constants.RADIUS * -1
+        if self.pos.y > constants.CANVAS.height + constants.RADIUS:
+            self.pos.y = constants.CANVAS.height + constants.RADIUS
+        if self.pos.y < 0 + constants.RADIUS * -1:
+            self.pos.y = constants.RADIUS * -1
+
+    def set_active(self, active):
+        self.active = active
 
     @abstractmethod
     def update(self):
@@ -23,44 +40,15 @@ class GameObject(ABC):
     @abstractmethod
     def render(self):
         pass
-
-class Circle(GameObject):
-    def __init__(self, init_pos):
-        self.speed = 1
-        self.next_moves = []
-        points = []
-        super(Circle, self).__init__(init_pos, points)
-    
-    def update(self):
-        if constants.ACTIONS[0] in self.next_moves:
-            self.pos.y -= self.speed
-        if constants.ACTIONS[1] in self.next_moves:
-            self.pos.y += self.speed 
-        if constants.ACTIONS[2] in self.next_moves:
-            self.pos.x -= self.speed
-        if constants.ACTIONS[3] in self.next_moves:
-            self.pos.x += self.speed
-        # self.next_moves.clear()
-        super().update()
-
-    def render(self):
-        CTX.beginPath()
-        CTX.arc(self.pos.x, self.pos.y, 10, 0, math.pi*2)
-        CTX.fillStyle = 'blue'
-        if constants.ACTIONS[4] in self.next_moves:
-            CTX.fillStyle = 'red'
-        CTX.fill()
-        #SACAR ESTO DE AQUÍ Y PONERLO EN UPDATE
-        self.next_moves.clear()
-        super().render()
 
 class Ship(GameObject):
-    def __init__(self, init_pos):
+    def __init__(self, init_pos, player):
         self.speed = 0
         self.max_speed = constants.SHIP_SPEED
         self.next_moves = []
         self.rot_speed = constants.ROT_SPEED
         self.acceleration = constants.SHIP_ACC
+        self.player = player
         points = [Vector2(0, constants.RADIUS)]
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
@@ -68,12 +56,12 @@ class Ship(GameObject):
         super(Ship, self).__init__(init_pos, points)
 
     def update(self):
-        self.accelerate()
-        document.getElementById("output").innerHTML = f'{self.speed}'
-        self.rotate()
-        self.translate() 
-        # self.next_moves.clear()
-        super().update()
+        if self.active:
+            self.accelerate()
+            self.rotate()
+            self.translate() 
+            self.next_moves.clear()
+            super().update()
 
     def accelerate(self):
         if constants.ACTIONS[0] in self.next_moves:
@@ -84,35 +72,6 @@ class Ship(GameObject):
             deceleration = math.copysign(constants.SHIP_DEC, self.speed)
             self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, abs_tol=constants.SHIP_DEC) else self.speed * 0
 
-    def translate(self):
-        newx =  self.pos.x + self.speed * math.sin(self.rotation)
-        newy = self.pos.y - self.speed * math.cos(self.rotation)
-        # self.keep_in_screen(newx, newy)
-        if newx > constants.CANVAS.width + constants.RADIUS:
-            newx = constants.CANVAS.width + constants.RADIUS
-        if newx < 0 + constants.RADIUS * -1:
-            newx = constants.RADIUS * -1
-        if newy > constants.CANVAS.height + constants.RADIUS:
-            newy = constants.CANVAS.height + constants.RADIUS
-        if newy < 0 + constants.RADIUS * -1:
-            newy = constants.RADIUS * -1
-        self.pos.x = newx
-        self.pos.y = newy
-
-    def keep_in_screen(self, newx, newy):
-        if newx > constants.CANVAS.width - constants.RADIUS:
-            newx = constants.CANVAS.width - constants.RADIUS
-        if newx < 0 + constants.RADIUS:
-            newx = constants.RADIUS
-        if newy > constants.CANVAS.height - constants.RADIUS:
-            newy = constants.CANVAS.height - constants.RADIUS
-        if newy < 0 + constants.RADIUS:
-            # document.getElementById("output").innerHTML = 'OOOOUT!!!'
-            newy = constants.RADIUS
-        
-        self.pos.x = newx
-        self.pos.y = newy
-
     def rotate(self):
         if constants.ACTIONS[2] in self.next_moves:
             self.rotation -= self.rot_speed
@@ -120,23 +79,41 @@ class Ship(GameObject):
             self.rotation += self.rot_speed
     
     def render(self):
+        if self.active:
+            CTX.save()
+            CTX.translate(self.pos.x, self.pos.y)
+            CTX.rotate(self.rotation)
+            CTX.beginPath()
+            CTX.moveTo(self.points[0].x, self.points[0].y)
+            for point in self.points[1:]:
+                CTX.lineTo(point.x, point.y)
+            CTX.fillStyle = 'lightcyan'
+            CTX.fill()
+            CTX.moveTo(self.points[0].x, self.points[0].y)
+            CTX.lineTo(self.points[3].x, self.points[3].y)
+            CTX.lineTo(self.points[2].x, self.points[2].y)
+            CTX.fillStyle = 'coral'
+            CTX.fill()  
+            CTX.restore()
+            super().render()
+
+    def debug():
+        document.getElementById("output").innerHTML = ""
+
+class Bullet(GameObject):
+    def __init__(self, init_pos, rotation, player):
+        self.player = player
+        self.rotation = rotation
+        self.speed = constants.BULLET_SPEED
+        self.pos = init_pos
+    
+    def update(self):
+        self.translate()
+        pass
+    
+    def render(self):
         CTX.save()
-        CTX.translate(self.pos.x, self.pos.y)
-        CTX.rotate(self.rotation)
-        CTX.beginPath()
-        CTX.moveTo(self.points[0].x, self.points[0].y)
-        for point in self.points[1:]:
-            CTX.lineTo(point.x, point.y)
-        CTX.fillStyle = 'lightcyan'
-        CTX.fill()
-        CTX.moveTo(self.points[0].x, self.points[0].y)
-        CTX.lineTo(self.points[3].x, self.points[3].y)
-        CTX.lineTo(self.points[2].x, self.points[2].y)
-        CTX.fillStyle = 'coral'
-        CTX.fill()  
-        if constants.ACTIONS[4] in self.next_moves:
-            CTX.fillStyle = 'red'
-        CTX.restore()
-        #SACAR ESTO DE AQUÍ Y PONERLO EN UPDATE
-        self.next_moves.clear()
-        super().render()
+        CTX.translate
+
+
+    
