@@ -22,7 +22,7 @@ ACTIONS = {0: "FORWARD",
 # Ship config
 ANGLES = [162.0, 234.0, 306.0, 18.0]
 RADIUS = -8 / math.cos(math.radians(54.0))
-ROT_SPEED = math.pi/20
-SHIP_SPEED = 8
-SHIP_ACC = 0.8
-SHIP_DEC = 0.4
+ROT_SPEED = math.pi/24
+SHIP_SPEED = 5
+SHIP_ACC = 0.5
+SHIP_DEC = 0.05
