@@ -23,11 +23,11 @@ ACTIONS = {0: "FORWARD",
 # Ship config
 ANGLES = [162.0, 234.0, 306.0, 18.0]
 RADIUS = -8 / math.cos(math.radians(54.0))
-ROT_SPEED = math.pi/24
+ROT_SPEED = math.pi/32
 SHIP_SPEED = 4
 SHIP_ACC = 0.3
 SHIP_DEC = 0.1
-BULLET_SPEED = 10
+SHOOTING_SPEED = 0.4
 COLORS = {
     'players': {
         1: {
@@ -36,3 +36,7 @@ COLORS = {
         }
     },
     'bullet': 'black'}
+
+
+# Bullet config
+BULLET_SPEED = 10

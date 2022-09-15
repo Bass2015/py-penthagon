@@ -1,6 +1,7 @@
 import math
 import constants
 import events
+import time
 from abc import ABC, abstractmethod
 from constants import CTX, COLORS
 from geometry import Vector2
@@ -56,6 +57,7 @@ class Ship(GameObject):
         self.rot_speed = constants.ROT_SPEED
         self.acceleration = constants.SHIP_ACC
         self.player = player
+        self.last_shot = 0
         points = [Vector2(0, constants.RADIUS)]
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
@@ -102,9 +104,9 @@ class Ship(GameObject):
         CTX.restore()
 
     def shoot(self):
-        constants.SHOT.trigger(self.player, self.local_to_global(self.points[0]), self.rotation)
-
-    
+        if time.time() - self.last_shot > constants.SHOOTING_SPEED:
+            constants.SHOT.trigger(self.player, self.local_to_global(self.points[0]), self.rotation)
+            self.last_shot = time.time()
 
 class Bullet(GameObject):
     def __init__(self):
