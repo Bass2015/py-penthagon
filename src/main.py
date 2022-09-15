@@ -1,12 +1,13 @@
 from js import document, requestAnimationFrame
 from pyodide import create_proxy
-from objects import Ship
+from objects import Bullet, Ship
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
 from agents import Human, RandomAI
 from geometry import Vector2
 
 keysdown = []
 ship1 = Ship(Vector2(CANVAS.width/2, CANVAS.height/2), player=1)
+bullet = Bullet(Vector2(CANVAS.width/2, CANVAS.height/2), player=1)
 player1 = Human(ship1)
 
 def on_key_down(*args):

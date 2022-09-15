@@ -27,3 +27,9 @@ SHIP_SPEED = 5
 SHIP_ACC = 0.5
 SHIP_DEC = 0.05
 BULLET_SPEED = 10
+COLORS = {
+    'player1': {
+        'inner': 'lightcyan',
+        'outer' : 'coral'
+        },
+    'bullet': 'black'}

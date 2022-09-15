@@ -1,8 +1,7 @@
 import math
 from abc import ABC, abstractmethod
-from pickle import NEWOBJ_EX
 import constants
-from constants import CTX
+from constants import CTX, COLORS
 from geometry import Vector2
 from js import document
 
@@ -29,6 +28,12 @@ class GameObject(ABC):
             self.pos.y = constants.CANVAS.height + constants.RADIUS
         if self.pos.y < 0 + constants.RADIUS * -1:
             self.pos.y = constants.RADIUS * -1
+
+    def prerender(self):
+        CTX.save()
+        CTX.translate(self.pos.x, self.pos.y)
+        CTX.rotate(self.rotation)
+        CTX.beginPath()
 
     def set_active(self, active):
         self.active = active
@@ -80,40 +85,52 @@ class Ship(GameObject):
     
     def render(self):
         if self.active:
-            CTX.save()
-            CTX.translate(self.pos.x, self.pos.y)
-            CTX.rotate(self.rotation)
-            CTX.beginPath()
+            self.prerender()
             CTX.moveTo(self.points[0].x, self.points[0].y)
             for point in self.points[1:]:
                 CTX.lineTo(point.x, point.y)
-            CTX.fillStyle = 'lightcyan'
+            CTX.fillStyle = COLORS['player1']['outer']
             CTX.fill()
             CTX.moveTo(self.points[0].x, self.points[0].y)
             CTX.lineTo(self.points[3].x, self.points[3].y)
             CTX.lineTo(self.points[2].x, self.points[2].y)
-            CTX.fillStyle = 'coral'
+            CTX.fillStyle =  COLORS['player1']['inner']
             CTX.fill()  
             CTX.restore()
-            super().render()
-
+    
     def debug():
         document.getElementById("output").innerHTML = ""
 
 class Bullet(GameObject):
-    def __init__(self, init_pos, rotation, player):
+    def __init__(self, init_pos, player):
         self.player = player
-        self.rotation = rotation
         self.speed = constants.BULLET_SPEED
-        self.pos = init_pos
+        points = self.init_points()
+        # Voy a tener que iniciar la rotacion cuando los cree en el pool
+        super(Bullet, self).__init__(init_pos, points)
     
     def update(self):
+        self.rotation = math.pi
         self.translate()
         pass
     
     def render(self):
-        CTX.save()
-        CTX.translate
+        self.prerender()
+        CTX.moveTo(self.points[0].x, self.points[0].y)
+        for point in self.points[1:]:
+            CTX.lineTo(point.x, point.y)
+        CTX.fillStyle = COLORS['bullet']
+        CTX.fill()
+        CTX.restore()
+
+    def init_points(self):
+        w = constants.RADIUS / 4
+        h = constants.RADIUS
+        return [Vector2(-w/2, -h/2), 
+                Vector2(w/2, -h/2), 
+                Vector2(w/2, h/2), 
+                Vector2(-w/2, h/2)]
+        
 
 
     
