@@ -38,7 +38,7 @@ class GameObject(ABC):
         return self.active
    
     def local_to_global(self, point):
-        return self.pos + point
+        return self.pos + point.rotate(self.rotation)
 
     @abstractmethod
     def update(self):
