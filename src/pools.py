@@ -2,8 +2,6 @@ import constants
 import events
 from objects import Bullet, Asteroid, GameObject
 
-
-
 class ObjectPool():
     def __init__(self):
         self.active_objects = []

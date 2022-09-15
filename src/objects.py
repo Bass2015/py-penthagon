@@ -137,6 +137,8 @@ class Bullet(GameObject):
         self.check_boundaries()
         pass
     
+   
+    
     def render(self):
         if self.prerender():
             CTX.moveTo(self.points[0].x, self.points[0].y)
@@ -147,7 +149,7 @@ class Bullet(GameObject):
         CTX.restore()
 
     def init_points(self):
-        w = constants.RADIUS / 4
+        w = constants.RADIUS / 8
         h = constants.RADIUS
         return w, [Vector2(-w/2, -h/2), 
                 Vector2(w/2, -h/2), 
@@ -155,7 +157,40 @@ class Bullet(GameObject):
                 Vector2(-w/2, h/2)]
 
 class Asteroid(GameObject):
-    pass
+    def __init__(self):
+        self.speed = constants.AST_SPEED
+        self.direction = math.pi/1.5
+        super(Asteroid, self).__init__(Vector2(0,0), self.init_points(), constants.ASTEROID_RADIUS)
+    
+    def __name__(self):
+        return f"Asteroid"
+
+    def activate(self, init_pos):
+        pass
+
+    def update(self):
+       self.rotate()
+       self.translate()
+
+    def rotate(self):
+        self.rotation += constants.AST_ROT_SPEED
+
+    def translate(self):
+        self.pos.x += self.speed * math.sin(self.direction)
+        self.pos.y -= self.speed * math.cos(self.direction)
+    
+    def render(self):
+        if self.prerender():
+            CTX.moveTo(self.points[0].x, self.points[0].y)
+            for point in self.points[1:]:
+                CTX.lineTo(point.x, point.y)
+            CTX.fillStyle = COLORS['bullet']
+            CTX.fill()
+        CTX.restore()
+
+    def init_points(self):
+       r = constants.ASTEROID_RADIUS
+       return [Vector2(r * math.cos(math.radians(angle)), r * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]
 
 
     

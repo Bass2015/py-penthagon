@@ -40,3 +40,7 @@ COLORS = {
 
 # Bullet config
 BULLET_SPEED = 10
+
+ASTEROID_RADIUS = RADIUS * 8
+AST_SPEED = 1
+AST_ROT_SPEED = math.pi/128
