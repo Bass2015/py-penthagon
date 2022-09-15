@@ -1,5 +1,7 @@
 import constants
+import events
 from objects import Bullet, Asteroid, GameObject
+
 
 
 class ObjectPool():
@@ -11,7 +13,10 @@ class ObjectPool():
     def take_out(self, game_object:GameObject):
         if game_object in self.active_objects:
             game_object.active = False
-            self.inactive_objects.append(self.active_objects.remove(game_object))
+            self.inactive_objects.append(self.active_objects.pop(self.active_objects.index(game_object)))
+    
+    def on_object_out(self, game_object):
+        self.take_out(game_object)
     
 class BulletPool(ObjectPool):
     def __init__(self):
@@ -22,7 +27,7 @@ class BulletPool(ObjectPool):
         if len(self.inactive_objects) == 0:
             bullet = Bullet()
         else:
-            bullet = self.inactive_objects().pop()
+            bullet = self.inactive_objects.pop()
         bullet.activate(init_pos, rotation, player)
         self.active_objects.append(bullet)
     

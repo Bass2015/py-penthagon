@@ -43,13 +43,12 @@ class KeyUpEvent(Event):
             observer.on_key_up(key)
 
 class ObjectOutEvent(Event):
-    def trigger(self, object):
+    def trigger(self, game_object):
         for observer in self.observers:
-            observer.on_object_out(object)
+            observer.on_object_out(game_object)
 
 class ShotEvent(Event):
     def trigger(self, player, pos, rot):
-        deboog(len(self.observers))
         for observer in self.observers:
             observer.on_bullet_shot(pos, rot, player)
 

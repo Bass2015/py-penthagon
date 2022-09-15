@@ -19,8 +19,7 @@ class GameObject(ABC):
     def translate(self):
         self.pos.x += self.speed * math.sin(self.rotation)
         self.pos.y -= self.speed * math.cos(self.rotation)
-        self.keep_in_screen()
-
+        
     def keep_in_screen(self):
         if self.pos.x > constants.CANVAS.width + self.dimension:
             self.pos.x = constants.CANVAS.width + self.dimension
@@ -30,6 +29,13 @@ class GameObject(ABC):
             self.pos.y = constants.CANVAS.height + self.dimension
         if self.pos.y < 0 + self.dimension * -1:
             self.pos.y = self.dimension * -1
+
+    def check_boundaries(self):
+        if (self.pos.x > constants.CANVAS.width + self.dimension or 
+                self.pos.x < 0 +self.dimension * -1 or 
+                self.pos.y > constants.CANVAS.height + self.dimension or 
+                self.pos.y < 0 + self.dimension * -1):
+            constants.OBJECTOUT.trigger(self)
 
     def prerender(self):
         CTX.save()
@@ -69,6 +75,7 @@ class Ship(GameObject):
             self.accelerate()
             self.rotate()
             self.translate() 
+            self.keep_in_screen()
             if constants.ACTIONS[4] in self.next_moves:
                 self.shoot()
             self.next_moves.clear()
@@ -116,6 +123,9 @@ class Bullet(GameObject):
         # Voy a tener que iniciar la rotacion cuando los cree en el pool
         super(Bullet, self).__init__(Vector2(0,0), points, width)
     
+    def __name__(self):
+        return f"Bullet from player{self.player}"
+
     def activate(self, init_pos, rotation, player):
         self.pos = init_pos
         self.rotation = rotation
@@ -124,6 +134,7 @@ class Bullet(GameObject):
 
     def update(self):
         self.translate()
+        self.check_boundaries()
         pass
     
     def render(self):
