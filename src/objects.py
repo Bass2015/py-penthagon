@@ -6,13 +6,14 @@ from geometry import Vector2
 from js import document
 
 class GameObject(ABC):
-    def __init__(self, init_pos, points):
+    def __init__(self, init_pos, points, dimension):
         constants.UPDATE.suscribe(self)
         constants.RENDER.suscribe(self)
         self.pos = init_pos
         self.points = points
         self.rotation = 0
         self.active = True
+        self.dimension = dimension
 
     def translate(self):
         self.pos.x += self.speed * math.sin(self.rotation)
@@ -20,14 +21,14 @@ class GameObject(ABC):
         self.keep_in_screen()
 
     def keep_in_screen(self):
-        if self.pos.x > constants.CANVAS.width + constants.RADIUS:
-            self.pos.x = constants.CANVAS.width + constants.RADIUS
-        if self.pos.x < 0 + constants.RADIUS * -1:
-            self.pos.x = constants.RADIUS * -1
-        if self.pos.y > constants.CANVAS.height + constants.RADIUS:
-            self.pos.y = constants.CANVAS.height + constants.RADIUS
-        if self.pos.y < 0 + constants.RADIUS * -1:
-            self.pos.y = constants.RADIUS * -1
+        if self.pos.x > constants.CANVAS.width + self.dimension:
+            self.pos.x = constants.CANVAS.width + self.dimension
+        if self.pos.x < 0 +self.dimension * -1:
+            self.pos.x = self.dimension * -1
+        if self.pos.y > constants.CANVAS.height + self.dimension:
+            self.pos.y = constants.CANVAS.height + self.dimension
+        if self.pos.y < 0 + self.dimension * -1:
+            self.pos.y = self.dimension * -1
 
     def prerender(self):
         CTX.save()
@@ -58,7 +59,7 @@ class Ship(GameObject):
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
                            math.sin(math.radians(angle)) * constants.RADIUS))
-        super(Ship, self).__init__(init_pos, points)
+        super(Ship, self).__init__(init_pos, points, constants.RADIUS)
 
     def update(self):
         if self.active:
@@ -105,9 +106,9 @@ class Bullet(GameObject):
     def __init__(self, init_pos, player):
         self.player = player
         self.speed = constants.BULLET_SPEED
-        points = self.init_points()
+        width, points = self.init_points()
         # Voy a tener que iniciar la rotacion cuando los cree en el pool
-        super(Bullet, self).__init__(init_pos, points)
+        super(Bullet, self).__init__(init_pos, points, width)
     
     def update(self):
         self.rotation = math.pi
@@ -126,7 +127,7 @@ class Bullet(GameObject):
     def init_points(self):
         w = constants.RADIUS / 4
         h = constants.RADIUS
-        return [Vector2(-w/2, -h/2), 
+        return w, [Vector2(-w/2, -h/2), 
                 Vector2(w/2, -h/2), 
                 Vector2(w/2, h/2), 
                 Vector2(-w/2, h/2)]
