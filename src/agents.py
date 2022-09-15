@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from constants import ACTIONS, KEYDOWN, KEYUP
-from js import console
+from js import document
 import random
 import time
 

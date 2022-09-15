@@ -1,5 +1,10 @@
 
 from abc import ABC, abstractmethod
+from js import console, document
+
+def deboog(message):
+    document.getElementById('output').innerHTML = message
+    console.log(message)
 
 class Event(ABC):
     def __init__(self):
@@ -36,5 +41,16 @@ class KeyUpEvent(Event):
     def trigger(self, key):
         for observer in self.observers:
             observer.on_key_up(key)
+
+class ObjectOutEvent(Event):
+    def trigger(self, object):
+        for observer in self.observers:
+            observer.on_object_out(object)
+
+class ShotEvent(Event):
+    def trigger(self, player, pos, rot):
+        deboog(len(self.observers))
+        for observer in self.observers:
+            observer.on_bullet_shot(pos, rot, player)
 
 
