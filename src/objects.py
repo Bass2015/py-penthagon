@@ -1,3 +1,4 @@
+from hashlib import new
 import math
 import constants
 import events
@@ -137,8 +138,6 @@ class Bullet(GameObject):
         self.check_boundaries()
         pass
     
-   
-    
     def render(self):
         if self.prerender():
             CTX.moveTo(self.points[0].x, self.points[0].y)
@@ -159,8 +158,15 @@ class Bullet(GameObject):
 class Asteroid(GameObject):
     def __init__(self):
         self.speed = constants.AST_SPEED
-        self.direction = math.pi/1.5
-        super(Asteroid, self).__init__(Vector2(0,0), self.init_points(), constants.ASTEROID_RADIUS)
+        self.direction = Vector2.rand_unit()
+        self.next_direction = Vector2.rand_unit()
+        dim = constants.ASTEROID_RADIUS/8
+        self.last_changed = 0
+        self.change_time = 6
+        super(Asteroid, self).__init__(Vector2(constants.CANVAS.width/2,
+                                               constants.CANVAS.height/2),
+                                       self.init_points(dim),
+                                       dim)
     
     def __name__(self):
         return f"Asteroid"
@@ -169,15 +175,26 @@ class Asteroid(GameObject):
         pass
 
     def update(self):
-       self.rotate()
-       self.translate()
+        self.rotate()
+        self.translate()
+
+    def change_direction(self):
+        elapsed_t = time.time() - self.last_changed
+        new_direction = Vector2.lerp(self.direction, self.next_direction, elapsed_t/self.change_time)
+        if elapsed_t > self.change_time:
+            self.direction = self.next_direction
+            self.next_direction = Vector2.rand_unit()
+            self.last_changed = time.time()
+        events.deboog(str(self.pos))
+        return new_direction.normalized()
 
     def rotate(self):
         self.rotation += constants.AST_ROT_SPEED
 
     def translate(self):
-        self.pos.x += self.speed * math.sin(self.direction)
-        self.pos.y -= self.speed * math.cos(self.direction)
+        new_dir = self.change_direction()
+        self.pos += self.speed * new_dir
+
     
     def render(self):
         if self.prerender():
@@ -188,9 +205,8 @@ class Asteroid(GameObject):
             CTX.fill()
         CTX.restore()
 
-    def init_points(self):
-       r = constants.ASTEROID_RADIUS
-       return [Vector2(r * math.cos(math.radians(angle)), r * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]
+    def init_points(self, radius):
+        return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]
 
 
     

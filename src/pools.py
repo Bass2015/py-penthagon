@@ -33,7 +33,17 @@ class BulletPool(ObjectPool):
         self.get_bullet(pos, rot, player)
 
 class AsteroidPool(ObjectPool):
-    pass
+    def __init__(self):
+        super(AsteroidPool, self).__init__()
+
+    def get_bullet(self, init_pos, rotation, player):
+        if len(self.inactive_objects) == 0:
+            asteroid = Asteroid()
+        else:
+            asteroid = self.inactive_objects.pop()
+        asteroid.activate(init_pos, rotation, player)
+        self.active_objects.append(asteroid)
+    
     
     
         
