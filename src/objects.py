@@ -3,8 +3,9 @@ import math
 import constants
 import events
 import time
+import random
 from abc import ABC, abstractmethod
-from constants import CTX, COLORS
+from constants import AST_SPAWNING_LIMIT, CTX, COLORS
 from geometry import Vector2
 
 class GameObject(ABC):
@@ -171,8 +172,16 @@ class Asteroid(GameObject):
     def __name__(self):
         return f"Asteroid"
 
-    def activate(self, init_pos):
-        pass
+    def activate(self):
+        w, h = constants.CANVAS.width, constants.CANVAS.height
+        X, Y = constants.AST_SPAWNING_LIMIT, constants.AST_SPAWNING_LIMIT
+        W, H = w - 2 * X, h - 2 * Y
+        coord = random.choice([(i % w,i/w ) for i in range(w*h) if (W > i * w - X > -1 < i / w - Y < H) < 1])
+        self.pos = Vector2(coord[0], coord[1])
+        self.activate = True
+        self.direction = Vector2.rand_unit()
+        self.next_direction = Vector2.rand_unit()
+
 
     def update(self):
         self.rotate()

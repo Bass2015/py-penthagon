@@ -28,6 +28,8 @@ def render(*args):
 
 def update():
     UPDATE.trigger()
+    if 'g' in keysdown:
+        asteroid_pool.get_Asteroid()
 
 def act_agents():
     action = player1.act()
