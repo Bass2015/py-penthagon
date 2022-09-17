@@ -1,9 +1,9 @@
-from hashlib import new
 import math
 import constants
 import events
 import time
 import random
+import geometry
 from abc import ABC, abstractmethod
 from constants import AST_SPAWNING_LIMIT, CTX, COLORS
 from geometry import Vector2
@@ -12,15 +12,16 @@ class GameObject(ABC):
     def __init__(self, init_pos, points, dimension):
         constants.UPDATE.suscribe(self)
         constants.RENDER.suscribe(self)
+        constants.COLLISION.suscribe(self)
         self.pos = init_pos
         self.points = points
         self.rotation = 0
         self.active = True
         self.dimension = dimension
 
-    def translate(self):
-        self.pos.x += self.speed * math.sin(self.rotation)
-        self.pos.y -= self.speed * math.cos(self.rotation)
+    def translate(self, delta_time):
+        self.pos.x += self.speed * math.sin(self.rotation) * delta_time
+        self.pos.y -= self.speed * math.cos(self.rotation) * delta_time
         
     def keep_in_screen(self):
         if self.pos.x > constants.CANVAS.width + self.dimension:
@@ -34,7 +35,7 @@ class GameObject(ABC):
 
     def check_boundaries(self):
         if (self.pos.x > constants.CANVAS.width + self.dimension or 
-                self.pos.x < 0 +self.dimension * -1 or 
+                self.pos.x < 0 + self.dimension * -1 or 
                 self.pos.y > constants.CANVAS.height + self.dimension or 
                 self.pos.y < 0 + self.dimension * -1):
             constants.OBJECTOUT.trigger(self)
@@ -49,8 +50,12 @@ class GameObject(ABC):
     def local_to_global(self, point):
         return self.pos + point.rotate(self.rotation)
 
+    def on_collision_enter(self, *args):
+        if self in args:
+            events.deboog("COLLISIONNNNN")
+
     @abstractmethod
-    def update(self):
+    def update(self, delta_time):
         pass
 
     @abstractmethod
@@ -58,7 +63,7 @@ class GameObject(ABC):
         pass
 
 class Ship(GameObject):
-    def __init__(self, init_pos, player):
+    def __init__(self, player):
         self.speed = 0
         self.max_speed = constants.SHIP_SPEED
         self.next_moves = []
@@ -70,18 +75,17 @@ class Ship(GameObject):
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
                            math.sin(math.radians(angle)) * constants.RADIUS))
-        super(Ship, self).__init__(init_pos, points, constants.RADIUS)
+        super(Ship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),points, constants.RADIUS)
 
-    def update(self):
+    def update(self, delta_time):
         if self.active:
             self.accelerate()
             self.rotate()
-            self.translate() 
+            self.translate(delta_time) 
             self.keep_in_screen()
             if constants.ACTIONS[4] in self.next_moves:
                 self.shoot()
             self.next_moves.clear()
-            super().update()
 
     def accelerate(self):
         if constants.ACTIONS[0] in self.next_moves:
@@ -134,8 +138,8 @@ class Bullet(GameObject):
         self.player = player
         self.active = True
 
-    def update(self):
-        self.translate()
+    def update(self, delta_time):
+        self.translate(delta_time)
         self.check_boundaries()
         pass
     
@@ -161,9 +165,10 @@ class Asteroid(GameObject):
         self.speed = constants.AST_SPEED
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
-        dim = constants.ASTEROID_RADIUS/8
+        dim = constants.ASTEROID_RADIUS *-1
         self.last_changed = 0
         self.change_time = 6
+        self.color = 'black'
         super(Asteroid, self).__init__(Vector2(constants.CANVAS.width/2,
                                                constants.CANVAS.height/2),
                                        self.init_points(dim),
@@ -173,19 +178,25 @@ class Asteroid(GameObject):
         return f"Asteroid"
 
     def activate(self):
-        w, h = constants.CANVAS.width, constants.CANVAS.height
-        X, Y = constants.AST_SPAWNING_LIMIT, constants.AST_SPAWNING_LIMIT
-        W, H = w - 2 * X, h - 2 * Y
-        coord = random.choice([(i % w,i/w ) for i in range(w*h) if (W > i * w - X > -1 < i / w - Y < H) < 1])
-        self.pos = Vector2(coord[0], coord[1])
+        divisions = round(random.gauss(2,0.6))
+        if divisions == 4:
+            constants.OBJECTOUT.trigger(self)
+            return
+        if divisions != 0:
+            self.dimension /= (divisions) * 1.5  
+        self.points = self.init_points(self.dimension)
+        x, y = geometry.random_point_within_limit(AST_SPAWNING_LIMIT)
+        self.pos = Vector2(x, y)
         self.activate = True
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
+        for i in range(0, random.randint(0, 4)):
+            self.dimension /= 1.5
 
-
-    def update(self):
-        self.rotate()
-        self.translate()
+    def update(self, delta_time):
+        self.rotate(delta_time)
+        self.translate(delta_time)
+        self.check_boundaries()
 
     def change_direction(self):
         elapsed_t = time.time() - self.last_changed
@@ -194,15 +205,14 @@ class Asteroid(GameObject):
             self.direction = self.next_direction
             self.next_direction = Vector2.rand_unit()
             self.last_changed = time.time()
-        events.deboog(str(self.pos))
         return new_direction.normalized()
 
-    def rotate(self):
-        self.rotation += constants.AST_ROT_SPEED
+    def rotate(self, delta_time):
+        self.rotation += constants.AST_ROT_SPEED * delta_time
 
-    def translate(self):
+    def translate(self, delta_time):
         new_dir = self.change_direction()
-        self.pos += self.speed * new_dir
+        self.pos += self.speed * new_dir * delta_time
 
     
     def render(self):
@@ -210,9 +220,13 @@ class Asteroid(GameObject):
             CTX.moveTo(self.points[0].x, self.points[0].y)
             for point in self.points[1:]:
                 CTX.lineTo(point.x, point.y)
-            CTX.fillStyle = COLORS['bullet']
+            CTX.fillStyle = self.color
             CTX.fill()
         CTX.restore()
+
+    def on_collision_enter(self, *args):
+        if self in args:
+            self.color = 'red'
 
     def init_points(self, radius):
         return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]

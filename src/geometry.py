@@ -1,5 +1,7 @@
 import math
 import numpy as np
+import random
+from constants import CANVAS
 
 class Vector2():
     def __init__(self, x, y):
@@ -8,6 +10,9 @@ class Vector2():
    
     def __add__(self, other):
         return Vector2(self.x + other.x, self.y + other.y)
+
+    def __sub__(self, other):
+        return Vector2(self.x - other.x, self.y - other.y)
 
     def __mul__(self, other):
         """ Returns Hadamard product if two vectors, 
@@ -28,7 +33,7 @@ class Vector2():
         return self.__repr__()
     
     def norm(self):
-        return (self.x ** 2 + self.y ** 2) ** .5
+        return self.magnitude() ** .5
 
     def normalized(self):
         """ Returns a normalized unit vector """        
@@ -40,6 +45,9 @@ class Vector2():
         y = self.x * math.sin(angle) + self.y * math.cos(angle) 
         return Vector2(x, y)
 
+    def magnitude(self):
+        return self.x**2 + self.y**2
+
     def lerp(v1, v2, t):
         if (not isinstance(v1, Vector2) or
              not isinstance(v2, Vector2) or
@@ -47,6 +55,25 @@ class Vector2():
             raise ValueError(f'Interpolation needs two vectors and a float')
         return v1 * t + v2 * (1-t)
 
+    def distance(v1, v2):
+        return (v1 - v2).magnitude()
+
     def rand_unit():
         points = np.random.normal(0, 1, 2)
         return Vector2(points[0], points[1]).normalized()
+
+
+
+def random_point_within_limit(limit):
+    """ Returns a random point no further of the 
+    canvasborders than 'limit'"""
+    area = random.choice(list('tblr'))
+    w, h = CANVAS.width, CANVAS.height
+    if area == 't':
+        return random.uniform(0, w), random.uniform(0, limit)
+    if area == 'b':
+        return random.uniform(0, w), random.uniform(h - limit, h)
+    if area == 'l':
+        return random.uniform(0, limit), random.uniform(0, h)
+    if area == 'r':
+        return random.uniform(w - limit, w), random.uniform(0, h)

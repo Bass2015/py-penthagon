@@ -1,5 +1,6 @@
-
+import time
 from abc import ABC, abstractmethod
+import constants
 from js import console, document
 
 def deboog(message):
@@ -23,9 +24,14 @@ class Event(ABC):
         pass
 
 class UpdateEvent(Event):
+    def __init__(self):
+        self.last_update = time.time()
+        super(UpdateEvent, self).__init__()
     def trigger(self):
+        delta_time = time.time() - self.last_update
+        self.last_update = time.time()
         for observer in self.observers:
-            observer.update()
+            observer.update(delta_time)
     
 class RenderEvent(Event):
     def trigger(self):
@@ -51,5 +57,10 @@ class ShotEvent(Event):
     def trigger(self, player, pos, rot):
         for observer in self.observers:
             observer.on_bullet_shot(pos, rot, player)
+
+class CollisionEvent(Event):
+    def trigger(self, *args):
+        for observer in self.observers:
+            observer.on_collision_enter(args)
 
 

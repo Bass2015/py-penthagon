@@ -1,16 +1,17 @@
+import physics
 from js import document, requestAnimationFrame
 from pyodide import create_proxy
-from objects import Bullet, Ship, Asteroid
+from objects import Ship
 import pools
+import events
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
 from agents import Human, RandomAI
-from geometry import Vector2
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
-ship1 = Ship(Vector2(CANVAS.width/2, CANVAS.height/2), player=1)
-ast = Asteroid()
+ship1 = Ship(player=1)
 player1 = Human(ship1)
+
 
 def on_key_down(*args):
     if args[0].key not in keysdown:
@@ -28,17 +29,20 @@ def render(*args):
 
 def update():
     UPDATE.trigger()
-    if 'g' in keysdown:
-        asteroid_pool.get_Asteroid()
 
 def act_agents():
     action = player1.act()
     ship1.next_moves.extend(action)
 
+def late_update():
+    # events.deboog("Checkin main")
+    physics.check_objects(asteroid_pool.active_objects, bullet_pool.active_objects)
+
 def game_loop(*args):
     act_agents()
     update()
     render()
+    late_update()
     requestAnimationFrame(game_loop_proxy)
     
 game_loop_proxy = create_proxy(game_loop)

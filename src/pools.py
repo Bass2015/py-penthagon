@@ -1,5 +1,6 @@
-import constants
 import events
+import constants
+import random
 from objects import Bullet, Asteroid, GameObject
 
 class ObjectPool():
@@ -11,7 +12,9 @@ class ObjectPool():
     def take_out(self, game_object:GameObject):
         if game_object in self.active_objects:
             game_object.active = False
-            self.inactive_objects.append(self.active_objects.pop(self.active_objects.index(game_object)))
+            object_from_active_pool = self.active_objects.index(game_object)
+            if isinstance(object_from_active_pool, GameObject):
+                self.inactive_objects.append(self.active_objects.pop(object_from_active_pool))
     
     def on_object_out(self, game_object):
         self.take_out(game_object)
@@ -34,9 +37,11 @@ class BulletPool(ObjectPool):
 
 class AsteroidPool(ObjectPool):
     def __init__(self):
+        constants.UPDATE.suscribe(self)
+        self.since_spawned = 0
         super(AsteroidPool, self).__init__()
 
-    def get_Asteroid(self):
+    def spawn_asteroid(self):
         if len(self.inactive_objects) == 0:
             asteroid = Asteroid()
         else:
@@ -44,6 +49,9 @@ class AsteroidPool(ObjectPool):
         asteroid.activate()
         self.active_objects.append(asteroid)
     
+    def update(self, delta_time):
+        if random.random() < constants.AST_SPAWNING_CHANCE:
+            self.spawn_asteroid()
     
     
     

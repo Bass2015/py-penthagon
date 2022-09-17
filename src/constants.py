@@ -1,4 +1,4 @@
-from js import document
+from js import document, window
 import events
 import math
 
@@ -6,12 +6,14 @@ CANVAS = document.getElementById("canvas")
 CTX = CANVAS.getContext("2d")
 
 # Game Events
+# meter todo esto en un diccionario
 UPDATE = events.UpdateEvent()
 RENDER = events.RenderEvent()
 KEYDOWN = events.KeyDownEvent()
 KEYUP = events.KeyUpEvent()
 OBJECTOUT = events.ObjectOutEvent()
 SHOT = events.ShotEvent()
+COLLISION = events.CollisionEvent()
 # Actions
 ACTIONS = {0: "FORWARD",
            1: "BACKWARD", 
@@ -22,11 +24,11 @@ ACTIONS = {0: "FORWARD",
 
 # Ship config
 ANGLES = [162.0, 234.0, 306.0, 18.0]
-RADIUS = -8 / math.cos(math.radians(54.0))
+RADIUS = -0.015 * max(CANVAS.width, CANVAS.height)
 ROT_SPEED = math.pi/32
-SHIP_SPEED = 4
-SHIP_ACC = 0.3
-SHIP_DEC = 0.1
+SHIP_SPEED = 350
+SHIP_ACC = 30
+SHIP_DEC = 10
 SHOOTING_SPEED = 0.4
 COLORS = {
     'players': {
@@ -37,11 +39,11 @@ COLORS = {
     },
     'bullet': 'black'}
 
-
 # Bullet config
-BULLET_SPEED = 10
+BULLET_SPEED = 1000
 
-ASTEROID_RADIUS = RADIUS * 8
-AST_SPEED = 0.2
-AST_ROT_SPEED = math.pi/512
-AST_SPAWNING_LIMIT = CANVAS.width / 50
+ASTEROID_RADIUS = -.1 * max(CANVAS.width, CANVAS.height)
+AST_SPEED = 20
+AST_ROT_SPEED = math.pi/64
+AST_SPAWNING_LIMIT = CANVAS.width * 0.1
+AST_SPAWNING_CHANCE = 0.004
