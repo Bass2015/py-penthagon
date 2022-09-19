@@ -59,8 +59,6 @@ class Human(Agent):
         super(Human, self).__init__(ship)
    
     def act(self):  
-        events.deboog("Checkin main")
-
         if 'w' in self.keysdown:
             if 'a' in self.keysdown:
                 if ' ' in self.keysdown:

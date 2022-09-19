@@ -4,18 +4,19 @@ import constants
 import events
 
 def check_objects(asteroids, bullets, *ships):
-    # events.deboog("Checkin physics")
     collided = []
     for asteroid in asteroids:
-        for bullet in bullets:
-            if check_collision(asteroid, bullet):
-                collided.extend([asteroid, bullet])
-    constants.COLLISION.trigger(collided)
+        # for bullet in ships:
+        if check_collision(asteroid, ships[0]):
+            collided.extend([asteroid, ships[0]])
+    if len(collided) > 0:
+        constants.COLLISION.trigger(collided)
+    collided.clear()
 
 def check_collision(obj1:GameObject, obj2:GameObject):
-    if obj1.dimension + obj2.dimension < Vector2.distance(obj1.pos, obj2.pos):
-        events.deboog("COLLision")
+    if obj1.dimension + obj2.dimension > Vector2.distance(obj1.pos, obj2.pos):
         return True
+    
     
         
 

@@ -46,7 +46,7 @@ class Vector2():
         return Vector2(x, y)
 
     def magnitude(self):
-        return self.x**2 + self.y**2
+        return (self.x**2 + self.y**2) ** 0.5
 
     def lerp(v1, v2, t):
         if (not isinstance(v1, Vector2) or
@@ -56,7 +56,7 @@ class Vector2():
         return v1 * t + v2 * (1-t)
 
     def distance(v1, v2):
-        return (v1 - v2).magnitude()
+        return (v2 - v1).magnitude()
 
     def rand_unit():
         points = np.random.normal(0, 1, 2)

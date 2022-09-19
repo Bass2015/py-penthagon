@@ -18,20 +18,23 @@ class GameObject(ABC):
         self.rotation = 0
         self.active = True
         self.dimension = dimension
+       
+    def __str__(self):
+        return self.__name__()
 
     def translate(self, delta_time):
         self.pos.x += self.speed * math.sin(self.rotation) * delta_time
         self.pos.y -= self.speed * math.cos(self.rotation) * delta_time
         
     def keep_in_screen(self):
-        if self.pos.x > constants.CANVAS.width + self.dimension:
-            self.pos.x = constants.CANVAS.width + self.dimension
-        if self.pos.x < 0 +self.dimension * -1:
-            self.pos.x = self.dimension * -1
-        if self.pos.y > constants.CANVAS.height + self.dimension:
-            self.pos.y = constants.CANVAS.height + self.dimension
-        if self.pos.y < 0 + self.dimension * -1:
-            self.pos.y = self.dimension * -1
+        if self.pos.x > constants.CANVAS.width - self.dimension:
+            self.pos.x = constants.CANVAS.width - self.dimension
+        if self.pos.x < 0 +self.dimension:
+            self.pos.x = self.dimension 
+        if self.pos.y > constants.CANVAS.height - self.dimension:
+            self.pos.y = constants.CANVAS.height - self.dimension
+        if self.pos.y < 0 + self.dimension:
+            self.pos.y = self.dimension
 
     def check_boundaries(self):
         if (self.pos.x > constants.CANVAS.width + self.dimension or 
@@ -50,9 +53,10 @@ class GameObject(ABC):
     def local_to_global(self, point):
         return self.pos + point.rotate(self.rotation)
 
+    @abstractmethod
     def on_collision_enter(self, *args):
-        if self in args:
-            events.deboog("COLLISIONNNNN")
+        pass
+        
 
     @abstractmethod
     def update(self, delta_time):
@@ -75,7 +79,10 @@ class Ship(GameObject):
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
                            math.sin(math.radians(angle)) * constants.RADIUS))
-        super(Ship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),points, constants.RADIUS)
+        super(Ship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),points, constants.RADIUS * -1)
+    
+    def __name__(self):
+            return f"Ship from player {self.player}"
 
     def update(self, delta_time):
         if self.active:
@@ -127,7 +134,7 @@ class Bullet(GameObject):
         self.speed = constants.BULLET_SPEED
         width, points = self.init_points()
         # Voy a tener que iniciar la rotacion cuando los cree en el pool
-        super(Bullet, self).__init__(Vector2(0,0), points, width)
+        super(Bullet, self).__init__(Vector2(0,0), points, width * -1)
     
     def __name__(self):
         return f"Bullet from player{self.player}"
@@ -165,7 +172,7 @@ class Asteroid(GameObject):
         self.speed = constants.AST_SPEED
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
-        dim = constants.ASTEROID_RADIUS *-1
+        dim = constants.ASTEROID_RADIUS
         self.last_changed = 0
         self.change_time = 6
         self.color = 'black'
@@ -190,12 +197,10 @@ class Asteroid(GameObject):
         self.activate = True
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
-        for i in range(0, random.randint(0, 4)):
-            self.dimension /= 1.5
-
+        
     def update(self, delta_time):
         self.rotate(delta_time)
-        self.translate(delta_time)
+        # self.translate(delta_time)
         self.check_boundaries()
 
     def change_direction(self):

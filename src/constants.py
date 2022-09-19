@@ -40,9 +40,9 @@ COLORS = {
     'bullet': 'black'}
 
 # Bullet config
-BULLET_SPEED = 1000
+BULLET_SPEED = 100
 
-ASTEROID_RADIUS = -.1 * max(CANVAS.width, CANVAS.height)
+ASTEROID_RADIUS = .1 * max(CANVAS.width, CANVAS.height)
 AST_SPEED = 20
 AST_ROT_SPEED = math.pi/64
 AST_SPAWNING_LIMIT = CANVAS.width * 0.1

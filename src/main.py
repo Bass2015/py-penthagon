@@ -1,7 +1,7 @@
 import physics
 from js import document, requestAnimationFrame
 from pyodide import create_proxy
-from objects import Ship
+from objects import Ship, Asteroid
 import pools
 import events
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
@@ -11,7 +11,8 @@ keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
 ship1 = Ship(player=1)
 player1 = Human(ship1)
-
+asteroid_pool.spawn_asteroid()
+asteroid_pool.spawn_asteroid()
 
 def on_key_down(*args):
     if args[0].key not in keysdown:
@@ -35,8 +36,7 @@ def act_agents():
     ship1.next_moves.extend(action)
 
 def late_update():
-    # events.deboog("Checkin main")
-    physics.check_objects(asteroid_pool.active_objects, bullet_pool.active_objects)
+    physics.check_objects(asteroid_pool.active_objects, bullet_pool.active_objects, ship1)
 
 def game_loop(*args):
     act_agents()

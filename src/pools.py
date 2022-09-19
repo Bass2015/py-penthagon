@@ -50,10 +50,9 @@ class AsteroidPool(ObjectPool):
         self.active_objects.append(asteroid)
     
     def update(self, delta_time):
-        if random.random() < constants.AST_SPAWNING_CHANCE:
-            self.spawn_asteroid()
-    
-    
+        # if random.random() < constants.AST_SPAWNING_CHANCE:
+            # self.spawn_asteroid()
+        pass    
     
         
     
