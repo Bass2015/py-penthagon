@@ -146,6 +146,7 @@ class Bullet(GameObject):
         self.rotation = rotation
         self.player = player
         self.active = True
+        self.collided = False
 
     def update(self, delta_time):
         self.translate(delta_time)
@@ -193,19 +194,26 @@ class Asteroid(GameObject):
     def __name__(self):
         return f"Asteroid"
 
-    def activate(self):
-        divisions = round(random.gauss(2,0.6))
-        if divisions == 4:
-            constants.OBJECTOUT.trigger(self)
-            return
-        if divisions != 0:
-            self.dimension /= (divisions) * 1.5  
+    def activate(self, size, pos):
+        if size == -1:
+            divisions = round(random.gauss(2,0.6))
+            if divisions == 4:
+                constants.OBJECTOUT.trigger(self)
+                return
+            if divisions != 0:
+                self.dimension /= divisions * 1.5  
+        else:
+            self.dimension = size
         self.points = self.init_points(self.dimension)
-        x, y = geometry.random_point_within_limit(AST_SPAWNING_LIMIT)
-        self.pos = Vector2(x, y)
+        if pos == -1:
+            x, y = geometry.random_point_within_limit(AST_SPAWNING_LIMIT)
+            self.pos = Vector2(x, y)
+        else:
+            self.pos = pos
         self.activate = True
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
+        self.collided = False
         
     def update(self, delta_time):
         self.rotate(delta_time)
@@ -237,9 +245,16 @@ class Asteroid(GameObject):
             CTX.fill()
         CTX.restore()
 
-    def on_collision_enter(self, *args):
-        if self in args:
-            self.color = 'red'
+    def on_collision_enter(self, me, other):
+        if (self.collided or
+            self != me or
+            not isinstance(other, Bullet)):
+            events.deboog("outtt")
+            return
+        if self.dimension != constants.ASTEROID_RADIUS / (1.5*3):
+            constants.ASTEROID_HIT.trigger(self)
+        constants.OBJECTOUT.trigger(self)
+        super().on_collision_enter(me, other)
 
     def init_points(self, radius):
         return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]

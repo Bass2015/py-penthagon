@@ -14,6 +14,7 @@ KEYUP = events.KeyUpEvent()
 OBJECTOUT = events.ObjectOutEvent()
 SHOT = events.ShotEvent()
 COLLISION = events.CollisionEvent()
+ASTEROID_HIT = events.AsteroidHitEvent()
 
 # Actions
 ACTIONS = {0: "FORWARD",

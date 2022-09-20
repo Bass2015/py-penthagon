@@ -64,5 +64,10 @@ class CollisionEvent(Event):
             observer.on_collision_enter(obj1, obj2)
             observer.on_collision_enter(obj2, obj1)
 
+class AsteroidHitEvent(Event):
+    def trigger(self, asteroid):
+        for observer in self.observers:
+            observer.on_asteroid_hit(asteroid)
+
 
 

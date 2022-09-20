@@ -1,3 +1,4 @@
+from distutils.spawn import spawn
 import events
 import constants
 import random
@@ -38,21 +39,26 @@ class BulletPool(ObjectPool):
 class AsteroidPool(ObjectPool):
     def __init__(self):
         constants.UPDATE.suscribe(self)
+        constants.ASTEROID_HIT.suscribe(self)
         self.since_spawned = 0
         super(AsteroidPool, self).__init__()
 
-    def spawn_asteroid(self):
+    def spawn_asteroid(self, size=-1, pos=-1):
         if len(self.inactive_objects) == 0:
             asteroid = Asteroid()
         else:
             asteroid = self.inactive_objects.pop()
-        asteroid.activate()
+        asteroid.activate(size, pos)
         self.active_objects.append(asteroid)
     
     def update(self, delta_time):
         # if random.random() < constants.AST_SPAWNING_CHANCE:
             # self.spawn_asteroid()
-        pass    
+        pass  
+
+    def on_asteroid_hit(self, asteroid):
+        self.spawn_asteroid(asteroid.dimension / 1.5, asteroid.pos)  
+        self.spawn_asteroid(asteroid.dimension / 1.5, asteroid.pos)  
     
         
     
