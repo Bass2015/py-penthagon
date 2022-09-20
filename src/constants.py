@@ -14,6 +14,7 @@ KEYUP = events.KeyUpEvent()
 OBJECTOUT = events.ObjectOutEvent()
 SHOT = events.ShotEvent()
 COLLISION = events.CollisionEvent()
+
 # Actions
 ACTIONS = {0: "FORWARD",
            1: "BACKWARD", 
@@ -40,7 +41,7 @@ COLORS = {
     'bullet': 'black'}
 
 # Bullet config
-BULLET_SPEED = 100
+BULLET_SPEED = 1000
 
 ASTEROID_RADIUS = .1 * max(CANVAS.width, CANVAS.height)
 AST_SPEED = 20

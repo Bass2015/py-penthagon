@@ -59,8 +59,10 @@ class ShotEvent(Event):
             observer.on_bullet_shot(pos, rot, player)
 
 class CollisionEvent(Event):
-    def trigger(self, *args):
+    def trigger(self, obj1, obj2):
         for observer in self.observers:
-            observer.on_collision_enter(args)
+            observer.on_collision_enter(obj1, obj2)
+            observer.on_collision_enter(obj2, obj1)
+
 
 

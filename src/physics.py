@@ -3,19 +3,17 @@ from objects import GameObject
 import constants
 import events
 
-def check_objects(asteroids, bullets, *ships):
-    collided = []
+def check_objects(asteroids, bullets, ships):
     for asteroid in asteroids:
-        # for bullet in ships:
-        if check_collision(asteroid, ships[0]):
-            collided.extend([asteroid, ships[0]])
-    if len(collided) > 0:
-        constants.COLLISION.trigger(collided)
-    collided.clear()
-
+        for ship in ships:
+            check_collision(asteroid, ship)
+        for bullet in bullets:
+                check_collision(bullet, ship)
+                check_collision(asteroid, bullet)
+   
 def check_collision(obj1:GameObject, obj2:GameObject):
     if obj1.dimension + obj2.dimension > Vector2.distance(obj1.pos, obj2.pos):
-        return True
+        constants.COLLISION.trigger(obj1, obj2)
     
     
         

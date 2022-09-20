@@ -18,6 +18,7 @@ class GameObject(ABC):
         self.rotation = 0
         self.active = True
         self.dimension = dimension
+        self.collided = False
        
     def __str__(self):
         return self.__name__()
@@ -53,10 +54,8 @@ class GameObject(ABC):
     def local_to_global(self, point):
         return self.pos + point.rotate(self.rotation)
 
-    @abstractmethod
-    def on_collision_enter(self, *args):
-        pass
-        
+    def on_collision_enter(self, me, other):
+        self.collided = True
 
     @abstractmethod
     def update(self, delta_time):
@@ -128,6 +127,9 @@ class Ship(GameObject):
             constants.SHOT.trigger(self.player, self.local_to_global(self.points[0]), self.rotation)
             self.last_shot = time.time()
 
+    def on_collision_enter(self, me, other):
+        pass
+    
 class Bullet(GameObject):
     def __init__(self):
         self.player = ""
@@ -166,6 +168,13 @@ class Bullet(GameObject):
                 Vector2(w/2, -h/2), 
                 Vector2(w/2, h/2), 
                 Vector2(-w/2, h/2)]
+
+    def on_collision_enter(self, me, other):
+        if self == me:
+            if (isinstance(other, Asteroid) or
+            (isinstance(other, Ship) and other.player != self.player)):
+                constants.OBJECTOUT.trigger(self)
+        super().on_collision_enter(me, other)
 
 class Asteroid(GameObject):
     def __init__(self):
@@ -218,7 +227,6 @@ class Asteroid(GameObject):
     def translate(self, delta_time):
         new_dir = self.change_direction()
         self.pos += self.speed * new_dir * delta_time
-
     
     def render(self):
         if self.prerender():

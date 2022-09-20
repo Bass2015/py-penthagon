@@ -9,8 +9,8 @@ from agents import Human, RandomAI
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
-ship1 = Ship(player=1)
-player1 = Human(ship1)
+ships = [Ship(player=1)]
+player1 = Human(ships[0])
 asteroid_pool.spawn_asteroid()
 asteroid_pool.spawn_asteroid()
 
@@ -33,10 +33,10 @@ def update():
 
 def act_agents():
     action = player1.act()
-    ship1.next_moves.extend(action)
+    ships[0].next_moves.extend(action)
 
 def late_update():
-    physics.check_objects(asteroid_pool.active_objects, bullet_pool.active_objects, ship1)
+    physics.check_objects(asteroid_pool.active_objects.copy(), bullet_pool.active_objects.copy(), ships.copy())
 
 def game_loop(*args):
     act_agents()
