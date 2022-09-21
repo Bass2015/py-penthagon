@@ -183,7 +183,7 @@ class Asteroid(GameObject):
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
         dim = constants.ASTEROID_RADIUS
-        self.last_changed = 0
+        self.last_changed = time.time()
         self.change_time = 6
         self.color = 'black'
         super(Asteroid, self).__init__(Vector2(constants.CANVAS.width/2,
@@ -235,7 +235,8 @@ class Asteroid(GameObject):
 
     def translate(self, delta_time):
         new_dir = self.change_direction()
-        self.pos += self.speed * delta_time # * new_dir 
+        fixed_speed = self.speed * delta_time
+        self.pos += fixed_speed * new_dir 
     
     def render(self):
         if self.prerender():

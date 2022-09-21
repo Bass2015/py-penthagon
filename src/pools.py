@@ -18,7 +18,6 @@ class ObjectPool():
                 self.inactive_objects.append(self.active_objects.pop(object_from_active_pool))
     
     def on_object_out(self, game_object):
-        events.deboog(f"{str(game_object)} out")
         self.take_out(game_object)
     
 class BulletPool(ObjectPool):
@@ -53,9 +52,8 @@ class AsteroidPool(ObjectPool):
         self.active_objects.append(asteroid)
     
     def update(self, delta_time):
-        # if random.random() < constants.AST_SPAWNING_CHANCE:
-            # self.spawn_asteroid()
-        pass  
+        if random.random() < constants.AST_SPAWNING_CHANCE:
+            self.spawn_asteroid()
 
     def on_asteroid_hit(self, asteroid):
         self.spawn_asteroid(asteroid.dimension / 1.5, asteroid.pos)  
