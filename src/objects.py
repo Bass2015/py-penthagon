@@ -286,7 +286,9 @@ class Asteroid(GameObject):
     def on_collision_enter(self, me, other):
         if (self.collided or
             self != me or
-            not isinstance(other, Bullet)):
+            isinstance(other, Asteroid) or
+            (isinstance(other, Ship) and
+            other.phantom)):
             return
         if self.dimension > constants.ASTEROID_RADIUS / (1.5*3):
             constants.ASTEROID_HIT.trigger(self)
