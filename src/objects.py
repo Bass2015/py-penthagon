@@ -251,9 +251,8 @@ class Asteroid(GameObject):
         if (self.collided or
             self != me or
             not isinstance(other, Bullet)):
-            events.deboog("outtt")
             return
-        if self.dimension != constants.ASTEROID_RADIUS / (1.5*3):
+        if self.dimension > constants.ASTEROID_RADIUS / (1.5*3):
             constants.ASTEROID_HIT.trigger(self)
         constants.OBJECTOUT.trigger(self)
         super().on_collision_enter(me, other)
