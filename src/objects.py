@@ -76,6 +76,7 @@ class Ship(GameObject):
         self.acceleration = constants.SHIP_ACC
         self.player = player
         self.last_shot = 0
+        self.miniships = self.create_miniships()
         points = [Vector2(0, constants.RADIUS)]
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
@@ -88,10 +89,11 @@ class Ship(GameObject):
     def create_miniships(self):
         miniships = []
         for i in range(0, 10):
-            miniship = Miniship()
-            miniship.activate(i, self.pos)
+            miniship = Miniship(i)
+            miniship.active = False
             miniships.append(miniship)
-
+        return miniships
+        
     def update(self, delta_time):
         if self.active:
             self.accelerate()
@@ -137,8 +139,14 @@ class Ship(GameObject):
             self.last_shot = time.time()
 
     def on_collision_enter(self, me, other):
-        pass
-    
+        if self == me and self.active:
+            for i in range(len(self.miniships)):
+                self.miniships[i].activate(i, self.pos)
+                self.miniships[i].init_explosion()
+            self.active = False
+
+
+
 class Bullet(GameObject):
     def __init__(self):
         self.player = ""
@@ -254,15 +262,10 @@ class Asteroid(GameObject):
         return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]
 
 class Miniship(GameObject):
-    def __init__(self):
+    def __init__(self, index):
         self.color = constants.COLORS['players'][1]['inner']
         self.speed = constants.AST_SPEED
         self.exploded = False
-        super(Miniship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),
-                                        Miniship.short_triangle_points(),
-                                        constants.TALL_TRI_BASE)
-    
-    def activate(self, index, init_pos):
         if index % 2 == 0:
             self.points = Miniship.tall_triangle_points()
             self.color = constants.COLORS['players'][1]['inner']
@@ -273,25 +276,34 @@ class Miniship(GameObject):
             self.color = constants.COLORS['players'][1]['outer']
             self.rotation = -math.pi*index/5
             self.direction = Vector2(0,1).rotate(self.rotation - math.pi)
+        super(Miniship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),
+                                        self.points,
+                                        constants.TALL_TRI_BASE)
+    
+    def activate(self,index,  init_pos):
+        self.active = True
         self.pos = Vector2(constants.DISTANCE_FROM_CENTER * math.cos(math.radians(constants.MINI_ANGLES[index])),
                            constants.DISTANCE_FROM_CENTER * math.sin(math.radians(constants.MINI_ANGLES[index]))) + init_pos
-        self.set_explosion_pars()
+        self.init_explosion()
 
-    def set_explosion_pars(self):
+    def init_explosion(self):
         self.explosion_moment = time.time()
         self.explosion_pos = self.pos
         self.elapsed_time = 0
+        self.exploded = True
 
     def explosion(self, delta_time):
-        final_pos = (self.explosion_pos + self.direction*50)
-        explosion_time = 1
+        final_pos = (self.explosion_pos + self.direction*80)
+        explosion_time = 2
         if self.elapsed_time/explosion_time < 1:
             self.pos = Vector2.lerp(self.explosion_pos,
                                     final_pos,
                                     easings.ease_out_expo(self.elapsed_time/explosion_time))
             self.elapsed_time += delta_time
+            self.rotation += 0.2 - easings.ease_out_circ(0.2)
             return
         self.active = False
+        self.exploded = False
     
     def tall_triangle_points():
         return [Vector2(0, -constants.TALL_TRI_HEIGHT / 2),
