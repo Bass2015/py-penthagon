@@ -33,6 +33,7 @@ SHIP_SPEED = 350
 SHIP_ACC = 30
 SHIP_DEC = 10
 SHOOTING_SPEED = 0.4
+RESPAWN_TIME = 3
 COLORS = {
     'players': {
         1: {

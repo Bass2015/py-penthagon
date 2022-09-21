@@ -103,6 +103,15 @@ class Ship(GameObject):
             if constants.ACTIONS[4] in self.next_moves:
                 self.shoot()
             self.next_moves.clear()
+        elif self.respawning:
+            self.wait_for_respawn()
+
+    def wait_for_respawn(self):
+        if time.time() - self.hit_time > constants.RESPAWN_TIME:
+            self.active = True
+            self.respawning = False
+            self.next_moves.clear()
+            self.speed = 0
 
     def accelerate(self):
         if constants.ACTIONS[0] in self.next_moves:
@@ -139,12 +148,24 @@ class Ship(GameObject):
             self.last_shot = time.time()
 
     def on_collision_enter(self, me, other):
-        if self == me and self.active:
-            for i in range(len(self.miniships)):
-                self.miniships[i].activate(i, self.pos)
-                self.miniships[i].init_explosion()
+        if self.am_I_hit(me, other):
             self.active = False
+            self.trigger_explosion()
+            self.respawning = True  
+            self.hit_time = time.time() 
 
+
+    def trigger_explosion(self):
+        for i in range(len(self.miniships)):
+            self.miniships[i].activate(i, self.pos)
+            self.miniships[i].init_explosion()
+
+    def am_I_hit(self, me, other):
+        return (self.active and 
+                self == me and
+                (isinstance(other, Asteroid) or
+                    (isinstance(other, Bullet) and
+                     other.player != self.player)))
 
 
 class Bullet(GameObject):
