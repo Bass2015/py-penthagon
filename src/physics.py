@@ -1,7 +1,6 @@
 from geometry import Vector2
 from objects import GameObject
 import constants
-import events
 
 def check_objects(asteroids, bullets, ships):
     for asteroid in asteroids:
@@ -16,6 +15,7 @@ def check_collision(obj1:GameObject, obj2:GameObject):
         return
     if obj1.dimension + obj2.dimension > Vector2.distance(obj1.pos, obj2.pos):
         constants.COLLISION.trigger(obj1, obj2)
+
     
     
         

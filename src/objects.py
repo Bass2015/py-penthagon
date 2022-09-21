@@ -1,9 +1,6 @@
-import math
-import constants
-import events
-import time
-import random
-import geometry
+import math, constants, time, random, geometry, easings
+from pyodide import create_proxy
+from js import setInterval
 from abc import ABC, abstractmethod
 from constants import AST_SPAWNING_LIMIT, CTX, COLORS
 from geometry import Vector2
@@ -259,6 +256,8 @@ class Asteroid(GameObject):
 class Miniship(GameObject):
     def __init__(self):
         self.color = constants.COLORS['players'][1]['inner']
+        self.speed = constants.AST_SPEED
+        self.exploded = False
         super(Miniship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),
                                         Miniship.short_triangle_points(),
                                         constants.TALL_TRI_BASE)
@@ -268,13 +267,32 @@ class Miniship(GameObject):
             self.points = Miniship.tall_triangle_points()
             self.color = constants.COLORS['players'][1]['inner']
             self.rotation = math.pi - math.pi*index/5 
+            self.direction = Vector2(0,1).rotate(self.rotation)
         else:
             self.points = Miniship.short_triangle_points()
             self.color = constants.COLORS['players'][1]['outer']
-            self.rotation = -math.pi*index/5 
+            self.rotation = -math.pi*index/5
+            self.direction = Vector2(0,1).rotate(self.rotation - math.pi)
         self.pos = Vector2(constants.DISTANCE_FROM_CENTER * math.cos(math.radians(constants.MINI_ANGLES[index])),
                            constants.DISTANCE_FROM_CENTER * math.sin(math.radians(constants.MINI_ANGLES[index]))) + init_pos
+        self.set_explosion_pars()
 
+    def set_explosion_pars(self):
+        self.explosion_moment = time.time()
+        self.explosion_pos = self.pos
+        self.elapsed_time = 0
+
+    def explosion(self, delta_time):
+        final_pos = (self.explosion_pos + self.direction*50)
+        explosion_time = 1
+        if self.elapsed_time/explosion_time < 1:
+            self.pos = Vector2.lerp(self.explosion_pos,
+                                    final_pos,
+                                    easings.ease_out_expo(self.elapsed_time/explosion_time))
+            self.elapsed_time += delta_time
+            return
+        self.active = False
+    
     def tall_triangle_points():
         return [Vector2(0, -constants.TALL_TRI_HEIGHT / 2),
                 Vector2( -constants.TALL_TRI_BASE / 2, constants.TALL_TRI_HEIGHT / 2),
@@ -286,7 +304,11 @@ class Miniship(GameObject):
                 Vector2( constants.PENTAGON_SIDE / 2, constants.SHORT_TRI_HEIGHT / 2)]
     
     def update(self, delta_time):
-        return super().update(delta_time)
+        if self.exploded:
+            self.explosion(delta_time)        # self.translate(delta_time)
+        
+    
+
 
 
 

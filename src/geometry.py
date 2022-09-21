@@ -57,7 +57,7 @@ class Vector2():
              not isinstance(v2, Vector2) or
              not isinstance(t, float)):
             raise ValueError(f'Interpolation needs two vectors and a float')
-        return v1 * t + v2 * (1-t)
+        return v1 * (1-t) + v2 * t
 
     def distance(v1, v2):
         return (v2 - v1).magnitude()
