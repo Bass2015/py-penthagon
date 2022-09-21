@@ -77,6 +77,8 @@ class Ship(GameObject):
         self.player = player
         self.last_shot = 0
         self.miniships = self.create_miniships()
+        self.phantom = True
+        self.activation_time = time.time()
         points = [Vector2(0, constants.RADIUS)]
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
@@ -103,15 +105,26 @@ class Ship(GameObject):
             if constants.ACTIONS[4] in self.next_moves:
                 self.shoot()
             self.next_moves.clear()
+            if self.phantom:
+                self.deactivate_phantom()
         elif self.respawning:
             self.wait_for_respawn()
 
+    def deactivate_phantom(self):
+        if time.time() - self.activation_time > constants.PHANTOM_TIME:
+            self.phantom = False
+
     def wait_for_respawn(self):
         if time.time() - self.hit_time > constants.RESPAWN_TIME:
-            self.active = True
-            self.respawning = False
-            self.next_moves.clear()
-            self.speed = 0
+            self.respawn()
+
+    def respawn(self):
+        self.active = True
+        self.respawning = False
+        self.phantom = True
+        self.next_moves.clear()
+        self.speed = 0
+        self.activation_time = time.time()
 
     def accelerate(self):
         if constants.ACTIONS[0] in self.next_moves:
@@ -133,12 +146,13 @@ class Ship(GameObject):
             CTX.moveTo(self.points[0].x, self.points[0].y)
             for point in self.points[1:]:
                 CTX.lineTo(point.x, point.y)
-            CTX.fillStyle = COLORS['players'][self.player]['inner']
+            opacity = 0.4 if self.phantom else 1
+            CTX.fillStyle = COLORS['players'][self.player]['inner'].format(opacity)
             CTX.fill()
             CTX.moveTo(self.points[0].x, self.points[0].y)
             CTX.lineTo(self.points[3].x, self.points[3].y)
             CTX.lineTo(self.points[2].x, self.points[2].y)
-            CTX.fillStyle =  COLORS['players'][self.player]['outer']
+            CTX.fillStyle =  COLORS['players'][self.player]['outer'].format(opacity)
             CTX.fill()  
         CTX.restore()
 
@@ -154,7 +168,6 @@ class Ship(GameObject):
             self.respawning = True  
             self.hit_time = time.time() 
 
-
     def trigger_explosion(self):
         for i in range(len(self.miniships)):
             self.miniships[i].activate(i, self.pos)
@@ -162,6 +175,7 @@ class Ship(GameObject):
 
     def am_I_hit(self, me, other):
         return (self.active and 
+                not self.phantom and
                 self == me and
                 (isinstance(other, Asteroid) or
                     (isinstance(other, Bullet) and
@@ -284,17 +298,16 @@ class Asteroid(GameObject):
 
 class Miniship(GameObject):
     def __init__(self, index):
-        self.color = constants.COLORS['players'][1]['inner']
         self.speed = constants.AST_SPEED
         self.exploded = False
         if index % 2 == 0:
             self.points = Miniship.tall_triangle_points()
-            self.color = constants.COLORS['players'][1]['inner']
+            self.color = constants.COLORS['players'][1]['inner'].format(1)
             self.rotation = math.pi - math.pi*index/5 
             self.direction = Vector2(0,1).rotate(self.rotation)
         else:
             self.points = Miniship.short_triangle_points()
-            self.color = constants.COLORS['players'][1]['outer']
+            self.color = constants.COLORS['players'][1]['outer'].format(1)
             self.rotation = -math.pi*index/5
             self.direction = Vector2(0,1).rotate(self.rotation - math.pi)
         super(Miniship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),

@@ -34,11 +34,12 @@ SHIP_ACC = 30
 SHIP_DEC = 10
 SHOOTING_SPEED = 0.4
 RESPAWN_TIME = 3
+PHANTOM_TIME = 1.5
 COLORS = {
     'players': {
         1: {
-        'inner': 'coral',
-        'outer': 'lightblue'
+        'inner': 'rgb(255, 160, 122, {})',
+        'outer': 'rgb(173, 216, 230, {})'
         }
     },
     'bullet': 'black', 
