@@ -1,7 +1,7 @@
 import physics
 from js import document, requestAnimationFrame
 from pyodide import create_proxy
-from objects import Ship, Asteroid
+from objects import *
 import pools
 import events
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
@@ -28,6 +28,8 @@ def render(*args):
     RENDER.trigger()
 
 def update():
+    if 'g' in keysdown:
+        ships[0].create_miniships()
     UPDATE.trigger()
 
 def act_agents():

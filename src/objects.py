@@ -88,6 +88,13 @@ class Ship(GameObject):
     def __name__(self):
             return f"Ship from player {self.player}"
 
+    def create_miniships(self):
+        miniships = []
+        for i in range(0, 10):
+            miniship = Miniship()
+            miniship.activate(i, self.pos)
+            miniships.append(miniship)
+
     def update(self, delta_time):
         if self.active:
             self.accelerate()
@@ -250,10 +257,24 @@ class Asteroid(GameObject):
         return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]
 
 class Miniship(GameObject):
-    def __init__(self, init_pos, points, dimension):
-
-        super(Miniship, self).__init__(init_pos, points, dimension)
+    def __init__(self):
+        self.color = constants.COLORS['players'][1]['inner']
+        super(Miniship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),
+                                        Miniship.short_triangle_points(),
+                                        constants.TALL_TRI_BASE)
     
+    def activate(self, index, init_pos):
+        if index % 2 == 0:
+            self.points = Miniship.tall_triangle_points()
+            self.color = constants.COLORS['players'][1]['inner']
+            self.rotation = math.pi - math.pi*index/5 
+        else:
+            self.points = Miniship.short_triangle_points()
+            self.color = constants.COLORS['players'][1]['outer']
+            self.rotation = -math.pi*index/5 
+        self.pos = Vector2(constants.DISTANCE_FROM_CENTER * math.cos(math.radians(constants.MINI_ANGLES[index])),
+                           constants.DISTANCE_FROM_CENTER * math.sin(math.radians(constants.MINI_ANGLES[index]))) + init_pos
+
     def tall_triangle_points():
         return [Vector2(0, -constants.TALL_TRI_HEIGHT / 2),
                 Vector2( -constants.TALL_TRI_BASE / 2, constants.TALL_TRI_HEIGHT / 2),
@@ -263,6 +284,9 @@ class Miniship(GameObject):
         return [Vector2(0, -constants.SHORT_TRI_HEIGHT / 2),
                 Vector2( -constants.PENTAGON_SIDE / 2, constants.SHORT_TRI_HEIGHT / 2),
                 Vector2( constants.PENTAGON_SIDE / 2, constants.SHORT_TRI_HEIGHT / 2)]
+    
+    def update(self, delta_time):
+        return super().update(delta_time)
 
 
 
