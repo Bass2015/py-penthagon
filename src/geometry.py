@@ -9,7 +9,11 @@ class Vector2():
         self.y = y
    
     def __add__(self, other):
-        return Vector2(self.x + other.x, self.y + other.y)
+        if isinstance(other, (int, float)):
+            return Vector2(self.x + other, self.y + other)
+        if isinstance(other, Vector2):
+            return Vector2(self.x + other.x, self.y + other.y)
+        raise ValueError(f'Addition with type {type(other)} not supported')
 
     def __sub__(self, other):
         return Vector2(self.x - other.x, self.y - other.y)

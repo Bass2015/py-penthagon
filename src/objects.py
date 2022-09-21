@@ -216,9 +216,10 @@ class Asteroid(GameObject):
         self.collided = False
         
     def update(self, delta_time):
-        self.rotate(delta_time)
-        # self.translate(delta_time)
-        self.check_boundaries()
+        if self.active:
+            self.rotate(delta_time)
+            self.translate(delta_time)
+            self.check_boundaries()
 
     def change_direction(self):
         elapsed_t = time.time() - self.last_changed
@@ -234,7 +235,7 @@ class Asteroid(GameObject):
 
     def translate(self, delta_time):
         new_dir = self.change_direction()
-        self.pos += self.speed * new_dir * delta_time
+        self.pos += self.speed * delta_time # * new_dir 
     
     def render(self):
         if self.prerender():
