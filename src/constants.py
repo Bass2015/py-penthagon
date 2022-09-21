@@ -5,6 +5,7 @@ import math
 CANVAS = document.getElementById("canvas")
 CTX = CANVAS.getContext("2d")
 
+GOLDEN_NUMBER = (1 + 5 ** 0.5) / 2
 # Game Events
 # meter todo esto en un diccionario
 UPDATE = events.UpdateEvent()
@@ -39,11 +40,19 @@ COLORS = {
         'outer': 'lightblue'
         }
     },
-    'bullet': 'black'}
+    'bullet': 'black', 
+    'asteroid': 'black'}
+
+# Miniship config
+PENTAGON_SIDE = 2*RADIUS*math.sin(math.pi/5)
+TALL_TRI_BASE =  PENTAGON_SIDE / (GOLDEN_NUMBER ** 2);
+TALL_TRI_HEIGHT = PENTAGON_SIDE * math.sin(math.radians(36))
+SHORT_TRI_HEIGHT = PENTAGON_SIDE * math.tan(math.radians(36)) / 2
 
 # Bullet config
 BULLET_SPEED = 1000
 
+# Asteroid config
 ASTEROID_RADIUS = .1 * max(CANVAS.width, CANVAS.height)
 AST_SPEED = 20
 AST_ROT_SPEED = math.pi/64

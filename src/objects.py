@@ -61,9 +61,14 @@ class GameObject(ABC):
     def update(self, delta_time):
         pass
 
-    @abstractmethod
     def render(self):
-        pass
+        if self.prerender():
+            CTX.moveTo(self.points[0].x, self.points[0].y)
+            for point in self.points[1:]:
+                CTX.lineTo(point.x, point.y)
+            CTX.fillStyle = self.color
+            CTX.fill()
+        CTX.restore()
 
 class Ship(GameObject):
     def __init__(self, player):
@@ -135,6 +140,8 @@ class Bullet(GameObject):
         self.player = ""
         self.speed = constants.BULLET_SPEED
         width, points = self.init_points()
+        self.color = constants.COLORS['bullet']
+
         # Voy a tener que iniciar la rotacion cuando los cree en el pool
         super(Bullet, self).__init__(Vector2(0,0), points, width * -1)
     
@@ -153,15 +160,6 @@ class Bullet(GameObject):
         self.check_boundaries()
         pass
     
-    def render(self):
-        if self.prerender():
-            CTX.moveTo(self.points[0].x, self.points[0].y)
-            for point in self.points[1:]:
-                CTX.lineTo(point.x, point.y)
-            CTX.fillStyle = COLORS['bullet']
-            CTX.fill()
-        CTX.restore()
-
     def init_points(self):
         w = constants.RADIUS / 8
         h = constants.RADIUS
@@ -185,7 +183,7 @@ class Asteroid(GameObject):
         dim = constants.ASTEROID_RADIUS
         self.last_changed = time.time()
         self.change_time = 6
-        self.color = 'black'
+        self.color = constants.COLORS['asteroid']
         super(Asteroid, self).__init__(Vector2(constants.CANVAS.width/2,
                                                constants.CANVAS.height/2),
                                        self.init_points(dim),
@@ -238,15 +236,6 @@ class Asteroid(GameObject):
         fixed_speed = self.speed * delta_time
         self.pos += fixed_speed * new_dir 
     
-    def render(self):
-        if self.prerender():
-            CTX.moveTo(self.points[0].x, self.points[0].y)
-            for point in self.points[1:]:
-                CTX.lineTo(point.x, point.y)
-            CTX.fillStyle = self.color
-            CTX.fill()
-        CTX.restore()
-
     def on_collision_enter(self, me, other):
         if (self.collided or
             self != me or
@@ -260,5 +249,22 @@ class Asteroid(GameObject):
     def init_points(self, radius):
         return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]
 
+class Miniship(GameObject):
+    def __init__(self, init_pos, points, dimension):
 
+        super(Miniship, self).__init__(init_pos, points, dimension)
     
+    def tall_triangle_points():
+        return [Vector2(0, -constants.TALL_TRI_HEIGHT / 2),
+                Vector2( -constants.TALL_TRI_BASE / 2, constants.TALL_TRI_HEIGHT / 2),
+                Vector2( constants.TALL_TRI_BASE / 2, constants.TALL_TRI_HEIGHT / 2)]
+
+    def short_triangle_points():
+        return [Vector2(0, -constants.SHORT_TRI_HEIGHT / 2),
+                Vector2( -constants.PENTAGON_SIDE / 2, constants.SHORT_TRI_HEIGHT / 2),
+                Vector2( constants.PENTAGON_SIDE / 2, constants.SHORT_TRI_HEIGHT / 2)]
+
+
+
+
+  
