@@ -69,5 +69,10 @@ class AsteroidHitEvent(Event):
         for observer in self.observers:
             observer.on_asteroid_hit(asteroid)
 
+class ShipExplodedEvent(Event):
+    def trigger(self, ship):
+        for observer in self.observers:
+            observer.on_ship_exploded(ship)
+
 
 

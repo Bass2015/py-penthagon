@@ -16,6 +16,7 @@ OBJECTOUT = events.ObjectOutEvent()
 SHOT = events.ShotEvent()
 COLLISION = events.CollisionEvent()
 ASTEROID_HIT = events.AsteroidHitEvent()
+SHIP_EXPLODED = events.ShipExplodedEvent()
 
 # Actions
 ACTIONS = {0: "FORWARD",
