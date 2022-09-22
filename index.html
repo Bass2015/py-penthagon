@@ -18,6 +18,7 @@
                 - ./src/pools.py
                 - ./src/physics.py
                 - ./src/easings.py
+                - ./src/ui_manager.py
         </py-env>
     </head>
     <body id="body">
@@ -25,7 +26,22 @@
         </py-script>
         <div id="output">Output</div>
         <div class="canvas-div">
+            <div id="Player1UI">
+                <h1>Player 2</h1>
+                <p>Score: </p>
+                <img id="heart1_0" src="./img/heart.png">
+                <img id="heart1_1" src="./img/heart.png">
+                <img id="heart1_2" src="./img/heart.png">
+            </div>
             <canvas id="canvas" width="1200" height="600"></canvas>
+            <button id="play_b">Play</button>
+            <div id="Player2UI">
+                <h3>Player 2</h3>
+                <p>Score: </p>
+                <img id="heart2_0" src="./img/heart.png">
+                <img id="heart2_1" src="./img/heart.png">
+                <img id="heart2_2" src="./img/heart.png">
+            </div>
         </div>
     </body>
 </html>

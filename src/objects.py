@@ -325,7 +325,6 @@ class Miniship(GameObject):
                            constants.DISTANCE_FROM_CENTER * math.sin(math.radians(constants.MINI_ANGLES[self.identity]))) + init_pos
 
     def on_ship_exploded(self, ship):
-        events.deboog("Ship exploded")
         if not isinstance(ship, Ship):
             raise ValueError("Only accept type Ship")
         if ship.player == self.player:

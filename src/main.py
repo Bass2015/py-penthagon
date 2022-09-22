@@ -6,11 +6,13 @@ import pools
 import events
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
 from agents import Human, RandomAI
+from ui_manager import UIManager
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
 ships = [Ship(player=1)]
 player1 = Human(ships[0])
+uiManager = UIManager()
 asteroid_pool.spawn_asteroid()
 
 def on_key_down(*args):
@@ -29,7 +31,7 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-        ships[0].create_miniships()
+        document.getElementById("button").style.display = "none"
     UPDATE.trigger()
 
 def act_agents():
