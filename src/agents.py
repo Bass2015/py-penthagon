@@ -60,14 +60,14 @@ class Agent(ABC):
             self.lifes -= 1
         else:
             self.score += 100
-        deboog(f"Lifes: {self.lifes}, Score: {self.score}")
+        constants.STATE_CHANGED.trigger()
 
     def on_collision_enter(self, obj1, obj2):
         if (isinstance(obj1, Asteroid) 
             and isinstance(obj2, Bullet) 
             and obj2.player == self.player):
             self.score += 10
-            deboog(f"Lifes: {self.lifes}, Score: {self.score}")
+            constants.STATE_CHANGED.trigger()
 
     @abstractmethod
     def act(*args):
@@ -79,6 +79,9 @@ class Human(Agent):
         KEYUP.suscribe(self)
         self.keysdown = []
         super(Human, self).__init__(ship, player)
+    
+    def __str__(self):
+        return "Agent Human"
    
     def act(self):  
         if 'w' in self.keysdown:

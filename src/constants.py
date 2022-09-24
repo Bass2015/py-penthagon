@@ -1,4 +1,4 @@
-from js import document, window
+from js import document
 import events
 import math
 
@@ -18,6 +18,7 @@ SHOT = events.ShotEvent()
 COLLISION = events.CollisionEvent()
 ASTEROID_HIT = events.AsteroidHitEvent()
 SHIP_EXPLODED = events.ShipExplodedEvent()
+STATE_CHANGED = events.StateChangedEvent()
 
 # Actions
 ACTIONS = {0: "FORWARD",

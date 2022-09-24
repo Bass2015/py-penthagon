@@ -74,5 +74,10 @@ class ShipExplodedEvent(Event):
         for observer in self.observers:
             observer.on_ship_exploded(ship)
 
+class StateChangedEvent(Event):
+    def trigger(self):
+        for observer in self.observers:
+            observer.on_state_changed()
+
 
 
