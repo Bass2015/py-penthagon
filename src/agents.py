@@ -1,13 +1,21 @@
 from abc import ABC, abstractmethod
-import events
+from pydoc import plain
+import constants
+from events import deboog
 from constants import ACTIONS, KEYDOWN, KEYUP
+from objects import Asteroid, Bullet
 from js import document
 import random
 import time
 
 class Agent(ABC):
-    def __init__(self, ship):
+    def __init__(self, ship, player=0):
+        constants.SHIP_EXPLODED.suscribe(self)
+        constants.COLLISION.suscribe(self)
         self.ship = ship
+        self.lifes = 3
+        self.score = 0
+        self.player = player
     
     def get_action(self, action):
         if action == 0: # Forward
@@ -46,17 +54,31 @@ class Agent(ABC):
             return [ACTIONS[4]]
         if action == 17: # Idle
             return [ACTIONS[5]]
-            
+
+    def on_ship_exploded(self, ship):
+        if ship.player == self.player:
+            self.lifes -= 1
+        else:
+            self.score += 100
+        deboog(f"Lifes: {self.lifes}, Score: {self.score}")
+
+    def on_collision_enter(self, obj1, obj2):
+        if (isinstance(obj1, Asteroid) 
+            and isinstance(obj2, Bullet) 
+            and obj2.player == self.player):
+            self.score += 10
+            deboog(f"Lifes: {self.lifes}, Score: {self.score}")
+
     @abstractmethod
     def act(*args):
         pass
 
 class Human(Agent):
-    def __init__(self, ship):
+    def __init__(self, ship, player):
         KEYDOWN.suscribe(self)
         KEYUP.suscribe(self)
         self.keysdown = []
-        super(Human, self).__init__(ship)
+        super(Human, self).__init__(ship, player)
    
     def act(self):  
         if 'w' in self.keysdown:
@@ -104,11 +126,11 @@ class Human(Agent):
             self.keysdown.remove(key)
 
 class RandomAI(Agent):
-    def __init__(self, ship):
+    def __init__(self, ship, player):
         self.last_change = time.time()
         self.change_time = 1.5
         self.current_move = 17
-        super(RandomAI, self).__init__(ship)
+        super(RandomAI, self).__init__(ship, player)
     def act(self):
         if time.time() - self.last_change > self.change_time:
             self.current_move = random.randint(0,17)

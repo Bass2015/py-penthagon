@@ -4,6 +4,7 @@ import math
 
 CANVAS = document.getElementById("canvas")
 CTX = CANVAS.getContext("2d")
+UI = document.getElementById("ui_canvas").getContext("2d")
 
 GOLDEN_NUMBER = (1 + 5 ** 0.5) / 2
 # Game Events

@@ -11,9 +11,11 @@ from ui_manager import UIManager
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
 ships = [Ship(player=1)]
-player1 = Human(ships[0])
-uiManager = UIManager()
+player1 = Human(ships[0], player=1)
+players = [player1]
+uiManager = UIManager(players)
 asteroid_pool.spawn_asteroid()
+heart = document.getElementById('heart')
 
 def on_key_down(*args):
     if args[0].key not in keysdown:

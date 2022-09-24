@@ -284,16 +284,19 @@ class Asteroid(GameObject):
         self.pos += fixed_speed * new_dir 
     
     def on_collision_enter(self, me, other):
-        if (self.collided or
-            self != me or
-            isinstance(other, Asteroid) or
-            (isinstance(other, Ship) and
-            other.phantom)):
+        if (self.not_hit(me, other)):
             return
         if self.dimension > constants.ASTEROID_RADIUS / (1.5*3):
             constants.ASTEROID_HIT.trigger(self)
         constants.OBJECTOUT.trigger(self)
         super().on_collision_enter(me, other)
+
+    def not_hit(self, me, other):
+        return (self.collided or
+            self != me or
+            isinstance(other, Asteroid) or
+            (isinstance(other, Ship) and
+            other.phantom))
 
     def init_points(self, radius):
         return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 45)]
