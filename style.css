@@ -1,6 +1,12 @@
 
 #canvas {
     background-color: blanchedalmond;
+    position: absolute;
+    z-index: 0;
+}
+#ui_canvas {
+    position: absolute;
+    z-index: 1;
 }
 
 #play_b {
