@@ -46,11 +46,11 @@ COLORS = {
         }, 
         2: {
         'inner': 'rgb(34, 139, 34, {})',
-        'outer': 'rgb(255, 215, 0), {})'
+        'outer': 'rgb(255, 215, 0, {})'
         }
     },
-    'bullet': 'black', 
-    'asteroid': 'black'}
+    'bullet': 'rgb(240, 248, 255)', 
+    'asteroid': 'rgb(240, 248, 255)'}
 
 # Miniship config
 PENTAGON_SIDE = 2*RADIUS*math.sin(math.pi/5)

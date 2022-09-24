@@ -83,7 +83,7 @@ class Ship(GameObject):
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
                            math.sin(math.radians(angle)) * constants.RADIUS))
-        super(Ship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),points, constants.RADIUS * -1)
+        super(Ship, self).__init__(Vector2((constants.CANVAS.width/3) * self.player, constants.CANVAS.height/2),points, constants.RADIUS * -1)
     
     def __name__(self):
             return f"Ship from player {self.player}"
@@ -310,12 +310,12 @@ class Miniship(GameObject):
         self.player = player
         if index % 2 == 0:
             self.points = Miniship.tall_triangle_points()
-            self.color = constants.COLORS['players'][1]['inner'].format(1)
+            self.color = constants.COLORS['players'][self.player]['inner'].format(1)
             self.rotation = math.pi - math.pi*index/5 
             self.direction = Vector2(0,1).rotate(self.rotation)
         else:
             self.points = Miniship.short_triangle_points()
-            self.color = constants.COLORS['players'][1]['outer'].format(1)
+            self.color = constants.COLORS['players'][self.player]['outer'].format(1)
             self.rotation = -math.pi*index/5
             self.direction = Vector2(0,1).rotate(self.rotation - math.pi)
         super(Miniship, self).__init__(Vector2(constants.CANVAS.width/2, constants.CANVAS.height/2),

@@ -9,16 +9,17 @@ FONT = f'{TITLE_SIZE}px \"Arial Rounded\", sans-serif'
 FONT_SC = f'{TITLE_SIZE/1.2}px \"Arial Rounded\", sans-serif'
 
 class UIManager():
-    def __init__(self, player):
+    def __init__(self, players):
         self.heart = document.getElementById('heart')
         STATE_CHANGED.suscribe(self)
-        self.player = player
+        self.players = players
         self.render_ui()
         # self.play_b = document.getElementById("play_b")
         # self.play_b.style.display = 'none'
        
     def render_ui(self):
         UI.clearRect(0,0, CANVAS.width, CANVAS.height)
+        UI.fillStyle = 'White'
         self.render_titles()
         self.render_scores()
         self.render_hearts()
@@ -33,15 +34,16 @@ class UIManager():
 
     def render_scores(self):
         UI.font = FONT_SC
-        UI.fillText(f"Score: {self.player.score}", PLAYERS_SPACING[0], 75)
-        UI.fillText(f"Score: {self.player.score}", PLAYERS_SPACING[1] -60, 75)
+        UI.fillText(f"Score: {self.players[0].score}", PLAYERS_SPACING[0], 75)
+        UI.fillText(f"Score: {self.players[1].score}", PLAYERS_SPACING[1] -60, 75)
 
     def render_hearts(self):
-        for life in range(self.player.lifes):
-            UI.drawImage(self.heart,
-                        PLAYERS_SPACING[0],
-                        HEART_SPACING * (life + 1) + 50,
-                        self.heart.width/4,
-                        self.heart.height/4)
+        for i in range(len(self.players)):
+            for life in range(self.players[i].lifes):
+                UI.drawImage(self.heart,
+                            PLAYERS_SPACING[i],
+                            HEART_SPACING * (life + 1) + 50,
+                            self.heart.width/4,
+                            self.heart.height/4)
 
 

@@ -10,9 +10,10 @@ from ui_manager import UIManager
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
-ships = [Ship(player=2)]
-player1 = Human(ships[0], player=2)
-uiManager = UIManager(player1)
+ships = [Ship(player=1), Ship(player=2)]
+players = (Human(ships[0], player=1), 
+           Human(ships[1], player=2))
+uiManager = UIManager(players)
 asteroid_pool.spawn_asteroid()
 
 def on_key_down(*args):
@@ -36,8 +37,9 @@ def update():
     UPDATE.trigger()
 
 def act_agents():
-    action = player1.act()
-    ships[0].next_moves.extend(action)
+    for i in range(2):
+        action = players[i].act()
+        ships[i].next_moves.extend(action)
 
 def late_update():
     physics.check_objects(asteroid_pool.active_objects.copy(), bullet_pool.active_objects.copy(), ships.copy())
