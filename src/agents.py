@@ -74,6 +74,13 @@ class Agent(ABC):
         pass
 
 class Human(Agent):
+    KEY_MAPS = {
+        'F': ['w', 'ArrowUp'], 
+        'B': ['s', 'ArrowDown'],
+        'L': ['a', 'ArrowLeft'],
+        'R': ['d', 'ArrowRight'],
+        'FIRE': [' ', '0']
+    }
     def __init__(self, ship, player):
         KEYDOWN.suscribe(self)
         KEYUP.suscribe(self)
@@ -84,39 +91,39 @@ class Human(Agent):
         return "Agent Human"
    
     def act(self):  
-        if 'w' in self.keysdown:
-            if 'a' in self.keysdown:
-                if ' ' in self.keysdown:
+        if Human.KEY_MAPS['F'][self.player-1] in self.keysdown:
+            if Human.KEY_MAPS['L'][self.player-1] in self.keysdown:
+                if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                     return self.get_action(9)
                 return self.get_action(4)
-            if 'd' in self.keysdown:
-                if ' ' in self.keysdown:
+            if Human.KEY_MAPS['R'][self.player-1] in self.keysdown:
+                if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                     return self.get_action(10)
                 return self.get_action(5)
-            if ' ' in self.keysdown:
+            if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                 return self.get_action(8)
             return self.get_action(0)
-        if 's' in self.keysdown:
-            if 'a' in self.keysdown:
-                if ' ' in self.keysdown:
+        if Human.KEY_MAPS['B'][self.player-1] in self.keysdown:
+            if Human.KEY_MAPS['L'][self.player-1] in self.keysdown:
+                if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                     return self.get_action(12)
                 return self.get_action(6)
-            if 'd' in self.keysdown:
-                if ' ' in self.keysdown:
+            if Human.KEY_MAPS['R'][self.player-1] in self.keysdown:
+                if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                     return self.get_action(13)
                 return self.get_action(7)
-            if ' ' in self.keysdown:
+            if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                 return self.get_action(11)
             return self.get_action(1)
-        if 'a' in self.keysdown:
-            if ' ' in self.keysdown:
+        if Human.KEY_MAPS['L'][self.player-1] in self.keysdown:
+            if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                 return self.get_action(14)
             return self.get_action(2)
-        if 'd' in self.keysdown:
-            if ' ' in self.keysdown:
+        if Human.KEY_MAPS['R'][self.player-1] in self.keysdown:
+            if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
                 return self.get_action(15)
             return self.get_action(3)
-        if ' ' in self.keysdown:
+        if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
             return self.get_action(16)
         return self.get_action(17)
 

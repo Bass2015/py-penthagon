@@ -10,8 +10,8 @@ from ui_manager import UIManager
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
-ships = [Ship(player=1)]
-player1 = Human(ships[0], player=1)
+ships = [Ship(player=2)]
+player1 = Human(ships[0], player=2)
 uiManager = UIManager(player1)
 asteroid_pool.spawn_asteroid()
 
@@ -32,6 +32,7 @@ def render(*args):
 def update():
     if 'g' in keysdown:
         document.getElementById("button").style.display = "none"
+    events.deboog(str(keysdown))
     UPDATE.trigger()
 
 def act_agents():
