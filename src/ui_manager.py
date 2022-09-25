@@ -9,13 +9,17 @@ FONT = f'{TITLE_SIZE}px \"Arial Rounded\", sans-serif'
 FONT_SC = f'{TITLE_SIZE/1.2}px \"Arial Rounded\", sans-serif'
 
 class UIManager():
-    def __init__(self, players):
+    def __init__(self):
         self.heart = document.getElementById('heart')
         STATE_CHANGED.suscribe(self)
-        self.players = players
-        self.render_ui()
+        
         # self.play_b = document.getElementById("play_b")
         # self.play_b.style.display = 'none'
+    
+    def initialize(self, players):
+        self.players = players
+        self.render_ui()
+        document.getElementById('buttons').style.display = 'none'
        
     def render_ui(self):
         UI.clearRect(0,0, CANVAS.width, CANVAS.height)
@@ -40,6 +44,7 @@ class UIManager():
     def render_hearts(self):
         for i in range(len(self.players)):
             for life in range(self.players[i].lifes):
+                deboog(f"Index: {len(self.players)}, List length: {len(PLAYERS_SPACING)}")
                 UI.drawImage(self.heart,
                             PLAYERS_SPACING[i],
                             HEART_SPACING * (life + 1) + 50,

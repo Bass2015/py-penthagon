@@ -1,3 +1,4 @@
+from random import Random
 import physics
 from js import document, requestAnimationFrame
 from pyodide import create_proxy
@@ -10,10 +11,9 @@ from ui_manager import UIManager
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
-ships = [Ship(player=1), Ship(player=2)]
-players = (Human(ships[0], player=1), 
-           Human(ships[1], player=2))
-uiManager = UIManager(players)
+SHIPS = [Ship(player=1), Ship(player=2)]
+PLAYERS = []
+UIMANAGER = UIManager()
 asteroid_pool.spawn_asteroid()
 
 def on_key_down(*args):
@@ -32,16 +32,16 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-        clickity_click()
+        pass
     UPDATE.trigger()
 
 def act_agents():
     for i in range(2):
-        action = players[i].act()
-        ships[i].next_moves.extend(action)
+        action = PLAYERS[i].act()
+        SHIPS[i].next_moves.extend(action)
 
 def late_update():
-    physics.check_objects(asteroid_pool.active_objects.copy(), bullet_pool.active_objects.copy(), ships.copy())
+    physics.check_objects(asteroid_pool.active_objects.copy(), bullet_pool.active_objects.copy(), SHIPS.copy())
 
 def game_loop(*args):
     act_agents()
@@ -57,15 +57,23 @@ def main():
     kup_proxy = create_proxy(on_key_up)
     document.addEventListener("keydown", kdown_proxy)
     document.addEventListener("keyup", kup_proxy)
-    # click_proxy = create_proxy(clickity_click)
-    # document.getElementById('output').addEventListener('click', click_proxy)
 
     #Starts the game loop
-    requestAnimationFrame(game_loop_proxy)
 
-def clickity_click(*args):
-    pyscript.write('output', "click")
-    print("Click event")
+def human_vs_ai(*args):
+    events.deboog('Human vs AI')
+    PLAYERS.extend([Human(SHIPS[0], player=1), 
+                    RandomAI(SHIPS[1], player=2)])
+    UIMANAGER.initialize(PLAYERS)
+    requestAnimationFrame(game_loop_proxy)
+    
+
+def human_vs_human(*args):
+    events.deboog('Human vs Human')
+    PLAYERS.extend([Human(SHIPS[0], player=1), 
+                    Human(SHIPS[1], player=2)])
+    UIMANAGER.initialize(PLAYERS)
+    requestAnimationFrame(game_loop_proxy)
 
 
 main()
