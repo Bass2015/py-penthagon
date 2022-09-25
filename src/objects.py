@@ -276,7 +276,7 @@ class Asteroid(GameObject):
                 constants.OBJECTOUT.trigger(self)
                 return
             if divisions != 0:
-                self.dimension /= divisions * 1.5  
+                self.dimension = constants.ASTEROID_RADIUS / (divisions * 1.5) 
         else:
             self.dimension = size
         self.points = self.init_points(self.dimension)
@@ -316,10 +316,10 @@ class Asteroid(GameObject):
     def on_collision_enter(self, me, other):
         if (self.not_hit(me, other)):
             return
-        if self.dimension > constants.ASTEROID_RADIUS / (1.5*3):
-            constants.ASTEROID_HIT.trigger(self)
         constants.OBJECTOUT.trigger(self)
         super().on_collision_enter(me, other)
+        if self.dimension > constants.ASTEROID_RADIUS / (1.5*3):
+            constants.ASTEROID_HIT.trigger(self)
 
     def not_hit(self, me, other):
         return (self.collided or
