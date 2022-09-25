@@ -35,6 +35,8 @@ class UIManager():
         self.render_ui()
 
     def on_game_ended(self, loser):
+        if loser not in self.players:
+            return
         UI.clearRect(0,0, CANVAS.width, CANVAS.height)
         winner = 1 if loser.player == 2 else 2
         score = self.players[winner-1].score
