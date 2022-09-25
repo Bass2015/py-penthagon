@@ -12,9 +12,6 @@ class ObjectPool():
         constants.OBJECTOUT.suscribe(self)
         constants.GAME_ENDED.suscribe(self)
         constants.GAME_START.suscribe(self)
-    
-    
-    
 
     def on_game_ended(self, looser):
         self.active_objects.clear()

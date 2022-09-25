@@ -38,7 +38,8 @@ class UIManager():
         winner = 1 if loser.player == 2 else 2
         score = self.players[winner-1].score
         score = score + 100 if loser.player == 1 else score
-        self.label.innerHTML = f'The winner is Player {winner}<br/>Score: {score}'
+        self.label.innerHTML = f'The winner is Player {winner}<br/>Score: {score} Lifes: {self.players[winner-1].lifes}'
+        self.players.clear()
         self.spalsh_sc.style.display = 'block'
 
     def render_titles(self):

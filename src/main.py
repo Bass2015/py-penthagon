@@ -33,6 +33,7 @@ def render(*args):
 def update():
     if 'g' in keysdown:
         pass
+    events.deboog(f"pla1:{PLAYERS[0].lifes}, pla2:{PLAYERS[1].lifes}")
     UPDATE.trigger()
 
 def act_agents():

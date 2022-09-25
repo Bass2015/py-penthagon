@@ -79,9 +79,14 @@ class Agent(ABC):
     
     def on_game_ended(self, looser):
         self.active = False
+        constants.SHIP_EXPLODED.unsuscribe(self)
+        constants.COLLISION.unsuscribe(self)
+        constants.GAME_START.unsuscribe(self)
     
     def on_game_start(self):
         self.active = True
+        constants.SHIP_EXPLODED.suscribe(self)
+        constants.COLLISION.suscribe(self)
 
     @abstractmethod
     def act(*args):
