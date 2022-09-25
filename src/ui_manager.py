@@ -50,6 +50,10 @@ class UIManager():
         UI.font = FONT_SC
         UI.fillText(f"Score: {self.players[0].score}", PLAYERS_SPACING[0], 75)
         UI.fillText(f"Score: {self.players[1].score}", PLAYERS_SPACING[1] -60, 75)
+        UI.fillText(f"Move: wasd", PLAYERS_SPACING[0]-20, CANVAS.height -80)
+        UI.fillText(f"Fire: space", PLAYERS_SPACING[0]-20, CANVAS.height -40)  
+        UI.fillText(f"Move: arrows", PLAYERS_SPACING[1] - 80, CANVAS.height -80)
+        UI.fillText(f"Fire: enter", PLAYERS_SPACING[1] - 68, CANVAS.height -40)  
 
     def render_hearts(self):
         for i in range(len(self.players)):

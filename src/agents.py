@@ -16,7 +16,7 @@ class Agent(ABC):
         constants.GAME_START.suscribe(self)
         self.active = True
         self.ship = ship
-        self.lifes = 10
+        self.lifes = constants.INIT_LIFES
         self.score = 0
         self.player = player
     
@@ -93,7 +93,7 @@ class Human(Agent):
         'B': ['s', 'ArrowDown'],
         'L': ['a', 'ArrowLeft'],
         'R': ['d', 'ArrowRight'],
-        'FIRE': [' ', '0']
+        'FIRE': [' ', 'Enter']
     }
     def __init__(self, ship, player):
         KEYDOWN.suscribe(self)

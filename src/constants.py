@@ -7,6 +7,8 @@ CTX = CANVAS.getContext("2d")
 UI = document.getElementById("ui_canvas").getContext("2d")
 
 GOLDEN_NUMBER = (1 + 5 ** 0.5) / 2
+
+INIT_LIFES = 5
 # Game Events
 # meter todo esto en un diccionario
 UPDATE = events.UpdateEvent()
@@ -37,7 +39,7 @@ ROT_SPEED = 4.5
 SHIP_SPEED = 350
 SHIP_ACC = 30
 SHIP_DEC = 10
-SHOOTING_SPEED = 0.4
+SHOOTING_SPEED = 0.2
 RESPAWN_TIME = 3
 PHANTOM_TIME = 1.5
 COLORS = {

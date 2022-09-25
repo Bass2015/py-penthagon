@@ -9,7 +9,6 @@ def check_objects(asteroids, bullets, ships):
             for bullet in bullets:
                 check_collision(ship, bullet)
                 check_collision(asteroid, bullet)
-    events.deboog(f"ship one {ships[0].player}, ship two {ships[1].player}")
    
 def check_collision(obj1:GameObject, obj2:GameObject):
     if (not obj1.active or not obj2.active):
