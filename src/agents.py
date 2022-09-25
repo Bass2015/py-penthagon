@@ -12,10 +12,16 @@ class Agent(ABC):
     def __init__(self, ship, player=0):
         constants.SHIP_EXPLODED.suscribe(self)
         constants.COLLISION.suscribe(self)
+        constants.GAME_ENDED.suscribe(self)
+        constants.GAME_START.suscribe(self)
+        self.active = True
         self.ship = ship
-        self.lifes = 3
+        self.lifes = 10
         self.score = 0
         self.player = player
+    
+    def __str__(self):
+        return f"Player {self.player}, Score: {self.score}, Lifes: {self.lifes}"
     
     def get_action(self, action):
         if action == 0: # Forward
@@ -61,13 +67,21 @@ class Agent(ABC):
         else:
             self.score += 100
         constants.STATE_CHANGED.trigger()
-
+        if self.lifes == 0: 
+            constants.GAME_ENDED.trigger(self)
+        
     def on_collision_enter(self, obj1, obj2):
         if (isinstance(obj1, Asteroid) 
             and isinstance(obj2, Bullet) 
             and obj2.player == self.player):
             self.score += 10
             constants.STATE_CHANGED.trigger()
+    
+    def on_game_ended(self, looser):
+        self.active = False
+    
+    def on_game_start(self):
+        self.active = True
 
     @abstractmethod
     def act(*args):
@@ -86,11 +100,9 @@ class Human(Agent):
         KEYUP.suscribe(self)
         self.keysdown = []
         super(Human, self).__init__(ship, player)
-    
-    def __str__(self):
-        return "Agent Human"
    
     def act(self):  
+        if not self.active: return []
         if Human.KEY_MAPS['F'][self.player-1] in self.keysdown:
             if Human.KEY_MAPS['L'][self.player-1] in self.keysdown:
                 if Human.KEY_MAPS['FIRE'][self.player-1] in self.keysdown:
@@ -142,6 +154,7 @@ class RandomAI(Agent):
         self.current_move = 17
         super(RandomAI, self).__init__(ship, player)
     def act(self):
+        if not self.active: return []
         if time.time() - self.last_change > self.change_time:
             self.current_move = random.randint(0,17)
             self.last_change = time.time()

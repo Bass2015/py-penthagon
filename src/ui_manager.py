@@ -1,5 +1,6 @@
+from asyncio import constants
 from js import document
-from constants import UI, CANVAS, STATE_CHANGED
+from constants import UI, CANVAS, STATE_CHANGED, GAME_ENDED, GAME_START
 from events import deboog
 
 HEART_SPACING = 50
@@ -12,15 +13,15 @@ class UIManager():
     def __init__(self):
         self.heart = document.getElementById('heart')
         self.label = document.getElementById('ui-text')
+        self.spalsh_sc = document.getElementById('ui')
         STATE_CHANGED.suscribe(self)
-        
-        # self.play_b = document.getElementById("play_b")
-        # self.play_b.style.display = 'none'
+        GAME_ENDED.suscribe(self)
     
     def initialize(self, players):
         self.players = players
         self.render_ui()
-        document.getElementById('buttons').style.display = 'none'
+        self.spalsh_sc.style.display = 'none'
+        GAME_START.trigger()
        
     def render_ui(self):
         UI.clearRect(0,0, CANVAS.width, CANVAS.height)
@@ -31,6 +32,14 @@ class UIManager():
 
     def on_state_changed(self):
         self.render_ui()
+
+    def on_game_ended(self, loser):
+        UI.clearRect(0,0, CANVAS.width, CANVAS.height)
+        winner = 1 if loser.player == 2 else 2
+        score = self.players[winner-1].score
+        score = score + 100 if loser.player == 1 else score
+        self.label.innerHTML = f'The winner is Player {winner}<br/>Score: {score}'
+        self.spalsh_sc.style.display = 'block'
 
     def render_titles(self):
         UI.font = FONT
@@ -45,7 +54,6 @@ class UIManager():
     def render_hearts(self):
         for i in range(len(self.players)):
             for life in range(self.players[i].lifes):
-                deboog(f"Index: {len(self.players)}, List length: {len(PLAYERS_SPACING)}")
                 UI.drawImage(self.heart,
                             PLAYERS_SPACING[i],
                             HEART_SPACING * (life + 1) + 50,

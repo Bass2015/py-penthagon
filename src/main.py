@@ -61,20 +61,20 @@ def main():
     #Starts the game loop
 
 def human_vs_ai(*args):
-    events.deboog('Human vs AI')
+    PLAYERS.clear()
     PLAYERS.extend([Human(SHIPS[0], player=1), 
                     RandomAI(SHIPS[1], player=2)])
     UIMANAGER.initialize(PLAYERS)
+    constants.GAME_START.trigger()
     requestAnimationFrame(game_loop_proxy)
     
 
 def human_vs_human(*args):
-    events.deboog('Human vs Human')
+    PLAYERS.clear()
     PLAYERS.extend([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
     UIMANAGER.initialize(PLAYERS)
     requestAnimationFrame(game_loop_proxy)
-
 
 main()
  

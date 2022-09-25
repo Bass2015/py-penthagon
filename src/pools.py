@@ -8,17 +8,21 @@ class ObjectPool():
     def __init__(self):
         self.active_objects = []
         self.inactive_objects = []
+        self.active = True
         constants.OBJECTOUT.suscribe(self)
+        constants.GAME_ENDED.suscribe(self)
+        constants.GAME_START.suscribe(self)
     
-    def take_out(self, game_object:GameObject):
-        if game_object in self.active_objects:
-            game_object.active = False
-            object_from_active_pool = self.active_objects.index(game_object)
-            if isinstance(object_from_active_pool, GameObject):
-                self.inactive_objects.append(self.active_objects.pop(object_from_active_pool))
     
-    def on_object_out(self, game_object):
-        self.take_out(game_object)
+    
+
+    def on_game_ended(self, looser):
+        self.active_objects.clear()
+        self.inactive_objects.clear()
+        self.active = False
+
+    def on_game_start(self):
+        self.active = True
     
 class BulletPool(ObjectPool):
     def __init__(self):
@@ -26,6 +30,7 @@ class BulletPool(ObjectPool):
         super(BulletPool, self).__init__()
 
     def get_bullet(self, init_pos, rotation, player):
+        if not self.active: return
         if len(self.inactive_objects) == 0:
             bullet = Bullet()
         else:
@@ -35,6 +40,18 @@ class BulletPool(ObjectPool):
     
     def on_bullet_shot(self, pos, rot, player):
         self.get_bullet(pos, rot, player)
+    
+    def take_out(self, bullet:Bullet):
+        if not isinstance(bullet, Bullet): return
+        bullet.active = False
+        self.inactive_objects.append(bullet)
+        if bullet in self.active_objects:
+            self.active_objects.remove(bullet)
+
+    def on_object_out(self, game_object):
+        if isinstance(game_object, Bullet):
+            self.take_out(game_object)
+
 
 class AsteroidPool(ObjectPool):
     def __init__(self):
@@ -48,10 +65,12 @@ class AsteroidPool(ObjectPool):
             asteroid = Asteroid()
         else:
             asteroid = self.inactive_objects.pop()
-        asteroid.activate(size, pos)
-        self.active_objects.append(asteroid)
+        if isinstance(asteroid, Asteroid):
+            asteroid.activate(size, pos)
+            self.active_objects.append(asteroid)
     
     def update(self, delta_time):
+        if not self.active: return
         if random.random() < constants.AST_SPAWNING_CHANCE:
             self.spawn_asteroid()
 
@@ -59,5 +78,15 @@ class AsteroidPool(ObjectPool):
         self.spawn_asteroid(asteroid.dimension / 1.5, asteroid.pos)  
         self.spawn_asteroid(asteroid.dimension / 1.5, asteroid.pos)  
     
-        
+    def take_out(self, asteroid):
+        if not isinstance(asteroid, Asteroid): return
+        asteroid.active = False
+        self.inactive_objects.append(asteroid)
+        if asteroid in self.active_objects:
+            self.active_objects.remove(asteroid)
+    
+    def on_object_out(self, game_object):
+        if isinstance(game_object, Asteroid):
+            self.take_out(game_object)
+
     

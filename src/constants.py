@@ -19,6 +19,8 @@ COLLISION = events.CollisionEvent()
 ASTEROID_HIT = events.AsteroidHitEvent()
 SHIP_EXPLODED = events.ShipExplodedEvent()
 STATE_CHANGED = events.StateChangedEvent()
+GAME_ENDED = events.GameEndedEvent()
+GAME_START = events.GameStartEvent()
 
 # Actions
 ACTIONS = {0: "FORWARD",
@@ -31,7 +33,7 @@ ACTIONS = {0: "FORWARD",
 # Ship config
 ANGLES = [162.0, 234.0, 306.0, 18.0]
 RADIUS = -0.015 * max(CANVAS.width, CANVAS.height)
-ROT_SPEED = math.pi/32
+ROT_SPEED = 4.5
 SHIP_SPEED = 350
 SHIP_ACC = 30
 SHIP_DEC = 10

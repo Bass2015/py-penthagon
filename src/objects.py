@@ -10,6 +10,8 @@ class GameObject(ABC):
         constants.UPDATE.suscribe(self)
         constants.RENDER.suscribe(self)
         constants.COLLISION.suscribe(self)
+        constants.GAME_ENDED.suscribe(self)
+        constants.GAME_START.suscribe(self)
         self.pos = init_pos
         self.points = points
         self.rotation = 0
@@ -35,6 +37,8 @@ class GameObject(ABC):
             self.pos.y = self.dimension
 
     def check_boundaries(self):
+        if not self.active:
+            return
         if (self.pos.x > constants.CANVAS.width + self.dimension or 
                 self.pos.x < 0 + self.dimension * -1 or 
                 self.pos.y > constants.CANVAS.height + self.dimension or 
@@ -54,8 +58,14 @@ class GameObject(ABC):
     def on_collision_enter(self, me, other):
         self.collided = True
 
+    def on_game_ended(self, loser):
+        self.active = False
+
     @abstractmethod
     def update(self, delta_time):
+        pass
+
+    def on_game_start(self):
         pass
 
     def render(self):
@@ -79,6 +89,7 @@ class Ship(GameObject):
         self.miniships = self.create_miniships()
         self.phantom = True
         self.activation_time = time.time()
+        self.respawning = False
         points = [Vector2(0, constants.RADIUS)]
         for angle in constants.ANGLES:
             points.append(Vector2(math.cos(math.radians(angle)) * constants.RADIUS, 
@@ -87,6 +98,21 @@ class Ship(GameObject):
     
     def __name__(self):
             return f"Ship from player {self.player}"
+
+    def on_game_ended(self, looser):
+        self.respawning = False
+        self.phantom = False
+        self.next_moves.clear()
+        super().on_game_ended(looser)
+    
+    def on_game_start(self):
+        self.next_moves.clear()
+        self.active = True
+        self.respawning = False
+        self.phantom = True
+        self.collided = False
+        self.rotation = 0
+        self.pos = Vector2((constants.CANVAS.width/3) * self.player, constants.CANVAS.height/2)
 
     def create_miniships(self):
         miniships = []
@@ -99,7 +125,7 @@ class Ship(GameObject):
     def update(self, delta_time):
         if self.active:
             self.accelerate()
-            self.rotate()
+            self.rotate(delta_time)
             self.translate(delta_time) 
             self.keep_in_screen()
             if constants.ACTIONS[4] in self.next_moves:
@@ -135,11 +161,11 @@ class Ship(GameObject):
             deceleration = math.copysign(constants.SHIP_DEC, self.speed)
             self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, abs_tol=constants.SHIP_DEC) else self.speed * 0
 
-    def rotate(self):
+    def rotate(self, delta_time):
         if constants.ACTIONS[2] in self.next_moves:
-            self.rotation -= self.rot_speed
+            self.rotation -= self.rot_speed * delta_time
         if constants.ACTIONS[3] in self.next_moves:
-            self.rotation += self.rot_speed
+            self.rotation += self.rot_speed * delta_time
     
     def render(self):
         if self.prerender():
@@ -174,12 +200,16 @@ class Ship(GameObject):
             self.miniships[i].init_explosion()
 
     def am_I_hit(self, me, other):
-        return (self.active and 
+        one, two = False, False
+        if (self.active and 
                 not self.phantom and
-                self == me and
-                (isinstance(other, Asteroid) or
-                    (isinstance(other, Bullet) and
-                     other.player != self.player)))
+                self == me):
+            one = True
+        if (isinstance(other, Asteroid) or
+            (isinstance(other, Bullet) and
+                other.player != self.player)):
+            two = True
+        return one and two
 
 
 class Bullet(GameObject):
@@ -216,11 +246,11 @@ class Bullet(GameObject):
                 Vector2(-w/2, h/2)]
 
     def on_collision_enter(self, me, other):
-        if self == me:
-            if (isinstance(other, Asteroid) or
-            (isinstance(other, Ship) and other.player != self.player)):
-                constants.OBJECTOUT.trigger(self)
-        super().on_collision_enter(me, other)
+        if (self == me and
+            isinstance(other, Asteroid)): #or
+            #(isinstance(other, Ship) and other.player != self.player))):
+            constants.OBJECTOUT.trigger(self)
+            super().on_collision_enter(me, other)
 
 class Asteroid(GameObject):
     def __init__(self):
@@ -255,7 +285,7 @@ class Asteroid(GameObject):
             self.pos = Vector2(x, y)
         else:
             self.pos = pos
-        self.activate = True
+        self.active = True
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
         self.collided = False
