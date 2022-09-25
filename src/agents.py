@@ -66,9 +66,11 @@ class Agent(ABC):
             self.lifes -= 1
         else:
             self.score += 100
-        constants.STATE_CHANGED.trigger()
         if self.lifes == 0: 
+            constants.STATE_CHANGED.trigger()
             constants.GAME_ENDED.trigger(self)
+        else:
+            constants.STATE_CHANGED.trigger()
         
     def on_collision_enter(self, obj1, obj2):
         if (isinstance(obj1, Asteroid) 

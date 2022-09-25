@@ -2,6 +2,7 @@ from asyncio import constants
 from js import document
 from constants import UI, CANVAS, STATE_CHANGED, GAME_ENDED, GAME_START
 from events import deboog
+import time
 
 HEART_SPACING = 50
 PLAYERS_SPACING = [50, CANVAS.width - 50]
@@ -38,7 +39,7 @@ class UIManager():
         winner = 1 if loser.player == 2 else 2
         score = self.players[winner-1].score
         score = score + 100 if loser.player == 1 else score
-        self.label.innerHTML = f'The winner is Player {winner}<br/>Score: {score} Lifes: {self.players[winner-1].lifes}'
+        self.label.innerHTML = f'The winner is Player {winner}<br/>Score: {score}'
         self.players.clear()
         self.spalsh_sc.style.display = 'block'
 
