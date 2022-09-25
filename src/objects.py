@@ -201,14 +201,19 @@ class Ship(GameObject):
 
     def am_I_hit(self, me, other):
         one, two = False, False
-        if (self.active and 
-                not self.phantom and
-                self == me):
-            one = True
+        prompt= ""
+        if self.active:
+            prompt += "I'm active"
+            if not self.phantom:
+                prompt += ", i'm not phantom"
+                if self == me:
+                    prompt += ", it's me"
+                    one = True
         if (isinstance(other, Asteroid) or
             (isinstance(other, Bullet) and
                 other.player != self.player)):
             two = True
+        # if self.player == 1: events.deboog(prompt)
         return one and two
 
 
