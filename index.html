@@ -24,14 +24,14 @@
     <body id="body">
         <py-script src="./src/main.py">
         </py-script>
-        <div id="output">Output</div>
+        <button id="output" pys-onclick="clickity_click">Output</button>
         <div class="canvas-div" >
             <canvas id="canvas" width="1200" height="600"></canvas>
             <canvas id="ui_canvas" width="1200" height="600"></canvas>
         </div>
         <img id="heart" src="./img/heart.png" style="display: none;">
         <div class="buttons">
-            <button class="button-5" role="button" id="onePlayer">Human vs Dumb AI</button>
+            <button class="button-5" role="button" id="onePlayer" pys-onClick="clickity_click">Human vs Dumb AI</button>
             <button class="button-5" role="button" id="twoPlayer">Human vs Hooman</button>
         </div>
     </body>

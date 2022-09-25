@@ -32,8 +32,7 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-        document.getElementById("button").style.display = "none"
-    events.deboog(str(keysdown))
+        clickity_click()
     UPDATE.trigger()
 
 def act_agents():
@@ -58,9 +57,16 @@ def main():
     kup_proxy = create_proxy(on_key_up)
     document.addEventListener("keydown", kdown_proxy)
     document.addEventListener("keyup", kup_proxy)
+    # click_proxy = create_proxy(clickity_click)
+    # document.getElementById('output').addEventListener('click', click_proxy)
 
     #Starts the game loop
     requestAnimationFrame(game_loop_proxy)
+
+def clickity_click(*args):
+    pyscript.write('output', "click")
+    print("Click event")
+
 
 main()
  
