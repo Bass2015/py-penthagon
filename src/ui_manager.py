@@ -11,6 +11,7 @@ FONT_SC = f'{TITLE_SIZE/1.2}px \"Arial Rounded\", sans-serif'
 class UIManager():
     def __init__(self):
         self.heart = document.getElementById('heart')
+        self.label = document.getElementById('ui-text')
         STATE_CHANGED.suscribe(self)
         
         # self.play_b = document.getElementById("play_b")

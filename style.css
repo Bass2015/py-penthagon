@@ -26,6 +26,7 @@
 
 /* CSS */
 .button-5 {
+  align-self: flex-end;
   align-items: center;
   background-clip: padding-box;
   background-color: #fa6400;
@@ -70,4 +71,14 @@
   background-color: #c85000;
   box-shadow: rgba(0, 0, 0, .06) 0 2px 4px;
   transform: translateY(0);
+}
+
+.ui-text {
+    font: "Trebuchet MS", sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+    color: white;
+    position:absolute;
+    left:48%;
+    top: 25%;
 }
