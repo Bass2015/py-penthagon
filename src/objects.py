@@ -1,6 +1,5 @@
 import math, constants, time, random, geometry, easings, events
-from pyodide import create_proxy
-from js import setInterval
+
 from abc import ABC, abstractmethod
 from constants import AST_SPAWNING_LIMIT, CTX, COLORS
 from geometry import Vector2
@@ -216,7 +215,6 @@ class Ship(GameObject):
         # if self.player == 1: events.deboog(prompt)
         return one and two
 
-
 class Bullet(GameObject):
     def __init__(self):
         self.player = ""
@@ -325,6 +323,9 @@ class Asteroid(GameObject):
         super().on_collision_enter(me, other)
         if self.dimension > constants.ASTEROID_RADIUS / (1.5*3):
             constants.ASTEROID_HIT.trigger(self)
+        for i in range(8,15):
+            particle = Particle()
+            particle.activate(self.pos)
 
     def not_hit(self, me, other):
         return (self.collided or
@@ -371,13 +372,13 @@ class Miniship(GameObject):
             self.explosion_pos = self.pos
             self.elapsed_time = 0
             self.exploded = True
+            self.final_pos = (self.explosion_pos + self.direction*random.gauss(80,20))
 
     def explosion(self, delta_time):
-        final_pos = (self.explosion_pos + self.direction*80)
         explosion_time = 2
         if self.elapsed_time/explosion_time < 1:
             self.pos = Vector2.lerp(self.explosion_pos,
-                                    final_pos,
+                                    self.final_pos,
                                     easings.ease_out_expo(self.elapsed_time/explosion_time))
             self.elapsed_time += delta_time
             self.rotation += 0.2 - easings.ease_out_circ(0.2)
@@ -399,10 +400,35 @@ class Miniship(GameObject):
         if self.exploded:
             self.explosion(delta_time)        # self.translate(delta_time)
         
+class Particle(GameObject):
+    def __init__(self):
+        self.color = constants.COLORS['asteroid']
+        dim = random.uniform(constants.RADIUS*0.05, constants.RADIUS*0.4)
+        super(Particle, self).__init__(Vector2(0,0), self.init_points(dim), dim)
+
+    def init_points(self, radius):
+        return [Vector2(radius * math.cos(math.radians(angle)), radius * math.sin(math.radians(angle))) for angle in range(0, 360, 30)]
+        
+    def activate(self, init_pos):
+        self.active = True
+        self.pos = init_pos
+        self.explosion_moment = time.time()
+        self.explosion_pos = self.pos
+        self.elapsed_time = 0
+        self.final_pos = (self.explosion_pos + Vector2.rand_unit()*random.gauss(80, 20))
+
+    def explosion(self, delta_time):
+        explosion_time = 2.5
+        if self.elapsed_time/explosion_time < 1:
+            self.pos = Vector2.lerp(self.explosion_pos,
+                                    self.final_pos,
+                                    easings.ease_out_expo(self.elapsed_time/explosion_time))
+            self.elapsed_time += delta_time
+            return
+        self.active = False
     
-
-
-
+    def update(self, delta_time):
+        self.explosion(delta_time) 
 
 
   

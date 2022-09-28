@@ -89,6 +89,7 @@ class Agent(ABC):
         self.active = True
         constants.SHIP_EXPLODED.suscribe(self)
         constants.COLLISION.suscribe(self)
+        constants.GAME_ENDED.suscribe(self)
 
     @abstractmethod
     def act(*args):

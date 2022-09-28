@@ -37,8 +37,9 @@ def update():
 
 def act_agents():
     for i in range(2):
-        action = PLAYERS[i].act()
-        SHIPS[i].next_moves.extend(action)
+        if i < len(PLAYERS):
+            action = PLAYERS[i].act()
+            SHIPS[i].next_moves.extend(action)
 
 def late_update():
     physics.check_objects(asteroid_pool.active_objects.copy(), bullet_pool.active_objects.copy(), SHIPS.copy())
