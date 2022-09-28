@@ -1,6 +1,6 @@
 from random import Random
 import physics
-from js import document, requestAnimationFrame
+from js import document, requestAnimationFrame, window,Uint8Array, File
 from pyodide import create_proxy
 from objects import *
 import pools
@@ -8,6 +8,11 @@ import events
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
 from agents import Human, RandomAI
 from ui_manager import UIManager
+
+import base64
+from PIL import Image
+from io import BytesIO
+
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
@@ -28,11 +33,28 @@ def on_key_up(*args):
 
 def render(*args):
     CTX.clearRect(0, 0, CANVAS.width, CANVAS.height)
+    CTX.beginPath()
+    CTX.fillStyle = 'darkslategray'
+    CTX.rect(0, 0, CANVAS.width, CANVAS.height)
+    CTX.fill()
     RENDER.trigger()
 
 def update():
     if 'g' in keysdown:
-        pass
+        #  pasar de base64 a pillow Image
+        image = CANVAS.toDataURL('image/png')
+        imgdata = base64.b64decode(image.split(',')[-1])
+        img = Image.open(BytesIO(imgdata))
+        
+        # pasar de Image a base64
+        buf = BytesIO()
+        img.convert('L').resize().save(buf, format='PNG')
+        image_file = File.new([Uint8Array.new(buf.getvalue())], "new_image_file.png", {type: "image/png"})
+        document.getElementById('ca').src = window.URL.createObjectURL(image_file)
+        
+
+
+
     UPDATE.trigger()
 
 def act_agents():
