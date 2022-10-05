@@ -1,7 +1,7 @@
 from js import document
 import events
 import math
-
+from game_info import Game
 CANVAS = document.getElementById("canvas")
 CTX = CANVAS.getContext("2d")
 UI = document.getElementById("ui_canvas").getContext("2d")
@@ -9,6 +9,8 @@ UI = document.getElementById("ui_canvas").getContext("2d")
 GOLDEN_NUMBER = (1 + 5 ** 0.5) / 2
 
 INIT_LIFES = 5
+
+GAME = Game()
 # Game Events
 # meter todo esto en un diccionario
 UPDATE = events.UpdateEvent()
