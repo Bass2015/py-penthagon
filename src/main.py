@@ -73,19 +73,19 @@ def main():
     #Starts the game loop
 
 def human_vs_ai(*args):
-    PLAYERS.clear()
-    PLAYERS.extend([Human(SHIPS[0], player=1), 
+    start_game([Human(SHIPS[0], player=1), 
                     RandomAI(SHIPS[1], player=2)])
-    UIMANAGER.initialize(PLAYERS)
-    constants.GAME_START.trigger()
-    requestAnimationFrame(game_loop_proxy)
-    
 
 def human_vs_human(*args):
-    PLAYERS.clear()
-    PLAYERS.extend([Human(SHIPS[0], player=1), 
+    start_game([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
+
+def start_game(players):
+    PLAYERS.clear()
+    PLAYERS.extend(players)
     UIMANAGER.initialize(PLAYERS)
+    GAME.is_new_game = True
+    constants.GAME_START.trigger()
     requestAnimationFrame(game_loop_proxy)
 
 main()
