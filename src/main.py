@@ -1,20 +1,15 @@
 from random import Random
 import physics
-from js import document, requestAnimationFrame, window,Uint8Array, File
+from js import document, requestAnimationFrame
 from pyodide import create_proxy
 from objects import *
 import pools
-from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP
+from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
 from agents import Human, RandomAI
 from ui_manager import UIManager
 
 # modules for image processing
-import base64
-from PIL import Image
-from io import BytesIO
-import skimage.io
-import numpy as np
-from skimage.color import rgb2gray, rgba2rgb
+
 
 
 keysdown = []
@@ -46,20 +41,6 @@ def update():
         pass
     UPDATE.trigger()
 
-def save_frame():
-    #  pasar de base64 a pillow Image
-    image = CANVAS.toDataURL('image/png')
-    imgdata = base64.b64decode(image.split(',')[-1])
-    # img = skimage.io.imread(imgdata, plugin='imageio')
-    img = Image.open(BytesIO(imgdata))
-
-    # # # # pasar de Image a base64
-    buf = BytesIO()
-    img.convert('L').resize((round(CANVAS.width/8), round(CANVAS.height / 8))).save(buf, format='PNG')
-    # Image.fromarray(skimage.img_as_ubyte(img)).save(buf, format='PNG')
-    # image_file = File.new([Uint8Array.new(buf.getvalue())], "new_image_file.png", {type: "image/png"})
-    # document.getElementById('ca').src = window.URL.createObjectURL(image_file)
-
 def act_agents():
     for i in range(2):
         if i < len(PLAYERS):
@@ -70,17 +51,16 @@ def late_update():
     physics.check_objects(asteroid_pool.active_objects.copy(), bullet_pool.active_objects.copy(), SHIPS.copy())
 
 def game_loop(*args):
-    if constants.GAME.frame_count % 2 == 0:
+    if GAME.frame_count % 2 == 0:
         start = time.time()
         act_agents()
         update()
         render()
         late_update()
-        save_frame()
+        GAME.save_frame(CANVAS.toDataURL('image/png'))
         end = time.time()
-        events.deboog(f'Calculations: {(end - start)}')
     requestAnimationFrame(game_loop_proxy)
-    constants.GAME.frame_count += 1
+    GAME.frame_count += 1
     
 game_loop_proxy = create_proxy(game_loop)
 
