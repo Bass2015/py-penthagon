@@ -28,9 +28,8 @@ class Game():
     def __init__(self) -> None:
         self.frame_count = 0
         self.is_new_game = True
-        self.frame_shown = 0
 
-    def save_frame(self, frame):
+    def save_state(self, frame):
         processed = process_frame(frame)
         if self.is_new_game:
             self.frames_stack = deque([np.zeros(processed.size, dtype=np.int) for i in range(Game.STACK_SIZE)],
@@ -41,6 +40,7 @@ class Game():
         else:
             self.frames_stack.append(processed)
         self.state = np.stack(self.frames_stack)
+        deboog(self.state.shape)
 
 def process_frame(frame):
     #  pasar de base64 a pillow Image

@@ -53,7 +53,7 @@ def game_loop(*args):
         update()
         render()
         late_update()
-        GAME.save_frame(CANVAS.toDataURL('image/png'))
+        GAME.save_state(CANVAS.toDataURL('image/png'))
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
     
@@ -81,7 +81,9 @@ def start_game(players):
     UIMANAGER.initialize(PLAYERS)
     GAME.is_new_game = True
     constants.GAME_START.trigger()
-    requestAnimationFrame(game_loop_proxy)
+    render()
+    GAME.save_state(CANVAS.toDataURL('image/png'))
+    # requestAnimationFrame(game_loop_proxy)
 
 main()
  

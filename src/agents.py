@@ -64,8 +64,9 @@ class Agent(ABC):
     def on_ship_exploded(self, ship):
         if ship.player == self.player:
             self.lifes -= 1
+            self.score -= 50
         else:
-            self.score += 100
+            self.score += 50
         if self.lifes == 0: 
             constants.STATE_CHANGED.trigger()
             constants.GAME_ENDED.trigger(self)
@@ -79,7 +80,7 @@ class Agent(ABC):
             self.score += 10
             constants.STATE_CHANGED.trigger()
     
-    def on_game_ended(self, looser):
+    def on_game_ended(self, loser):
         self.active = False
         constants.SHIP_EXPLODED.unsuscribe(self)
         constants.COLLISION.unsuscribe(self)
