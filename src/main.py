@@ -8,15 +8,12 @@ from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
 from agents import Human, RandomAI
 from ui_manager import UIManager
 
-# modules for image processing
-
-
-
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
 SHIPS = [Ship(player=1), Ship(player=2)]
 PLAYERS = []
 UIMANAGER = UIManager()
+frame = 0
 
 def on_key_down(*args):
     if args[0].key not in keysdown:
@@ -52,13 +49,11 @@ def late_update():
 
 def game_loop(*args):
     if GAME.frame_count % 2 == 0:
-        start = time.time()
         act_agents()
         update()
         render()
         late_update()
         GAME.save_frame(CANVAS.toDataURL('image/png'))
-        end = time.time()
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
     

@@ -5,7 +5,6 @@ from threading import Lock
 from PIL import Image
 from io import BytesIO
 from collections import deque
-
 from events import deboog
 
 
@@ -24,12 +23,13 @@ class SingletonMeta(type):
 
 class Game():
     __metaclass__ = SingletonMeta
-    STACK_SIZE=4
+    STACK_SIZE = 4
 
     def __init__(self) -> None:
         self.frame_count = 0
         self.is_new_game = True
-    
+        self.frame_shown = 0
+
     def save_frame(self, frame):
         processed = process_frame(frame)
         if self.is_new_game:
@@ -37,18 +37,17 @@ class Game():
                                      maxlen=Game.STACK_SIZE)
             for i in range(Game.STACK_SIZE):
                 self.frames_stack.append(processed)
+            self.is_new_game = False
         else:
             self.frames_stack.append(processed)
-            self.is_new_game = False
-        self.state = np.stack(self.frames_stack, axis=2)
-
+        self.state = np.stack(self.frames_stack)
 
 def process_frame(frame):
     #  pasar de base64 a pillow Image
     imgdata = base64.b64decode(frame.split(',')[-1])
     # img = skimage.io.imread(imgdata, plugin='imageio')
     img = Image.open(BytesIO(imgdata))
-    processed = img.convert('L').resize((round(img.width/8), round(img.height / 8)))
+    processed = img.convert('L').resize((round(img.width/16), round(img.height / 8)))
     # show_image(processed)
     array = np.asarray(processed)/255
     return array
@@ -65,4 +64,4 @@ def show_image(image):
     document.getElementById('ca').src = window.URL.createObjectURL(image_file)
 
    
-        
+    
