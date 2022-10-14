@@ -54,7 +54,7 @@ class Agent(ABC):
             return [ACTIONS[1], ACTIONS[3], ACTIONS[4]]
         if action == 14: # Left Fire
             return [ACTIONS[2], ACTIONS[4]]
-        if action == 15: # Left Fire
+        if action == 15: # Right Fire
             return [ACTIONS[3], ACTIONS[4]]
         if action == 16: # Idle Fire
             return [ACTIONS[4]]
