@@ -83,7 +83,7 @@ def start_game(players):
     constants.GAME_START.trigger()
     render()
     GAME.save_state(CANVAS.toDataURL('image/png'))
-    # requestAnimationFrame(game_loop_proxy)
+    requestAnimationFrame(game_loop_proxy)
 
 main()
  

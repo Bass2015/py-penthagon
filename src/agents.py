@@ -4,6 +4,7 @@ import constants
 from events import deboog
 from constants import ACTIONS, KEYDOWN, KEYUP
 from objects import Asteroid, Bullet
+from dql_model import Brain
 from js import document
 import random
 import time
@@ -168,4 +169,26 @@ class RandomAI(Agent):
             self.current_move = random.randint(0,17)
             self.last_change = time.time()
         return self.get_action(self.current_move)
+
+class QLearningAI(Agent):
+    def __init__(self, ship, player=0, training=False):
+        self.training = training
+        self.brain = Brain()
+
+
+        self.last_change = time.time()
+        self.change_time = 1.5
+        self.current_move = 17
+        super(Agent, self).__init__(ship, player)
+    
+    def act(self, *args):
+        if not self.active: return []
+        state = args[0]
+        if self.training:
+            self.train(state)
+        else:
+            if time.time() - self.last_change > self.change_time:
+                self.current_move = self.brain.act(state)
+                self.last_change = time.time()
+            return self.get_action(self.current_move)
         
