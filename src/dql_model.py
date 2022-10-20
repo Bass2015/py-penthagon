@@ -1,4 +1,3 @@
-import keras
 import random
 
 class Brain():
