@@ -175,7 +175,6 @@ class QLearningAI(Agent):
         self.training = training
         self.brain = Brain()
 
-
         self.last_change = time.time()
         self.change_time = 1.5
         self.current_move = 17
@@ -187,8 +186,8 @@ class QLearningAI(Agent):
         if self.training:
             self.train(state)
         else:
-            if time.time() - self.last_change > self.change_time:
-                self.current_move = self.brain.act(state)
-                self.last_change = time.time()
-            return self.get_action(self.current_move)
+            return self.brain.act(state)
+    
+    def train(state):
+        raise NotImplementedError
         

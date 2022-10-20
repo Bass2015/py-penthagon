@@ -1,11 +1,10 @@
 import random
+from cnn.src.model import Network
 
 class Brain():
     def __init__(self) -> None:
-        self.network = None
+        self.network = Network()
     
     def act(self, state):
-        # q_values = self.network(state)
-        # _, action = torch.max(q_values, dim=1)
-        return random.randint(0,17)
+        return self.network(state)
     
