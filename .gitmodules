@@ -1,3 +1,6 @@
 [submodule "cnn"]
 	path = cnn
 	url = https://github.com/Bass2015/CNN-from-Scratch.git
+[submodule "convolutional-neural-network-from-scratch-python"]
+	path = convolutional-neural-network-from-scratch-python
+	url = https://github.com/Bass2015/convolutional-neural-network-from-scratch-python.git
