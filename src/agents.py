@@ -182,7 +182,7 @@ class QLearningAI(Agent):
         if self.training:
             self.train()
         else:
-            return self.get_action(self.brain.act(state))
+            return self.get_action(self.brain.act(state)+8)
     
     def train(state):
         raise NotImplementedError
