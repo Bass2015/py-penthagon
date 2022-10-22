@@ -5,7 +5,7 @@ from pyodide import create_proxy
 from objects import *
 import pools
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
-from agents import Human, RandomAI
+from agents import Human, RandomAI, QLearningAI
 from ui_manager import UIManager
 
 keysdown = []
@@ -38,10 +38,10 @@ def update():
         pass
     UPDATE.trigger()
 
-def act_agents():
+def act_agents(state):
     for i in range(2):
         if i < len(PLAYERS):
-            action = PLAYERS[i].act()
+            action = PLAYERS[i].act(state)
             SHIPS[i].next_moves.extend(action)
 
 def late_update():
@@ -49,7 +49,7 @@ def late_update():
 
 def game_loop(*args):
     if GAME.frame_count % 2 == 0:
-        act_agents()
+        act_agents(GAME.state)
         update()
         render()
         late_update()
@@ -67,9 +67,13 @@ def main():
 
     #Starts the game loop
 
-def human_vs_ai(*args):
+def human_vs_random(*args):
     start_game([Human(SHIPS[0], player=1), 
                     RandomAI(SHIPS[1], player=2)])
+
+def human_vs_nn(*args):
+    start_game([Human(SHIPS[0], player=1), 
+                    QLearningAI(SHIPS[1], player=2)])
 
 def human_vs_human(*args):
     start_game([Human(SHIPS[0], player=1), 

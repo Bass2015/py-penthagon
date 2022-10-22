@@ -21,6 +21,7 @@
                 - ./src/easings.py
                 - ./src/ui_manager.py
                 - ./src/game_info.py
+                - ./src/dql_model.py
         </py-env>
     </head>
     <body id="body">
@@ -35,8 +36,9 @@
         <div id="ui">
             <p id="ui-text">Choose mode</p>
             <div class="buttons" id="buttons">
-                <button class="button-5" role="button" id="onePlayer" pys-onClick="human_vs_ai">Human vs Dumb AI</button>
+                <button class="button-5" role="button" id="onePlayer" pys-onClick="human_vs_random">Human vs Dumb AI</button>
                 <button class="button-5" role="button" id="twoPlayer" pys-onClick="human_vs_human">Human vs Hooman</button>
+                <button class="button-5" role="button" id="twoPlayerai" pys-onClick="human_vs_nn">Human vs Smart AI</button>
             </div>
         </div>
         <img id="ca" src="" style="position:absolute; top: 900; left: auto; right: auto;">

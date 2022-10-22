@@ -40,7 +40,6 @@ class Game():
         else:
             self.frames_stack.append(processed)
         self.state = np.stack(self.frames_stack)
-        deboog(self.state.shape)
 
 def process_frame(frame):
     #  pasar de base64 a pillow Image
