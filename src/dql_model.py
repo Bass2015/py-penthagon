@@ -1,9 +1,10 @@
-from queue import Full
 import random
 import events
 import constants
 import numpy as np
 import time
+from js import document, Blob, URL
+import json
 
 class Brain():
     def __init__(self) -> None:
@@ -17,40 +18,59 @@ class Brain():
     
 class Network:
     def __init__(self):
-        self.conv = []
-        self.fully_connected = []
-        self.flatten = Flatten()
+        self.layers = []
         self.build_network()
-    
+        w1 = self.layers[0].weights[0][0][0][0]
+        self.load_params()
+        w2 = self.layers[0].weights[0][0][0][0]
+        events.deboog(f'{w1}, {w2}')
+        
     def __call__(self, state):
         action = self.forward(state)
         return action
 
     def build_network(self):
         # build convolutional layers
-        self.conv.append(Conv2D(4, 32, kernel_size=7, stride=4))
-        self.conv.append(Conv2D(32, 64, kernel_size=5, stride=2))
-        self.conv.append(Conv2D(64, 64, kernel_size=3, stride=1))
+        self.layers.append(Conv2D(4, 32, kernel_size=7, stride=4, name='conv1'))
+        self.layers.append(Conv2D(32, 64, kernel_size=5, stride=2, name='conv2'))
+        self.layers.append(Conv2D(64, 64, kernel_size=3, stride=1, name='conv3'))
+        
+        self.layers.append(Flatten())
 
         #build fully connected layers
-        self.fully_connected.append(FullyConnected(1600, 512))
-        self.fully_connected.append(FullyConnected(512, 9))
+        self.layers.append(FullyConnected(1600, 512, name='fc1'))
+        self.layers.append(FullyConnected(512, 9, name='fc2'))
 
     def forward(self, state=None):
         # hacer forward por las convolutional layers
         x = state
-        for layer in self.conv:
+        for layer in self.layers:
             output = layer.forward(x)
             x = output
-        # flatten el output
-        flat = self.flatten.forward(x)
-
-        # hacer forward con las fully connected
-        for layer in self.fully_connected:
-            output = layer.forward(flat)
-            flat = output
         return output
-
+    
+    def save_params(self):
+        params = {}
+        for layer in range(len(self.layers)):
+            params[layer] = {}
+            if not isinstance(self.layers[layer], Flatten):
+                params[layer]['w'] = self.layers[layer].weights.tolist()
+                params[layer]['b'] = self.layers[layer].bias.tolist()
+        json.dumps(params)
+        tag = document.createElement('a')
+        blob = Blob.new([json.dumps(params)])
+        tag.href = URL.createObjectURL(blob)
+        tag.download = 'filename'
+        tag.click()
+    
+    def load_params(self):
+        w = document.getElementById('weights').innerHTML
+        params = json.loads(w)
+        for layer in range(len(self.layers)):
+            if not isinstance(self.layers[layer], Flatten):
+                self.layers[layer].weights =  np.asarray(params[str(layer)]['w'])
+                self.layers[layer].bias = np.asarray(params[str(layer)]['b'])
+    
 class Conv2D:
     # Agregar la función de activación. 
     def __init__(self, inputs_channel, num_filters, kernel_size=4, padding=0, stride=1, learning_rate=0.01, name="", activation='relu'):
@@ -59,18 +79,19 @@ class Conv2D:
         self.num_filters = num_filters
         self.kernel_size = kernel_size
         self.in_channels = inputs_channel
+        self.init_params()
+        self.stride = stride
+        self.lr = learning_rate
+        self.name = name
+        self.activation = activation
 
+    def init_params(self):
         self.weights = np.zeros((self.num_filters, self.in_channels, self.kernel_size, self.kernel_size))
         self.bias = np.zeros((self.num_filters, 1))
         for filter in range(0,self.num_filters):
             self.weights[filter,:,:,:] = np.random.normal(loc=0, 
                             scale=np.sqrt(1. / (self.in_channels * self.kernel_size * self.kernel_size)), 
                             size=(self.in_channels, self.kernel_size, self.kernel_size))
-
-        self.stride = stride
-        self.lr = learning_rate
-        self.name = name
-        self.activation = activation
 
     def forward(self, inputs):
         # input size: (C, W, H)
@@ -122,10 +143,13 @@ class Conv2D:
 class FullyConnected:
 
     def __init__(self, num_inputs, num_outputs, learning_rate=0.01, name=''):
-        self.weights = 0.01 * np.random.rand(num_inputs, num_outputs)
-        self.bias = np.zeros((num_outputs, 1))
+        self.init_params(num_inputs, num_outputs)
         self.lr = learning_rate
         self.name = name
+
+    def init_params(self, num_inputs, num_outputs):
+        self.weights = 0.01 * np.random.rand(num_inputs, num_outputs)
+        self.bias = np.zeros((num_outputs, 1))
 
     def forward(self, inputs):
         self.inputs = inputs
@@ -154,6 +178,7 @@ class FullyConnected:
 class Flatten:
     def __init__(self):
         pass
+
     def forward(self, inputs):
         self.C, self.W, self.H = inputs.shape
         return inputs.reshape(1, self.C*self.W*self.H)

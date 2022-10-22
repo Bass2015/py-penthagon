@@ -1,6 +1,6 @@
 from random import Random
 import physics
-from js import document, requestAnimationFrame
+from js import document, requestAnimationFrame, Blob, URL
 from pyodide import create_proxy
 from objects import *
 import pools
@@ -64,12 +64,12 @@ def game_loop(*args):
         start = time.time()
         GAME.save_state(CANVAS.toDataURL('image/png'))
         save_state = time.time() - start
-        events.deboog(f'Act: {acting:.2f}</br>' + 
-                      f'Update: {upd:.2f}</br>' +
-                      f'Render: {ren:.2f}</br>' +
-                      f'Collisions: {late_up:.2f}</br>' +
-                      f'Saving state: {save_state:.2f}</br>' +
-                      f'Total: {(acting + upd + ren + late_up + save_state):.2f}')
+        # events.deboog(f'Act: {acting:.2f}</br>' + 
+        #               f'Update: {upd:.2f}</br>' +
+        #               f'Render: {ren:.2f}</br>' +
+        #               f'Collisions: {late_up:.2f}</br>' +
+        #               f'Saving state: {save_state:.2f}</br>' +
+        #               f'Total: {(acting + upd + ren + late_up + save_state):.2f}')
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
     
@@ -94,6 +94,7 @@ def human_vs_nn(*args):
 def human_vs_human(*args):
     start_game([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
+    save_file()
 
 def start_game(players):
     PLAYERS.clear()
@@ -104,6 +105,14 @@ def start_game(players):
     render()
     GAME.save_state(CANVAS.toDataURL('image/png'))
     requestAnimationFrame(game_loop_proxy)
+
+def save_file():
+    content = 'Hello world'
+    tag = document.createElement('a')
+    blob = Blob.new([content], {type: "text/plain"})
+    tag.href = URL.createObjectURL(blob)
+    tag.download = 'filename'
+    tag.click()
 
 main()
  
