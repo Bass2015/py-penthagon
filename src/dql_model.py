@@ -13,17 +13,14 @@ class Brain():
     def act(self, state=None):
         out = self.network(state)
         max_ind = np.argmax(out, axis=1)
-        # events.deboog(f'Shape: {out}, Max_ind: {max_ind}')
+        events.deboog(f'Output: {out}, Max_ind: {max_ind}')
         return max_ind
     
 class Network:
     def __init__(self):
         self.layers = []
         self.build_network()
-        w1 = self.layers[0].weights[0][0][0][0]
         self.load_params()
-        w2 = self.layers[0].weights[0][0][0][0]
-        events.deboog(f'{w1}, {w2}')
         
     def __call__(self, state):
         action = self.forward(state)
