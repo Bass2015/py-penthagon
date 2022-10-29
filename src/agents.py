@@ -111,7 +111,7 @@ class Human(Agent):
         self.keysdown = []
         super(Human, self).__init__(ship, player)
    
-    def act(self):  
+    def act(self,*args):  
         if not self.active: return []
         if Human.KEY_MAPS['F'][self.player-1] in self.keysdown:
             if Human.KEY_MAPS['L'][self.player-1] in self.keysdown:
@@ -163,7 +163,7 @@ class RandomAI(Agent):
         self.change_time = 1.5
         self.current_move = 17
         super(RandomAI, self).__init__(ship, player)
-    def act(self):
+    def act(self, *args):
         if not self.active: return []
         if time.time() - self.last_change > self.change_time:
             self.current_move = random.randint(0,17)
@@ -174,21 +174,16 @@ class QLearningAI(Agent):
     def __init__(self, ship, player=0, training=False):
         self.training = training
         self.brain = Brain()
-
-
-        self.last_change = time.time()
-        self.change_time = 1.5
-        self.current_move = 17
-        super(Agent, self).__init__(ship, player)
+        super(QLearningAI, self).__init__(ship, player)
     
     def act(self, *args):
         if not self.active: return []
         state = args[0]
         if self.training:
-            self.train(state)
+            self.train()
         else:
-            if time.time() - self.last_change > self.change_time:
-                self.current_move = self.brain.act(state)
-                self.last_change = time.time()
-            return self.get_action(self.current_move)
+            return self.get_action(self.brain.act(state)+8)
+    
+    def train(state):
+        raise NotImplementedError
         

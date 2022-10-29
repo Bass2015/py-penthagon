@@ -1,11 +1,11 @@
 from random import Random
 import physics
-from js import document, requestAnimationFrame
+from js import document, requestAnimationFrame, Blob, URL
 from pyodide import create_proxy
 from objects import *
 import pools
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
-from agents import Human, RandomAI
+from agents import Human, RandomAI, QLearningAI
 from ui_manager import UIManager
 
 keysdown = []
@@ -38,10 +38,10 @@ def update():
         pass
     UPDATE.trigger()
 
-def act_agents():
+def act_agents(state):
     for i in range(2):
         if i < len(PLAYERS):
-            action = PLAYERS[i].act()
+            action = PLAYERS[i].act(state)
             SHIPS[i].next_moves.extend(action)
 
 def late_update():
@@ -49,11 +49,27 @@ def late_update():
 
 def game_loop(*args):
     if GAME.frame_count % 2 == 0:
-        act_agents()
+        start = time.time()
+        act_agents(GAME.state)
+        acting = time.time() - start
+        start = time.time()
         update()
+        upd = time.time() - start
+        start = time.time()
         render()
+        ren = time.time() - start
+        start = time.time()
         late_update()
+        late_up = time.time() - start
+        start = time.time()
         GAME.save_state(CANVAS.toDataURL('image/png'))
+        save_state = time.time() - start
+        # events.deboog(f'Act: {acting:.2f}</br>' + 
+        #               f'Update: {upd:.2f}</br>' +
+        #               f'Render: {ren:.2f}</br>' +
+        #               f'Collisions: {late_up:.2f}</br>' +
+        #               f'Saving state: {save_state:.2f}</br>' +
+        #               f'Total: {(acting + upd + ren + late_up + save_state):.2f}')
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
     
@@ -67,13 +83,18 @@ def main():
 
     #Starts the game loop
 
-def human_vs_ai(*args):
+def human_vs_random(*args):
     start_game([Human(SHIPS[0], player=1), 
                     RandomAI(SHIPS[1], player=2)])
+
+def human_vs_nn(*args):
+    start_game([Human(SHIPS[0], player=1), 
+                    QLearningAI(SHIPS[1], player=2)])
 
 def human_vs_human(*args):
     start_game([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
+    save_file()
 
 def start_game(players):
     PLAYERS.clear()
@@ -84,6 +105,14 @@ def start_game(players):
     render()
     GAME.save_state(CANVAS.toDataURL('image/png'))
     requestAnimationFrame(game_loop_proxy)
+
+def save_file():
+    content = 'Hello world'
+    tag = document.createElement('a')
+    blob = Blob.new([content], {type: "text/plain"})
+    tag.href = URL.createObjectURL(blob)
+    tag.download = 'filename'
+    tag.click()
 
 main()
  

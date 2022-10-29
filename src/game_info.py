@@ -40,7 +40,6 @@ class Game():
         else:
             self.frames_stack.append(processed)
         self.state = np.stack(self.frames_stack)
-        deboog(self.state.shape)
 
 def process_frame(frame):
     #  pasar de base64 a pillow Image
@@ -48,7 +47,7 @@ def process_frame(frame):
     # img = skimage.io.imread(imgdata, plugin='imageio')
     img = Image.open(BytesIO(imgdata))
     processed = img.convert('L').resize((round(img.width/16), round(img.height / 8)))
-    # show_image(processed)
+    show_image(processed)
     array = np.asarray(processed)/255
     return array
 
