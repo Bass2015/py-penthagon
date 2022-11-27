@@ -58,10 +58,10 @@ COLORS = {
     'bullet': 'rgb(240, 248, 255)', 
     'asteroid': 'rgb(240, 248, 255)'}
 
-ROT_SPEED_CNN = 4.5
-SHIP_SPEED_CNN = 350
-SHIP_ACC_CNN = 30
-SHIP_DEC_CNN = 10
+ROT_SPEED_CNN = 0.4
+SHIP_SPEED_CNN = 35
+SHIP_ACC_CNN = 5
+SHIP_DEC_CNN = 3
 
 # Miniship config
 PENTAGON_SIDE = 2*RADIUS*math.sin(math.pi/5)

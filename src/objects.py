@@ -84,10 +84,10 @@ class GameObject(ABC):
 class Ship(GameObject):
     def __init__(self, player):
         self.speed = 0
-        self.max_speed = constants.SHIP_SPEED if not GAME.cnn else constants.SHIP_SPEED_CNN
+        self.max_speed = constants.SHIP_SPEED
         self.next_moves = []
-        self.rot_speed = constants.ROT_SPEED if not GAME.cnn else constants.ROT_SPEED_CNN
-        self.acceleration = constants.SHIP_ACC if not GAME.cnn else constants.SHIP_ACC_CNN
+        self.rot_speed = constants.ROT_SPEED
+        self.acceleration = constants.SHIP_ACC
         self.player = player
         self.last_shot = 0
         self.miniships = self.create_miniships()
@@ -117,6 +117,10 @@ class Ship(GameObject):
         self.collided = False
         self.rotation = 0
         self.pos = Vector2((constants.CANVAS.width/3) * self.player, constants.CANVAS.height/2)
+        if GAME.cnn:
+            self.max_speed = constants.SHIP_SPEED_CNN
+            self.rot_speed = constants.ROT_SPEED_CNN
+            self.acceleration = constants.SHIP_ACC_CNN
 
     def create_miniships(self):
         miniships = []
