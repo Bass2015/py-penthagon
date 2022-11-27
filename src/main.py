@@ -64,14 +64,17 @@ def game_loop(*args):
         start = time.time()
         GAME.save_state(CANVAS.toDataURL('image/png'))
         save_state = time.time() - start
-        # events.deboog(f'Act: {acting:.2f}</br>' + 
-        #               f'Update: {upd:.2f}</br>' +
-        #               f'Render: {ren:.2f}</br>' +
-        #               f'Collisions: {late_up:.2f}</br>' +
-        #               f'Saving state: {save_state:.2f}</br>' +
-        #               f'Total: {(acting + upd + ren + late_up + save_state):.2f}')
+        show_times(acting, upd, ren, late_up, save_state)
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
+
+def show_times(acting, upd, ren, late_up, save_state):
+    events.deboog(f'Act: {acting:.2f}</br>' + 
+                      f'Update: {upd:.2f}</br>' +
+                      f'Render: {ren:.2f}</br>' +
+                      f'Collisions: {late_up:.2f}</br>' +
+                      f'Saving state: {save_state:.2f}</br>' +
+                      f'Total: {(acting + upd + ren + late_up + save_state):.2f}')
     
 game_loop_proxy = create_proxy(game_loop)
 
@@ -84,14 +87,17 @@ def main():
     #Starts the game loop
 
 def human_vs_random(*args):
+    GAME.mode = 'random'
     start_game([Human(SHIPS[0], player=1), 
                     RandomAI(SHIPS[1], player=2)])
 
 def human_vs_nn(*args):
+    GAME.mode = 'cnn'
     start_game([Human(SHIPS[0], player=1), 
                     QLearningAI(SHIPS[1], player=2)])
 
 def human_vs_human(*args):
+    GAME.mode = 'human'
     start_game([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
     save_file()
