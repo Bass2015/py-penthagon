@@ -227,7 +227,7 @@ class Ship(GameObject):
 class Bullet(GameObject):
     def __init__(self):
         self.player = ""
-        self.speed = constants.BULLET_SPEED
+        self.speed = constants.BULLET_SPEED if not GAME.cnn else constants.BULLET_SPEED_CNN
         width, points = self.init_points()
         self.color = constants.COLORS['bullet']
 
@@ -266,7 +266,7 @@ class Bullet(GameObject):
 
 class Asteroid(GameObject):
     def __init__(self):
-        self.speed = constants.AST_SPEED
+        self.speed = constants.AST_SPEED if not GAME.cnn else constants.AST_SPEED_CNN
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
         dim = constants.ASTEROID_RADIUS
@@ -318,11 +318,15 @@ class Asteroid(GameObject):
         return new_direction.normalized()
 
     def rotate(self, delta_time):
-        self.rotation += constants.AST_ROT_SPEED * delta_time
+        if not GAME.cnn:
+            addToRotation = constants.AST_ROT_SPEED * delta_time
+        else:
+            addToRotation = constants.AST_ROT_SPEED_CNN
+        self.rotation += addToRotation
 
     def translate(self, delta_time):
         new_dir = self.change_direction()
-        fixed_speed = self.speed * delta_time
+        fixed_speed = self.speed * delta_time if not GAME.cnn else self.speed
         self.pos += fixed_speed * new_dir 
     
     def on_collision_enter(self, me, other):
