@@ -35,7 +35,7 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-        pass
+        asteroid_pool.spawn_asteroid()
     UPDATE.trigger()
 
 def act_agents(state):
@@ -64,7 +64,7 @@ def game_loop(*args):
         start = time.time()
         GAME.save_state(CANVAS.toDataURL('image/png'))
         save_state = time.time() - start
-        show_times(acting, upd, ren, late_up, save_state)
+        # show_times(acting, upd, ren, late_up, save_state)
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
 
