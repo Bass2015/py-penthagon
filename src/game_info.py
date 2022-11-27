@@ -22,13 +22,21 @@ class SingletonMeta(type):
         return cls._instances[cls]
 
 class Game():
+    """
+    Class containing all info about the game. 
+
+    Atributes
+    ---------------
+    cnn: bool
+        Whether or not the game is against a neural network. 
+    """
     __metaclass__ = SingletonMeta
     STACK_SIZE = 4
 
     def __init__(self) -> None:
         self.frame_count = 0
         self.is_new_game = True
-        self.mode = ''
+        self.cnn = False
 
     def save_state(self, frame):
         processed = process_frame(frame)

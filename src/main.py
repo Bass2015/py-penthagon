@@ -87,17 +87,18 @@ def main():
     #Starts the game loop
 
 def human_vs_random(*args):
-    GAME.mode = 'random'
+    GAME.cnn = False
     start_game([Human(SHIPS[0], player=1), 
                     RandomAI(SHIPS[1], player=2)])
 
 def human_vs_nn(*args):
-    GAME.mode = 'cnn'
+    GAME.cnn = True
+
     start_game([Human(SHIPS[0], player=1), 
                     QLearningAI(SHIPS[1], player=2)])
 
 def human_vs_human(*args):
-    GAME.mode = 'human'
+    GAME.cnn = False
     start_game([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
     save_file()

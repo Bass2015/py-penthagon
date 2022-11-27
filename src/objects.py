@@ -1,7 +1,7 @@
 import math, constants, time, random, geometry, easings, events
 
 from abc import ABC, abstractmethod
-from constants import AST_SPAWNING_LIMIT, CTX, COLORS
+from constants import AST_SPAWNING_LIMIT, CTX, COLORS, GAME
 from geometry import Vector2
 
 class GameObject(ABC):
@@ -22,8 +22,13 @@ class GameObject(ABC):
         return self.__name__()
 
     def translate(self, delta_time):
-        self.pos.x += self.speed * math.sin(self.rotation) * delta_time
-        self.pos.y -= self.speed * math.cos(self.rotation) * delta_time
+        addToX = self.speed * math.sin(self.rotation)
+        addToY = self.speed * math.cos(self.rotation)
+        if not GAME.cnn:
+            addToX *= delta_time
+            addToY *= delta_time
+        self.pos.x += addToX
+        self.pos.y -= addToY
         
     def keep_in_screen(self):
         if self.pos.x > constants.CANVAS.width - self.dimension:
