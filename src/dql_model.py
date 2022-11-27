@@ -16,6 +16,9 @@ class Brain():
         events.deboog(f'Output: {out}, Max_ind: {max_ind}')
         return max_ind
     
+    def train(self, state=None):
+        return self.act(state)
+    
 class Network:
     def __init__(self):
         self.layers = []

@@ -2,6 +2,7 @@ from geometry import Vector2
 from objects import GameObject, Bullet, Ship
 import constants
 import events
+
 def check_objects(asteroids, bullets, ships):
     for ship in ships:
         if asteroids:
