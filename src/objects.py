@@ -84,10 +84,10 @@ class GameObject(ABC):
 class Ship(GameObject):
     def __init__(self, player):
         self.speed = 0
-        self.max_speed = constants.SHIP_SPEED
+        self.max_speed = constants.SHIP_SPEED if not GAME.cnn else constants.SHIP_SPEED_CNN
         self.next_moves = []
-        self.rot_speed = constants.ROT_SPEED
-        self.acceleration = constants.SHIP_ACC
+        self.rot_speed = constants.ROT_SPEED if not GAME.cnn else constants.ROT_SPEED_CNN
+        self.acceleration = constants.SHIP_ACC if not GAME.cnn else constants.SHIP_ACC_CNN
         self.player = player
         self.last_shot = 0
         self.miniships = self.create_miniships()
@@ -162,14 +162,18 @@ class Ship(GameObject):
         elif constants.ACTIONS[1] in self.next_moves:
             self.speed = self.speed - self.acceleration if self.speed > self.max_speed*-1 else self.max_speed*-1
         else:
-            deceleration = math.copysign(constants.SHIP_DEC, self.speed)
-            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, abs_tol=constants.SHIP_DEC) else self.speed * 0
+            decFactor = constants.SHIP_DEC if not GAME.cnn else constants.SHIP_DEC_CNN
+            deceleration = math.copysign(decFactor, self.speed)
+            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, abs_tol=decFactor) else self.speed * 0
 
     def rotate(self, delta_time):
+        addRotation = self.rot_speed
+        if not GAME.cnn: 
+            addRotation *= delta_time
         if constants.ACTIONS[2] in self.next_moves:
-            self.rotation -= self.rot_speed * delta_time
+            self.rotation -= addRotation
         if constants.ACTIONS[3] in self.next_moves:
-            self.rotation += self.rot_speed * delta_time
+            self.rotation += addRotation
     
     def render(self):
         if self.prerender():
