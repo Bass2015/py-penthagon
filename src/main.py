@@ -35,7 +35,7 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-        asteroid_pool.spawn_asteroid()
+        PLAYERS[1].brain.network.save_params()
     UPDATE.trigger()
 
 def act_agents(state):
