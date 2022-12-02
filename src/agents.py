@@ -163,6 +163,7 @@ class RandomAI(Agent):
         self.change_time = 1.5
         self.current_move = 17
         super(RandomAI, self).__init__(ship, player)
+
     def act(self, *args):
         if not self.active: return []
         if time.time() - self.last_change > self.change_time:
@@ -180,10 +181,10 @@ class QLearningAI(Agent):
         if not self.active: return []
         state = args[0]
         if self.training:
-            self.train()
+            self.train(state)
         else:
             return self.get_action(self.brain.act(state)+8)
     
-    def train(state):
-        raise NotImplementedError
+    def train(self, state):
+        self.brain.train(state)
         

@@ -1,7 +1,7 @@
 import math, constants, time, random, geometry, easings, events
 
 from abc import ABC, abstractmethod
-from constants import AST_SPAWNING_LIMIT, CTX, COLORS
+from constants import AST_SPAWNING_LIMIT, CTX, COLORS, GAME
 from geometry import Vector2
 
 class GameObject(ABC):
@@ -22,8 +22,13 @@ class GameObject(ABC):
         return self.__name__()
 
     def translate(self, delta_time):
-        self.pos.x += self.speed * math.sin(self.rotation) * delta_time
-        self.pos.y -= self.speed * math.cos(self.rotation) * delta_time
+        addToX = self.speed * math.sin(self.rotation)
+        addToY = self.speed * math.cos(self.rotation)
+        if not GAME.cnn:
+            addToX *= delta_time
+            addToY *= delta_time
+        self.pos.x += addToX
+        self.pos.y -= addToY
         
     def keep_in_screen(self):
         if self.pos.x > constants.CANVAS.width - self.dimension:
@@ -112,6 +117,10 @@ class Ship(GameObject):
         self.collided = False
         self.rotation = 0
         self.pos = Vector2((constants.CANVAS.width/3) * self.player, constants.CANVAS.height/2)
+        if GAME.cnn:
+            self.max_speed = constants.SHIP_SPEED_CNN
+            self.rot_speed = constants.ROT_SPEED_CNN
+            self.acceleration = constants.SHIP_ACC_CNN
 
     def create_miniships(self):
         miniships = []
@@ -157,14 +166,18 @@ class Ship(GameObject):
         elif constants.ACTIONS[1] in self.next_moves:
             self.speed = self.speed - self.acceleration if self.speed > self.max_speed*-1 else self.max_speed*-1
         else:
-            deceleration = math.copysign(constants.SHIP_DEC, self.speed)
-            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, abs_tol=constants.SHIP_DEC) else self.speed * 0
+            decFactor = constants.SHIP_DEC if not GAME.cnn else constants.SHIP_DEC_CNN
+            deceleration = math.copysign(decFactor, self.speed)
+            self.speed = self.speed - deceleration if not math.isclose(self.speed, 0, abs_tol=decFactor) else self.speed * 0
 
     def rotate(self, delta_time):
+        addRotation = self.rot_speed
+        if not GAME.cnn: 
+            addRotation *= delta_time
         if constants.ACTIONS[2] in self.next_moves:
-            self.rotation -= self.rot_speed * delta_time
+            self.rotation -= addRotation
         if constants.ACTIONS[3] in self.next_moves:
-            self.rotation += self.rot_speed * delta_time
+            self.rotation += addRotation
     
     def render(self):
         if self.prerender():
@@ -218,7 +231,7 @@ class Ship(GameObject):
 class Bullet(GameObject):
     def __init__(self):
         self.player = ""
-        self.speed = constants.BULLET_SPEED
+        self.speed = constants.BULLET_SPEED if not GAME.cnn else constants.BULLET_SPEED_CNN
         width, points = self.init_points()
         self.color = constants.COLORS['bullet']
 
@@ -257,7 +270,7 @@ class Bullet(GameObject):
 
 class Asteroid(GameObject):
     def __init__(self):
-        self.speed = constants.AST_SPEED
+        self.speed = constants.AST_SPEED if not GAME.cnn else constants.AST_SPEED_CNN
         self.direction = Vector2.rand_unit()
         self.next_direction = Vector2.rand_unit()
         dim = constants.ASTEROID_RADIUS
@@ -309,11 +322,15 @@ class Asteroid(GameObject):
         return new_direction.normalized()
 
     def rotate(self, delta_time):
-        self.rotation += constants.AST_ROT_SPEED * delta_time
+        if not GAME.cnn:
+            addToRotation = constants.AST_ROT_SPEED * delta_time
+        else:
+            addToRotation = constants.AST_ROT_SPEED_CNN
+        self.rotation += addToRotation
 
     def translate(self, delta_time):
         new_dir = self.change_direction()
-        fixed_speed = self.speed * delta_time
+        fixed_speed = self.speed * delta_time if not GAME.cnn else self.speed
         self.pos += fixed_speed * new_dir 
     
     def on_collision_enter(self, me, other):
