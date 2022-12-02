@@ -175,13 +175,17 @@ class QLearningAI(Agent):
     def __init__(self, ship, player=0, training=False):
         self.training = training
         self.brain = Brain()
+        self.last_score = 0
         super(QLearningAI, self).__init__(ship, player)
     
     def act(self, *args):
         if not self.active: return []
         state = args[0]
+        # Meter lógica de first_frame en main
         if self.training:
-            self.train(state)
+            reward = self.score - self.last_score
+            self.last_score = self.score
+            self.train(reward, first_frame=False, state=state)
         else:
             return self.get_action(self.brain.act(state)+8)
     
