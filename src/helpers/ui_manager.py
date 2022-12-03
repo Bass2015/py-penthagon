@@ -22,7 +22,6 @@ class UIManager():
         self.players = players
         self.render_ui()
         self.spalsh_sc.style.display = 'none'
-        GAME_START.trigger()
        
     def render_ui(self):
         UI.clearRect(0,0, CANVAS.width, CANVAS.height)

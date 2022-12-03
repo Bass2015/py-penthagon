@@ -90,7 +90,7 @@ class Agent(ABC):
     def on_game_start(self):
         self.active = True
         self.score = 0
-        self.lifes = 5
+        self.lifes = constants.INIT_LIFES
         constants.SHIP_EXPLODED.suscribe(self)
         constants.COLLISION.suscribe(self)
         constants.GAME_ENDED.suscribe(self)

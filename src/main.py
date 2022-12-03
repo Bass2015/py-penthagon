@@ -105,7 +105,6 @@ def human_vs_human(*args):
     GAME.training = False
     start_game([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
-    save_file()
 
 def training(*args):
     GAME.cnn = True
@@ -123,14 +122,6 @@ def start_game(players):
     render()
     GAME.save_state(CANVAS.toDataURL('image/png'))
     requestAnimationFrame(game_loop_proxy)
-
-def save_file():
-    content = 'Hello world'
-    tag = document.createElement('a')
-    blob = Blob.new([content], {type: "text/plain"})
-    tag.href = URL.createObjectURL(blob)
-    tag.download = 'filename'
-    tag.click()
 
 main()
  
