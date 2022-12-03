@@ -95,7 +95,7 @@ def human_vs_nn(*args):
     GAME.cnn = True
 
     start_game([Human(SHIPS[0], player=1), 
-                    QLearningAI(SHIPS[1], player=2)])
+                    QLearningAI(SHIPS[1], player=2, training=True)])
 
 def human_vs_human(*args):
     GAME.cnn = False

@@ -185,10 +185,9 @@ class QLearningAI(Agent):
         if self.training:
             reward = self.score - self.last_score
             self.last_score = self.score
-            self.train(reward, first_frame=False, state=state)
+            brain_action = self.brain.train(reward, first_frame=False, env_state=state)
+            return self.get_action(brain_action+8)
         else:
             return self.get_action(self.brain.act(state)+8)
-    
-    def train(self, state):
-        self.brain.train(state)
+   
         
