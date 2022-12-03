@@ -17,9 +17,12 @@ class UIManager():
         self.spalsh_sc = document.getElementById('ui')
         STATE_CHANGED.suscribe(self)
         GAME_ENDED.suscribe(self)
+        GAME_START.suscribe(self)
     
     def initialize(self, players):
         self.players = players
+    
+    def on_game_start(self):
         self.render_ui()
         self.spalsh_sc.style.display = 'none'
        

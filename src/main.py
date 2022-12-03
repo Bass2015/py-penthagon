@@ -109,8 +109,7 @@ def human_vs_human(*args):
 def training(*args):
     GAME.cnn = True
     GAME.training = True
-    PLAYERS.clear()
-    PLAYERS.extend([RandomAI(SHIPS[0], player=1),
+    start_game([RandomAI(SHIPS[0], player=1),
                     QLearningAI(SHIPS[1], player=2)])
 
 def start_game(players):
