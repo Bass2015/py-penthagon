@@ -88,3 +88,4 @@ class GameStartEvent(Event):
     def trigger(self):
         for observer in self.observers:
             observer.on_game_start()
+

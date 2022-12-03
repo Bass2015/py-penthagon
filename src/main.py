@@ -5,7 +5,7 @@ import physics as physics
 from objects import *
 import pools
 import events
-from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
+from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME, GAME_ENDED
 from agents import Human, RandomAI, QLearningAI
 from ui_manager import UIManager
 import time
@@ -16,6 +16,17 @@ SHIPS = [Ship(player=1), Ship(player=2)]
 PLAYERS = []
 UIMANAGER = UIManager()
 frame = 0
+
+class LoopObserver:
+    def __init__(self):
+        # No tiene que ser game ended, tiene que ser match ended
+        GAME_ENDED.suscribe(self)
+        self.restart = False
+    
+    def on_game_ended(self, loser):
+        self.restart = True
+
+LOOP_OBS = LoopObserver()
 
 def on_key_down(*args):
     if args[0].key not in keysdown:
@@ -52,21 +63,24 @@ def late_update():
 
 def game_loop(*args):
     if GAME.frame_count % 2 == 0:
-        start = time.time()
+        # start = time.time()
         act_agents(GAME.state)
-        acting = time.time() - start
-        start = time.time()
+        # acting = time.time() - start
+        # start = time.time()
         update()
-        upd = time.time() - start
-        start = time.time()
+        # upd = time.time() - start
+        # start = time.time()
         render()
-        ren = time.time() - start
-        start = time.time()
+        # ren = time.time() - start
+        # start = time.time()
         late_update()
-        late_up = time.time() - start
-        start = time.time()
-        GAME.save_state(CANVAS.toDataURL('image/png'))
+        # late_up = time.time() - start
+        # start = time.time()
+        save_state()
         # show_times(acting, upd, ren, late_up, save_state)
+        if LOOP_OBS.restart:
+            on_match_end()
+            events.deboog('Game Ended')
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
 
@@ -79,6 +93,18 @@ def show_times(acting, upd, ren, late_up, save_state):
                       f'Total: {(acting + upd + ren + late_up + save_state):.2f}')
     
 game_loop_proxy = create_proxy(game_loop)
+
+def on_match_end():
+    update()
+    render()
+    save_state()
+    #notify_brain()
+    constants.GAME_START.trigger()
+    render()
+    update()
+    requestAnimationFrame(game_loop_proxy)
+
+match_end_proxy = create_proxy(on_match_end)
 
 def main():
     kdown_proxy = create_proxy(on_key_down)
@@ -119,8 +145,13 @@ def start_game(players):
     GAME.is_new_game = True
     constants.GAME_START.trigger()
     render()
-    GAME.save_state(CANVAS.toDataURL('image/png'))
+    save_state()
     requestAnimationFrame(game_loop_proxy)
+
+def save_state():
+    GAME.save_state(CANVAS.toDataURL('image/png'))
+    
+
 
 main()
  
