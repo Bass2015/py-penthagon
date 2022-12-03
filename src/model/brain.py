@@ -14,7 +14,7 @@ class Brain():
         self.network = Network()
         self.xp_buffer = []
         self.frame_count = 0
-        self.epsilon = 0.3
+        self.epsilon = EPSILON_MAX
     
     def act(self, state=None):
         out = self.network(state)
@@ -36,7 +36,7 @@ class Brain():
             self.action = self.act(self.state)
         if len(self.xp_buffer) >=  XP_MAX_SIZE:
             self.update_net()
-        self.epsilon = max(EPSILON_MIN, 0.3 - self.frame_count/EPSILON_FINAL_FRAME_DECAY)
+        self.epsilon = max(EPSILON_MIN, EPSILON_MAX - self.frame_count/EPSILON_FINAL_FRAME_DECAY)
         deboog(f'Epsilon: {self.epsilon}')
         return self.action
 
