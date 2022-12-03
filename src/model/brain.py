@@ -3,6 +3,7 @@ import random
 import numpy as np
 from collections import deque
 from events import deboog
+import time
 
 XP_BUFFER_SIZE = 10000
 SYNC_NETS = 1000
@@ -35,7 +36,6 @@ class Brain():
         if len(self.xp_buffer) >=  XP_BUFFER_SIZE:
             self.update_net()
         self.epsilon = max(EPSILON_MIN, EPSILON_MAX - self.frame_count/EPSILON_FINAL_FRAME_DECAY)
-        deboog(len(self.xp_buffer))
         return self.action
 
     def update_net(self):
@@ -79,3 +79,4 @@ class ExperienceBuffer:
                np.array(actions), \
                np.array(rewards, dtype=np.float32), \
                np.array(next_states)
+        

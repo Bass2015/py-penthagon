@@ -4,6 +4,7 @@ from pyodide import create_proxy
 import physics as physics
 from objects import *
 import pools
+import events
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
 from agents import Human, RandomAI, QLearningAI
 from ui_manager import UIManager
@@ -35,7 +36,8 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-        PLAYERS[1].brain.network.save_params()
+        sample = PLAYERS[1].brain.xp_buffer.sample(10)
+        events.deboog(sample[1])
     UPDATE.trigger()
 
 def act_agents(state):
