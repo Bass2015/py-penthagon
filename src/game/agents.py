@@ -89,6 +89,8 @@ class Agent(ABC):
     
     def on_game_start(self):
         self.active = True
+        self.score = 0
+        self.lifes = 5
         constants.SHIP_EXPLODED.suscribe(self)
         constants.COLLISION.suscribe(self)
         constants.GAME_ENDED.suscribe(self)
@@ -169,7 +171,10 @@ class RandomAI(Agent):
         if time.time() - self.last_change > self.change_time:
             self.current_move = random.randint(0,17)
             self.last_change = time.time()
-        return self.get_action(self.current_move)
+        if GAME.training:
+            return self.get_action(random.randint(0,17))
+        else:
+            return self.get_action(self.current_move)
 
 class QLearningAI(Agent):
     def __init__(self, ship, player=0, training=False):

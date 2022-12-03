@@ -37,6 +37,7 @@ class Game():
         self.frame_count = 0
         self.is_new_game = True
         self.cnn = False
+        self.training = False
 
     def save_state(self, frame):
         processed = process_frame(frame)

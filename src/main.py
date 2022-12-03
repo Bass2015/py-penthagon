@@ -8,6 +8,7 @@ import events
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
 from agents import Human, RandomAI, QLearningAI
 from ui_manager import UIManager
+import time
 
 keysdown = []
 bullet_pool, asteroid_pool = pools.BulletPool(), pools.AsteroidPool()
@@ -65,7 +66,6 @@ def game_loop(*args):
         late_up = time.time() - start
         start = time.time()
         GAME.save_state(CANVAS.toDataURL('image/png'))
-        save_state = time.time() - start
         # show_times(acting, upd, ren, late_up, save_state)
     requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
@@ -90,20 +90,29 @@ def main():
 
 def human_vs_random(*args):
     GAME.cnn = False
+    GAME.training = False
     start_game([Human(SHIPS[0], player=1), 
                     RandomAI(SHIPS[1], player=2)])
 
 def human_vs_nn(*args):
     GAME.cnn = True
-
+    GAME.training = False
     start_game([Human(SHIPS[0], player=1), 
-                    QLearningAI(SHIPS[1], player=2, training=True)])
+                    QLearningAI(SHIPS[1], player=2)])
 
 def human_vs_human(*args):
     GAME.cnn = False
+    GAME.training = False
     start_game([Human(SHIPS[0], player=1), 
                     Human(SHIPS[1], player=2)])
     save_file()
+
+def training(*args):
+    GAME.cnn = True
+    GAME.training = True
+    PLAYERS.clear()
+    PLAYERS.extend([RandomAI(SHIPS[0], player=1),
+                    QLearningAI(SHIPS[1], player=2)])
 
 def start_game(players):
     PLAYERS.clear()
