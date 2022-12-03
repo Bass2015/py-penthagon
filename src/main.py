@@ -1,7 +1,7 @@
 from random import Random
-import physics
 from js import document, requestAnimationFrame, Blob, URL
 from pyodide import create_proxy
+import physics as physics
 from objects import *
 import pools
 from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME
