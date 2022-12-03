@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from pydoc import plain
 import constants
 from events import deboog
-from constants import ACTIONS, KEYDOWN, KEYUP
+from constants import ACTIONS, KEYDOWN, KEYUP, GAME, GAME_START
 from objects import Asteroid, Bullet
 from brain import Brain
 from js import document
@@ -185,9 +185,14 @@ class QLearningAI(Agent):
         if self.training:
             reward = self.score - self.last_score
             self.last_score = self.score
-            brain_action = self.brain.train(reward, first_frame=False, env_state=state)
+            brain_action = self.brain.train(reward, first_frame=self.first_frame, env_state=state)
+            if self.first_frame:
+                self.first_frame = False
             return self.get_action(brain_action+8)
         else:
             return self.get_action(self.brain.act(state)+8)
    
+    def on_game_start(self):
+        super().on_game_start()
+        self.first_frame = True
         
