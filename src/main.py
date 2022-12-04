@@ -5,7 +5,7 @@ import physics as physics
 from objects import *
 import pools
 import events
-from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME, GAME_ENDED
+from constants import CANVAS, CTX, UPDATE, RENDER, KEYDOWN, KEYUP, GAME, MATCH_ENDED
 from agents import Human, RandomAI, QLearningAI
 from ui_manager import UIManager
 import time
@@ -20,10 +20,10 @@ frame = 0
 class LoopObserver:
     def __init__(self):
         # No tiene que ser game ended, tiene que ser match ended
-        GAME_ENDED.suscribe(self)
+        MATCH_ENDED.suscribe(self)
         self.restart = False
     
-    def on_game_ended(self, loser):
+    def on_match_ended(self):
         self.restart = True
 
 LOOP_OBS = LoopObserver()
@@ -78,10 +78,12 @@ def game_loop(*args):
         # start = time.time()
         save_state()
         # show_times(acting, upd, ren, late_up, save_state)
-        if LOOP_OBS.restart:
-            on_match_end()
-            events.deboog('Game Ended')
-    requestAnimationFrame(game_loop_proxy)
+    if LOOP_OBS.restart:
+        on_match_end()
+        LOOP_OBS.restart = False
+        
+    else: 
+        requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
 
 def show_times(acting, upd, ren, late_up, save_state):
@@ -99,9 +101,12 @@ def on_match_end():
     render()
     save_state()
     #notify_brain()
+    final_score = f'FINAL: Player1 {PLAYERS[0].score}, Player2 {PLAYERS[1].score} | '
     constants.GAME_START.trigger()
+    start_score = f'START: Player1 {PLAYERS[0].score}, Player2 {PLAYERS[1].score}'
+    events.deboog(final_score + start_score)
     render()
-    update()
+    save_state()
     requestAnimationFrame(game_loop_proxy)
 
 match_end_proxy = create_proxy(on_match_end)
@@ -135,7 +140,7 @@ def human_vs_human(*args):
 def training(*args):
     GAME.cnn = True
     GAME.training = True
-    start_game([RandomAI(SHIPS[0], player=1),
+    start_game([Human(SHIPS[0], player=1),
                     QLearningAI(SHIPS[1], player=2)])
 
 def start_game(players):

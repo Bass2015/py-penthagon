@@ -25,6 +25,7 @@ SHIP_EXPLODED = events.ShipExplodedEvent()
 STATE_CHANGED = events.StateChangedEvent()
 GAME_ENDED = events.GameEndedEvent()
 GAME_START = events.GameStartEvent()
+MATCH_ENDED = events.TrainingMatchEnded()
 
 # Actions
 ACTIONS = {0: "FORWARD",

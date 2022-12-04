@@ -89,3 +89,7 @@ class GameStartEvent(Event):
         for observer in self.observers:
             observer.on_game_start()
 
+class TrainingMatchEnded(Event):
+    def trigger(self):
+        for observer in self.observers:
+            observer.on_match_ended()

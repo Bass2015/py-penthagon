@@ -64,6 +64,9 @@ class GameObject(ABC):
 
     def on_game_ended(self, loser):
         self.active = False
+    
+    def on_match_ended(self):
+        self.on_game_ended(None)
 
     @abstractmethod
     def update(self, delta_time):
@@ -103,11 +106,14 @@ class Ship(GameObject):
     def __name__(self):
             return f"Ship from player {self.player}"
 
-    def on_game_ended(self, looser):
+    def on_game_ended(self, loser):
         self.respawning = False
         self.phantom = False
         self.next_moves.clear()
-        super().on_game_ended(looser)
+        super().on_game_ended(loser)
+    
+    def on_match_ended(self):
+        self.on_game_ended(None)
     
     def on_game_start(self):
         self.next_moves.clear()

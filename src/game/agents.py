@@ -70,7 +70,10 @@ class Agent(ABC):
             self.score += 50
         if self.lifes == 0: 
             constants.STATE_CHANGED.trigger()
-            constants.GAME_ENDED.trigger(self)
+            if GAME.training:
+                constants.MATCH_ENDED.trigger()
+            else:    
+                constants.GAME_ENDED.trigger(self)
         else:
             constants.STATE_CHANGED.trigger()
         

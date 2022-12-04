@@ -12,11 +12,19 @@ class ObjectPool():
         constants.OBJECTOUT.suscribe(self)
         constants.GAME_ENDED.suscribe(self)
         constants.GAME_START.suscribe(self)
+        constants.MATCH_ENDED.suscribe(self)
 
-    def on_game_ended(self, looser):
+    def on_game_ended(self, loser):
         self.active_objects.clear()
         self.inactive_objects.clear()
         self.active = False
+    
+    def on_match_ended(self):
+        for obj in self.active_objects:
+            obj.active = False
+            self.inactive_objects.append(obj)
+        self.active_objects.clear()
+        
 
     def on_game_start(self):
         self.active = True
