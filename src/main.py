@@ -48,7 +48,7 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-        sample = PLAYERS[1].brain.xp_buffer.sample(10)
+         PLAYERS[1].brain.save_info_document()
     UPDATE.trigger()
 
 def act_agents(state):

@@ -231,7 +231,6 @@ class Ship(GameObject):
             (isinstance(other, Bullet) and
                 other.player != self.player)):
             two = True
-        # if self.player == 1: events.deboog(prompt)
         return one and two
 
 class Bullet(GameObject):

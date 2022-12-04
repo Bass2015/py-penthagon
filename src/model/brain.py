@@ -1,9 +1,12 @@
-from dql_model import Network
 import random
 import numpy as np
+import json
+import time
+from dql_model import Network
 from collections import deque
 from events import deboog
-import time
+from js import document, Blob, URL
+
 
 XP_BUFFER_SIZE = 10000
 SYNC_NETS = 1000
@@ -11,12 +14,24 @@ EPSILON_MAX = 1.0
 EPSILON_MIN = 0.01
 EPSILON_FINAL_FRAME_DECAY = 300000
 
+END_TRAINING_SCORE = 200
+
 class Brain():
     def __init__(self) -> None:
         self.network = Network()
         self.xp_buffer = ExperienceBuffer(XP_BUFFER_SIZE)
         self.frame_count = 0
         self.epsilon = EPSILON_MAX
+        self.scores = []
+        self.best_mean_score = None
+        self.training_info = {
+            'game_number': [],
+            'frames': [],
+            'epsilon': [],
+            'score': [],
+            'mean_score': [], 
+            'best_mean_score':[]
+        }
     
     def act(self, state=None):
         out = self.network(state)
@@ -51,7 +66,40 @@ class Brain():
 
     def on_match_ended(self, reward, final_score, env_state):
         self.xp_buffer.append(self.state, self.action, reward, env_state)
-
+        self.scores.append(final_score)
+        mean_score = np.mean(self.scores[-100:])
+        if self.best_mean_score is None or mean_score > self.best_mean_score:
+            self.network.save_params(mean_score)
+            self.best_mean_score = mean_score
+        self.save_info(final_score, mean_score)
+        self.show_info(final_score, mean_score)
+        if mean_score >= END_TRAINING_SCORE:
+            # Trigger Training Ended event
+            self.save_info_document()
+            
+    
+    def save_info_document(self):
+        tag = document.createElement('a')
+        blob = Blob.new([json.dumps(self.training_info)])
+        tag.innerHTML = f'Training information'
+        tag.href = URL.createObjectURL(blob)
+        document.getElementById('training_info').appendChild(tag)
+        return tag
+    
+    def save_info(self, final_score, mean_score):
+        self.training_info['game_number'].append(len(self.scores))
+        self.training_info['frames'].append(self.frame_count)
+        self.training_info['epsilon'].append(self.epsilon)
+        self.training_info['score'].append(final_score)
+        self.training_info['mean_score'].append(mean_score)
+        self.training_info['best_mean_score'].append(self.best_mean_score)
+    
+    def show_info(self, final_score, mean_score):
+        deboog(f"""Game No: {len(self.scores)}, 
+                   Score: {final_score},
+                   Frames: {self.frame_count}, 
+                   Epsilon: {self.epsilon},
+                   Mean Score: {mean_score}""")
 
 class ExperienceBuffer:
     def __init__(self, max_size):
