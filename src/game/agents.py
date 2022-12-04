@@ -200,7 +200,12 @@ class QLearningAI(Agent):
         else:
             return self.get_action(self.brain.act(state)+8)
    
+    def on_match_ended(self, state):
+        reward = self.score - self.last_score
+        self.brain.on_match_ended(reward, self.score, env_state=state)
+
     def on_game_start(self):
         super().on_game_start()
+        self.last_score = 0
         self.first_frame = True
         

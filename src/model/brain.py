@@ -49,6 +49,10 @@ class Brain():
         # optimize parameters
         pass
 
+    def on_match_ended(self, reward, final_score, env_state):
+        self.xp_buffer.append(self.state, self.action, reward, env_state)
+
+
 class ExperienceBuffer:
     def __init__(self, max_size):
         self.buffer = {

@@ -49,7 +49,6 @@ def render(*args):
 def update():
     if 'g' in keysdown:
         sample = PLAYERS[1].brain.xp_buffer.sample(10)
-        events.deboog(sample[1])
     UPDATE.trigger()
 
 def act_agents(state):
@@ -81,7 +80,6 @@ def game_loop(*args):
     if LOOP_OBS.restart:
         on_match_end()
         LOOP_OBS.restart = False
-        
     else: 
         requestAnimationFrame(game_loop_proxy)
     GAME.frame_count += 1
@@ -100,11 +98,8 @@ def on_match_end():
     update()
     render()
     save_state()
-    #notify_brain()
-    final_score = f'FINAL: Player1 {PLAYERS[0].score}, Player2 {PLAYERS[1].score} | '
+    PLAYERS[1].on_match_ended(GAME.state)
     constants.GAME_START.trigger()
-    start_score = f'START: Player1 {PLAYERS[0].score}, Player2 {PLAYERS[1].score}'
-    events.deboog(final_score + start_score)
     render()
     save_state()
     requestAnimationFrame(game_loop_proxy)
@@ -141,7 +136,7 @@ def training(*args):
     GAME.cnn = True
     GAME.training = True
     start_game([Human(SHIPS[0], player=1),
-                    QLearningAI(SHIPS[1], player=2)])
+                    QLearningAI(SHIPS[1], player=2, training=True)])
 
 def start_game(players):
     PLAYERS.clear()
