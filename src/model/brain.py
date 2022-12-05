@@ -9,10 +9,12 @@ from js import document, Blob, URL
 
 
 XP_BUFFER_SIZE = 10000
+BATCH_SIZE = 10
 SYNC_NETS_FRAMES = 100
 EPSILON_MAX = 1.0
 EPSILON_MIN = 0.01
 EPSILON_FINAL_FRAME_DECAY = 300000
+GAMMA = 0.99
 
 END_TRAINING_SCORE = 200
 
@@ -55,8 +57,8 @@ class Brain():
             self.action = random.randint(0, 8)
         else:
             self.action = self.act(self.state)
-        # if len(self.xp_buffer) >=  XP_BUFFER_SIZE:
-        self.update_net()
+        if len(self.xp_buffer) >=  XP_BUFFER_SIZE:
+            self.update_net()
         self.epsilon = max(EPSILON_MIN, EPSILON_MAX - self.frame_count/EPSILON_FINAL_FRAME_DECAY)
         return self.action
 
@@ -64,11 +66,27 @@ class Brain():
         if self.frame_count % SYNC_NETS_FRAMES == 0:
             self.sync_nets()
         # zero_grad
-        # sample from xp_buffer
+        sample = self.xp_buffer.sample(BATCH_SIZE)
+        loss = self.calculate_loss(sample)
         # calculate loss
         # backwards propagation
         # optimize parameters
-        pass
+        
+    def calculate_loss(self, sample):
+        states, actions, rewards, next_states = sample
+        Q_preds = []
+        Q_exp = []
+        for i in range(len(states)):
+            Q = self.network(states[i])
+            Q = Q.squeeze()
+            Q_preds.append(Q[actions[i]]) 
+            Q_exp.append(self.calculate_Q_hat(rewards[i], next_states[i]))
+    
+    def calculate_Q_hat(self, reward, next_state):
+        Q = self.target_net(next_state)
+        maxQ = np.max(Q)
+        # Bellman equation
+        return reward + GAMMA * maxQ
 
     def on_match_ended(self, reward, final_score, env_state):
         self.xp_buffer.append(self.state, self.action, reward, env_state)

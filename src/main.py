@@ -48,7 +48,7 @@ def render(*args):
 
 def update():
     if 'g' in keysdown:
-         PLAYERS[1].brain.save_info_document()
+         PLAYERS[1].brain.update_net()
     UPDATE.trigger()
 
 def act_agents(state):
