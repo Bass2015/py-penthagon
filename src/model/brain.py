@@ -9,7 +9,7 @@ from js import document, Blob, URL
 
 
 XP_BUFFER_SIZE = 10000
-SYNC_NETS = 1000
+SYNC_NETS_FRAMES = 100
 EPSILON_MAX = 1.0
 EPSILON_MIN = 0.01
 EPSILON_FINAL_FRAME_DECAY = 300000
@@ -19,9 +19,11 @@ END_TRAINING_SCORE = 200
 class Brain():
     def __init__(self) -> None:
         self.network = Network()
+        self.target_net = Network()
+        # self.sync_nets()
         self.xp_buffer = ExperienceBuffer(XP_BUFFER_SIZE)
         self.frame_count = 0
-        self.epsilon = EPSILON_MAX
+        self.epsilon = 0
         self.scores = []
         self.best_mean_score = None
         self.training_info = {
@@ -32,6 +34,11 @@ class Brain():
             'mean_score': [], 
             'best_mean_score':[]
         }
+
+    def sync_nets(self):
+        self.target_net.set_params(self.network.get_params())
+        self.network.save_params('net')
+        self.target_net.save_params('tgt_net')
     
     def act(self, state=None):
         out = self.network(state)
@@ -48,15 +55,14 @@ class Brain():
             self.action = random.randint(0, 8)
         else:
             self.action = self.act(self.state)
-        if len(self.xp_buffer) >=  XP_BUFFER_SIZE:
-            self.update_net()
+        # if len(self.xp_buffer) >=  XP_BUFFER_SIZE:
+        self.update_net()
         self.epsilon = max(EPSILON_MIN, EPSILON_MAX - self.frame_count/EPSILON_FINAL_FRAME_DECAY)
         return self.action
 
     def update_net(self):
-        if self.frame_count % SYNC_NETS == 0:
-            #sync_nets()
-            pass
+        if self.frame_count % SYNC_NETS_FRAMES == 0:
+            self.sync_nets()
         # zero_grad
         # sample from xp_buffer
         # calculate loss

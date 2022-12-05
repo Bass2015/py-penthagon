@@ -37,19 +37,25 @@ class Network:
             x = output
         return output
     
-    def save_params(self, mean_score=0):
+    def get_params(self):
         params = {}
         for layer in range(len(self.layers)):
-            params[layer] = {}
+            params[str(layer)] = {}
             if not isinstance(self.layers[layer], Flatten):
-                params[layer]['w'] = self.layers[layer].weights.tolist()
-                params[layer]['b'] = self.layers[layer].bias.tolist()
+                params[str(layer)]['w'] = self.layers[layer].weights.tolist()
+                params[str(layer)]['b'] = self.layers[layer].bias.tolist()
+        return params
+    
+    def set_params(self, params):
+        for layer in range(len(self.layers)):
+            if not isinstance(self.layers[layer], Flatten):
+                self.layers[layer].weights =  np.asarray(params[str(layer)]['w'])
+                self.layers[layer].bias = np.asarray(params[str(layer)]['b'])
+
+    def save_params(self, mean_score=0):
+        params = self.get_params()
         tag = self.create_tag(mean_score, params)
         # self.download_params(tag)
-
-    def download_params(self, tag):
-        tag.download = 'filename'
-        tag.click()
 
     def create_tag(self, mean_score, params):
         tag = document.createElement('a')
@@ -58,14 +64,15 @@ class Network:
         tag.href = URL.createObjectURL(blob)
         document.getElementById('params').appendChild(tag)
         return tag
+
+    def download_params(self, tag):
+        tag.download = 'filename'
+        tag.click()
     
     def load_params(self):
         w = document.getElementById('weights').innerHTML
         params = json.loads(w)
-        for layer in range(len(self.layers)):
-            if not isinstance(self.layers[layer], Flatten):
-                self.layers[layer].weights =  np.asarray(params[str(layer)]['w'])
-                self.layers[layer].bias = np.asarray(params[str(layer)]['b'])
+        self.set_params(params)
     
 
 
