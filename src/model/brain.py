@@ -67,20 +67,29 @@ class Brain():
             self.sync_nets()
         # zero_grad
         sample = self.xp_buffer.sample(BATCH_SIZE)
-        loss = self.calculate_loss(sample)
-        # calculate loss
+        Q_pred, Q_exp = self.calculate_Q_values(sample)
+        cost = self.mean_squared_error(Q_pred, Q_exp)
         # backwards propagation
         # optimize parameters
         
-    def calculate_loss(self, sample):
+    def calculate_Q_values(self, sample):
         states, actions, rewards, next_states = sample
         Q_preds = []
         Q_exp = []
         for i in range(len(states)):
             Q = self.network(states[i])
             Q = Q.squeeze()
-            Q_preds.append(Q[actions[i]]) 
+            Q_preds.append(Q[actions[i]])
             Q_exp.append(self.calculate_Q_hat(rewards[i], next_states[i]))
+        return Q_preds, Q_exp
+        
+    def mean_squared_error(self, pred, exp):
+        deboog(f'{pred}')
+        pred = np.asarray(pred)
+        exp = np.asarray(exp)
+        error = exp - pred
+        squared_error = np.square(error)
+        return np.mean(squared_error)
     
     def calculate_Q_hat(self, reward, next_state):
         Q = self.target_net(next_state)
@@ -144,6 +153,8 @@ class ExperienceBuffer:
         self.buffer['next_states'].append(next_state)
     
     def sample(self, batch_size):
+        # ERRORRR
+        # ragged nested sequence on actions while creating np.array
         indices = np.random.choice(len(self.buffer['states']), 
                             size=batch_size, 
                             replace=False)
