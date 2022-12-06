@@ -69,8 +69,15 @@ class Brain():
         sample = self.xp_buffer.sample(BATCH_SIZE)
         Q_pred, Q_exp = self.calculate_Q_values(sample)
         cost = self.mean_squared_error(Q_pred, Q_exp)
-        # backwards propagation
-        # optimize parameters
+        # Para cada sample:    <------- Back Prop
+            # Calcular la pérdida para cada sample
+            # Calcular las derivadas parciales de cada w y b
+            # Guardarlas (dentro de cada layer, creo que tendré que hacerlo)
+        # Terminado el loop:   <------- Optimizer
+            # Sumar las derivadas parciales (supongo que dentro de la layer)
+            # Dividir por BATCH_SIZE
+            # Multiplicar por learning rate
+            # Restar eso a w y b
         
     def calculate_Q_values(self, sample):
         states, actions, rewards, next_states = sample
@@ -89,6 +96,10 @@ class Brain():
         exp = np.asarray(exp)
         error = exp - pred
         squared_error = np.square(error)
+        # Creo que no tengo que devolver el mean aquí,
+        # tengo que devolver el vector con todos los errores, 
+        # pasárselo a las layers, 
+        # y ellas se ocuparán de recorrer ese vector y calcular sus gradientes
         return np.mean(squared_error)
     
     def calculate_Q_hat(self, reward, next_state):

@@ -47,7 +47,7 @@ class Conv2D:
         dx = np.zeros(self.inputs.shape)
         dw = np.zeros(self.weights.shape)
         db = np.zeros(self.bias.shape)
-
+        # Calcular derivada de relu
         F, W, H = dy.shape
         for f in range(F):
             for w in range(0, W, self.stride):
