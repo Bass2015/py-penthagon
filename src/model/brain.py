@@ -100,6 +100,8 @@ class Brain():
         # tengo que devolver el vector con todos los errores, 
         # pasárselo a las layers, 
         # y ellas se ocuparán de recorrer ese vector y calcular sus gradientes
+        # Creo que tengo que devolver esto: 
+        # return squared_error / 2
         return np.mean(squared_error)
     
     def calculate_Q_hat(self, reward, next_state):
