@@ -1,4 +1,5 @@
 import numpy as np
+from events import deboog
 
 class Conv2D:
     # Agregar la función de activación. 
@@ -84,6 +85,9 @@ class FullyConnected:
         self.inputs = inputs
         return np.dot(self.inputs, self.weights) + self.bias.T
 
+    def zero_grad(self):
+        self.dw = 'asd'
+
     def backward(self, dy):
 
         if dy.shape[0] == self.inputs.shape[0]:
@@ -92,8 +96,8 @@ class FullyConnected:
         db = np.sum(dy, axis=1, keepdims=True)
         dx = np.dot(dy.T, self.weights.T)
 
-        self.weights -= self.lr * dw.T
-        self.bias -= self.lr * db
+        # self.weights -= self.lr * dw.T
+        # self.bias -= self.lr * db
 
         return dx
 

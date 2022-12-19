@@ -8,7 +8,7 @@ from events import deboog
 from js import document, Blob, URL
 
 
-XP_BUFFER_SIZE = 10000
+XP_BUFFER_SIZE = 100 # 10000
 BATCH_SIZE = 10
 SYNC_NETS_FRAMES = 100
 EPSILON_MAX = 1.0
@@ -58,37 +58,47 @@ class Brain():
         else:
             self.action = self.act(self.state)
         if len(self.xp_buffer) >=  XP_BUFFER_SIZE:
-            self.update_net()
+            self.train_loop()
         self.epsilon = max(EPSILON_MIN, EPSILON_MAX - self.frame_count/EPSILON_FINAL_FRAME_DECAY)
         return self.action
 
-    def update_net(self):
+    def train_loop(self):
         if self.frame_count % SYNC_NETS_FRAMES == 0:
             self.sync_nets()
-        # zero_grad
-        sample = self.xp_buffer.sample(BATCH_SIZE)
-        Q_pred, Q_exp = self.calculate_Q_values(sample)
-        cost = self.mean_squared_error(Q_pred, Q_exp)
+        # Zero_grad -> vaciar las dw y db de las layers.
+        states, actions, rewards, next_states = self.xp_buffer.sample(BATCH_SIZE)
+        losses = np.zeros(BATCH_SIZE)
+        for n in range(len(states)):
+            loss, d_loss = self.calculate_d_loss(states[n], actions[n], rewards[n], next_states[n])
+            # self.network.backward(d_loss)
+            losses[n] = loss
+        sample_cost = losses.sum()/2*BATCH_SIZE
+        deboog(f'Loss shape: {sample_cost}')
+
+        
         # Para cada sample:    <------- Back Prop
             # Calcular la pérdida para cada sample
             # Calcular las derivadas parciales de cada w y b
             # Guardarlas (dentro de cada layer, creo que tendré que hacerlo)
-        # Terminado el loop:   <------- Optimizer
+        # Terminado el loop:   
             # Sumar las derivadas parciales (supongo que dentro de la layer)
             # Dividir por BATCH_SIZE
+        # Optimizer: 
             # Multiplicar por learning rate
             # Restar eso a w y b
         
-    def calculate_Q_values(self, sample):
-        states, actions, rewards, next_states = sample
-        Q_preds = []
-        Q_exp = []
-        for i in range(len(states)):
-            Q = self.network(states[i])
-            Q = Q.squeeze()
-            Q_preds.append(Q[actions[i]])
-            Q_exp.append(self.calculate_Q_hat(rewards[i], next_states[i]))
-        return Q_preds, Q_exp
+    def calculate_d_loss(self, state, action, reward, next_state):
+        """Calculates the predicted Q value (the state-action pairs that we chose) and 
+        the expected Q value (with the target net and Bellman equation. 
+        Then, calculate the derivative of the loss"""
+        Q = self.network(state)
+        Q_pred = Q[0,action]
+        Q_exp = self.bellman_equation(reward, next_state)
+        loss = 0.5 * (Q_pred - Q_exp)**2
+        # Derivative with respect of the action taken
+        d_loss = np.zeros_like(Q)
+        d_loss[0, action] = Q_exp - Q_pred
+        return loss,  d_loss
         
     def mean_squared_error(self, pred, exp):
         deboog(f'{pred}')
@@ -104,7 +114,7 @@ class Brain():
         # return squared_error / 2
         return np.mean(squared_error)
     
-    def calculate_Q_hat(self, reward, next_state):
+    def bellman_equation(self, reward, next_state):
         Q = self.target_net(next_state)
         maxQ = np.max(Q)
         # Bellman equation
