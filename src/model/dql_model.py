@@ -73,6 +73,3 @@ class Network:
         w = document.getElementById('weights').innerHTML
         params = json.loads(w)
         self.set_params(params)
-    
-
-
