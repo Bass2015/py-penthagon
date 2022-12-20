@@ -144,7 +144,7 @@ class ReLU:
         self.inputs = inputs
         return np.maximum(0, inputs)
 
-    def backward(self):
+    def backward(self, dl):
         return np.greater(self.inputs, 0.).astype(np.float32)
         
     def extract(self):
