@@ -8,7 +8,7 @@ UI = document.getElementById("ui_canvas").getContext("2d")
 
 GOLDEN_NUMBER = (1 + 5 ** 0.5) / 2
 
-INIT_LIFES = 1
+INIT_LIFES = 3
 
 GAME = Game()
 # Game Events

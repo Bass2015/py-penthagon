@@ -9,7 +9,7 @@ from events import deboog
 from js import document, Blob, URL
 
 
-XP_BUFFER_SIZE = 100 # 10000
+XP_BUFFER_SIZE = 100 #10000
 BATCH_SIZE = 10
 LEARNING_RATE = 0.01
 SYNC_NETS_FRAMES = 100
@@ -18,7 +18,7 @@ EPSILON_MIN = 0.01
 EPSILON_FINAL_FRAME_DECAY = 300000
 GAMMA = 0.99
 
-END_TRAINING_SCORE = 200
+END_TRAINING_SCORE = 150
 
 class Brain():
     def __init__(self) -> None:

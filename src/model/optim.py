@@ -1,4 +1,4 @@
-from layers import Flatten
+from layers import Flatten, ReLU
 
 
 # Esta clase recibe el batch size, suma los valores de los gradientes y hace la media 
@@ -16,7 +16,7 @@ class Optimizer:
 
 class SGD(Optimizer):
     def update_params(self, layer):
-        if not isinstance(layer, Flatten):
+        if not (isinstance(layer, Flatten) or (isinstance(layer, ReLU))):
             dw = layer.weight_gradients.mean(axis=0)
             db = layer.bias_gradients.mean(axis=0)
             layer.weights -= self.lr * dw
