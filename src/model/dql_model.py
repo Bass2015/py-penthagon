@@ -1,11 +1,11 @@
 import random
-# import events
-# import constants
+import events
+import constants
 import numpy as np
 import time
 import json
 from layers import *
-# from js import document, Blob, URL
+from js import document, Blob, URL
 
 class Network:
     def __init__(self):
@@ -51,14 +51,15 @@ class Network:
         params = {}
         for layer in range(len(self.layers)):
             params[str(layer)] = {}
-            if not isinstance(self.layers[layer], Flatten):
+            #Arreglar esto v. Ponerlo como método en Layer
+            if not (isinstance(self.layers[layer], Flatten) or isinstance(self.layers[layer], ReLU)):
                 params[str(layer)]['w'] = self.layers[layer].weights.tolist()
                 params[str(layer)]['b'] = self.layers[layer].bias.tolist()
         return params
     
     def set_params(self, params):
         for layer in range(len(self.layers)):
-            if not isinstance(self.layers[layer], Flatten):
+            if not (isinstance(self.layers[layer], Flatten) or isinstance(self.layers[layer], ReLU)):
                 self.layers[layer].weights =  np.asarray(params[str(layer)]['w'])
                 self.layers[layer].bias = np.asarray(params[str(layer)]['b'])
 
@@ -67,19 +68,19 @@ class Network:
         tag = self.create_tag(mean_score, params)
         # self.download_params(tag)
 
-    # def create_tag(self, mean_score, params):
-    #     tag = document.createElement('a')
-    #     blob = Blob.new([json.dumps(params)])
-    #     tag.innerHTML = f'Mean_score: {mean_score}'
-    #     tag.href = URL.createObjectURL(blob)
-    #     document.getElementById('params').appendChild(tag)
-    #     return tag
+    def create_tag(self, mean_score, params):
+        tag = document.createElement('a')
+        blob = Blob.new([json.dumps(params)])
+        tag.innerHTML = f'Mean_score: {mean_score}'
+        tag.href = URL.createObjectURL(blob)
+        document.getElementById('params').appendChild(tag)
+        return tag
 
-    # def download_params(self, tag):
-    #     tag.download = 'filename'
-    #     tag.click()
+    def download_params(self, tag):
+        tag.download = 'filename'
+        tag.click()
     
-    # def load_params(self):
-    #     w = document.getElementById('weights').innerHTML
-    #     params = json.loads(w)
-    #     self.set_params(params)
+    def load_params(self):
+        w = document.getElementById('weights').innerHTML
+        params = json.loads(w)
+        self.set_params(params)
