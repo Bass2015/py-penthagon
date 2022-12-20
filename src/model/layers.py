@@ -46,6 +46,9 @@ class Conv2D:
         grads_shape = list(self.weights.shape)
         grads_shape.insert(0, batch_size)
         self.weight_gradients = np.zeros(grads_shape)
+        b_grads_shape = list(self.bias.shape)
+        b_grads_shape.insert(0, batch_size)
+        self.bias_gradients = np.zeros(b_grads_shape)
 
     def backward(self, dy, batch_index):
         print(f'{self.name}--->, W.shape: {self.weights.shape}, DY.shape: {dy.shape}, Inputs: {self.inputs.shape}')
@@ -66,7 +69,8 @@ class Conv2D:
             db[f] = np.sum(dy[f, :, :])
 
         # Saving the gradiens to calculate the mean later
-        # self.weight_gradients[batch_index] = dw
+        self.weight_gradients[batch_index] = dw
+        self.bias_gradients[batch_index] = db
         print(f'\tDW.shape: {dw.shape}, Grads.shape: {self.weight_gradients.shape}')
         self.weights -= self.lr * dw
         self.bias -= self.lr * db
@@ -95,9 +99,12 @@ class FullyConnected:
         return np.dot(self.inputs, self.weights) + self.bias.T
 
     def zero_grad(self, batch_size):
-        grads_shape = list(self.weights.shape)
-        grads_shape.insert(0, batch_size)
-        self.weight_gradients = np.zeros(grads_shape)
+        w_grads_shape = list(self.weights.shape)
+        w_grads_shape.insert(0, batch_size)
+        self.weight_gradients = np.zeros(w_grads_shape)
+        b_grads_shape = list(self.bias.shape)
+        b_grads_shape.insert(0, batch_size)
+        self.bias_gradients = np.zeros(b_grads_shape)
         
 
     def backward(self, dy, batch_index):
@@ -109,7 +116,8 @@ class FullyConnected:
         dx = np.dot(dy.T, self.weights.T)
         
         # Saving the gradiens to calculate the mean later
-        # self.weight_gradients[batch_index, :, :] = dw.T
+        self.weight_gradients[batch_index] = dw.T
+        self.bias_gradients[batch_index] = db
 
         print(f'\tDW.shape: {dw.shape}, Grads.shape: {self.weight_gradients.shape}')
 

@@ -17,5 +17,7 @@ class Optimizer:
 class SGD(Optimizer):
     def update_params(self, layer):
         if not isinstance(layer, Flatten):
-            layer.weights -= self.lr * layer.dw
-            layer.bias -= self.lr * layer.db
+            dw = layer.weight_gradients.mean(axis=0)
+            db = layer.bias_gradients.mean(axis=0)
+            layer.weights -= self.lr * dw
+            layer.bias -= self.lr * db

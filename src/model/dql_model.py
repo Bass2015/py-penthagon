@@ -40,7 +40,7 @@ class Network:
     def backward(self, dl, batch_index):
         for layer in reversed(self.layers):
             dl = layer.backward(dl, batch_index)
-     
+             
     def zero_grad(self, batch_size):
         for layer in self.layers:
             layer.zero_grad(batch_size)
