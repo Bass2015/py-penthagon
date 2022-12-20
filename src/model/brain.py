@@ -66,14 +66,15 @@ class Brain():
         if self.frame_count % SYNC_NETS_FRAMES == 0:
             self.sync_nets()
         # Zero_grad -> vaciar las dw y db de las layers.
+        self.network.zero_grad(BATCH_SIZE)
         states, actions, rewards, next_states = self.xp_buffer.sample(BATCH_SIZE)
         losses = np.zeros(BATCH_SIZE)
-        for n in range(len(states)):
-            loss, d_loss = self.calculate_d_loss(states[n], actions[n], rewards[n], next_states[n])
-            # self.network.backward(d_loss)
-            losses[n] = loss
-        sample_cost = losses.sum()/2*BATCH_SIZE
-        deboog(f'Loss shape: {sample_cost}')
+        for batch_index in range(len(states)):
+            loss, d_loss = self.calculate_d_loss(states[batch_index], actions[batch_index], rewards[batch_index], next_states[batch_index])
+            self.network.backward(d_loss, batch_index)
+            losses[batch_index] = loss
+        sample_cost = losses.sum()/BATCH_SIZE
+        
 
         
         # Para cada sample:    <------- Back Prop

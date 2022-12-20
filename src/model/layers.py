@@ -1,5 +1,5 @@
 import numpy as np
-from events import deboog
+# from events import deboog
 
 class Conv2D:
     # Agregar la función de activación. 
@@ -42,7 +42,13 @@ class Conv2D:
         else:
             return outputs
 
-    def backward(self, dy):
+    def zero_grad(self, batch_size):
+        grads_shape = list(self.weights.shape)
+        grads_shape.insert(0, batch_size)
+        self.weight_gradients = np.zeros(grads_shape)
+
+    def backward(self, dy, batch_index):
+        print(f'{self.name}--->, W.shape: {self.weights.shape}, DY.shape: {dy.shape}, Inputs: {self.inputs.shape}')
 
         C, W, H = self.inputs.shape
         dx = np.zeros(self.inputs.shape)
@@ -53,12 +59,15 @@ class Conv2D:
         for f in range(F):
             for w in range(0, W, self.stride):
                 for h in range(0, H, self.stride):
-                    dw[f,:,:,:]+=dy[f,w,h]*self.inputs[:,w:w+self.K,h:h+self.K]
-                    dx[:,w:w+self.K,h:h+self.K]+=dy[f,w,h]*self.weights[f,:,:,:]
+                    dw[f, :, :, :] += dy[f, w, h] * self.inputs[:, w:w+self.kernel_size, h:h+self.kernel_size]
+                    dx[:,w:w+self.kernel_size,h:h+self.kernel_size]+=dy[f,w,h]*self.weights[f,:,:,:]
 
         for f in range(F):
             db[f] = np.sum(dy[f, :, :])
 
+        # Saving the gradiens to calculate the mean later
+        # self.weight_gradients[batch_index] = dw
+        print(f'\tDW.shape: {dw.shape}, Grads.shape: {self.weight_gradients.shape}')
         self.weights -= self.lr * dw
         self.bias -= self.lr * db
         return dx
@@ -85,16 +94,24 @@ class FullyConnected:
         self.inputs = inputs
         return np.dot(self.inputs, self.weights) + self.bias.T
 
-    def zero_grad(self):
-        self.dw = 'asd'
+    def zero_grad(self, batch_size):
+        grads_shape = list(self.weights.shape)
+        grads_shape.insert(0, batch_size)
+        self.weight_gradients = np.zeros(grads_shape)
+        
 
-    def backward(self, dy):
-
+    def backward(self, dy, batch_index):
+        print(f'{self.name}--->, W.shape: {self.weights.shape}, DY.shape: {dy.shape}, Inputs: {self.inputs.shape}')
         if dy.shape[0] == self.inputs.shape[0]:
             dy = dy.T
         dw = dy.dot(self.inputs)
         db = np.sum(dy, axis=1, keepdims=True)
         dx = np.dot(dy.T, self.weights.T)
+        
+        # Saving the gradiens to calculate the mean later
+        # self.weight_gradients[batch_index, :, :] = dw.T
+
+        print(f'\tDW.shape: {dw.shape}, Grads.shape: {self.weight_gradients.shape}')
 
         # self.weights -= self.lr * dw.T
         # self.bias -= self.lr * db
@@ -116,10 +133,13 @@ class Flatten:
         self.C, self.W, self.H = inputs.shape
         return inputs.reshape(1, self.C*self.W*self.H)
 
-    def backward(self, dy):
+    def backward(self, dy, batch_index):
         return dy.reshape(self.C, self.W, self.H)
         
     def extract(self):
+        return
+    
+    def zero_grad(self, batch_size):
         return
 
 def ReLU(x):

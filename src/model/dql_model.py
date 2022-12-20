@@ -1,11 +1,11 @@
 import random
-import events
-import constants
+# import events
+# import constants
 import numpy as np
 import time
 import json
 from layers import *
-from js import document, Blob, URL
+# from js import document, Blob, URL
 
 class Network:
     def __init__(self):
@@ -37,6 +37,14 @@ class Network:
             x = output
         return output
     
+    def backward(self, dl, batch_index):
+        for layer in reversed(self.layers):
+            dl = layer.backward(dl, batch_index)
+     
+    def zero_grad(self, batch_size):
+        for layer in self.layers:
+            layer.zero_grad(batch_size)
+
     def get_params(self):
         params = {}
         for layer in range(len(self.layers)):
@@ -57,19 +65,19 @@ class Network:
         tag = self.create_tag(mean_score, params)
         # self.download_params(tag)
 
-    def create_tag(self, mean_score, params):
-        tag = document.createElement('a')
-        blob = Blob.new([json.dumps(params)])
-        tag.innerHTML = f'Mean_score: {mean_score}'
-        tag.href = URL.createObjectURL(blob)
-        document.getElementById('params').appendChild(tag)
-        return tag
+    # def create_tag(self, mean_score, params):
+    #     tag = document.createElement('a')
+    #     blob = Blob.new([json.dumps(params)])
+    #     tag.innerHTML = f'Mean_score: {mean_score}'
+    #     tag.href = URL.createObjectURL(blob)
+    #     document.getElementById('params').appendChild(tag)
+    #     return tag
 
-    def download_params(self, tag):
-        tag.download = 'filename'
-        tag.click()
+    # def download_params(self, tag):
+    #     tag.download = 'filename'
+    #     tag.click()
     
-    def load_params(self):
-        w = document.getElementById('weights').innerHTML
-        params = json.loads(w)
-        self.set_params(params)
+    # def load_params(self):
+    #     w = document.getElementById('weights').innerHTML
+    #     params = json.loads(w)
+    #     self.set_params(params)
