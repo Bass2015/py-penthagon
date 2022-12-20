@@ -71,7 +71,7 @@ class Brain():
         if self.frame_count % SYNC_NETS_FRAMES == 0:
             self.sync_nets()
         # Zero_grad -> vaciar las dw y db de las layers.
-        self.network.zero_grad(BATCH_SIZE)
+        self.network.zero_grad()
         states, actions, rewards, next_states = self.xp_buffer.sample(BATCH_SIZE)
         losses = np.zeros(BATCH_SIZE)
         for batch_index in range(len(states)):
