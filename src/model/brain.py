@@ -4,12 +4,14 @@ import json
 import time
 from dql_model import Network
 from collections import deque
+from optim import SGD
 from events import deboog
 from js import document, Blob, URL
 
 
 XP_BUFFER_SIZE = 100 # 10000
 BATCH_SIZE = 10
+LEARNING_RATE = 0.01
 SYNC_NETS_FRAMES = 100
 EPSILON_MAX = 1.0
 EPSILON_MIN = 0.01
@@ -22,19 +24,22 @@ class Brain():
     def __init__(self) -> None:
         self.network = Network()
         self.target_net = Network()
+        self.optim = SGD(self.network, LEARNING_RATE)
         # self.sync_nets()
         self.xp_buffer = ExperienceBuffer(XP_BUFFER_SIZE)
         self.frame_count = 0
         self.epsilon = 0
         self.scores = []
         self.best_mean_score = None
+        self.costs = []
         self.training_info = {
             'game_number': [],
             'frames': [],
             'epsilon': [],
             'score': [],
             'mean_score': [], 
-            'best_mean_score':[]
+            'best_mean_score':[],
+            'cost': []
         }
 
     def sync_nets(self):
@@ -73,21 +78,9 @@ class Brain():
             loss, d_loss = self.calculate_d_loss(states[batch_index], actions[batch_index], rewards[batch_index], next_states[batch_index])
             self.network.backward(d_loss, batch_index)
             losses[batch_index] = loss
-        sample_cost = losses.sum()/BATCH_SIZE
-        
-
-        
-        # Para cada sample:    <------- Back Prop
-            # Calcular la pérdida para cada sample
-            # Calcular las derivadas parciales de cada w y b
-            # Guardarlas (dentro de cada layer, creo que tendré que hacerlo)
-        # Terminado el loop:   
-            # Sumar las derivadas parciales (supongo que dentro de la layer)
-            # Dividir por BATCH_SIZE
-        # Optimizer: 
-            # Multiplicar por learning rate
-            # Restar eso a w y b
-        
+        self.optim.step()
+        self.costs.append(losses.mean())
+               
     def calculate_d_loss(self, state, action, reward, next_state):
         """Calculates the predicted Q value (the state-action pairs that we chose) and 
         the expected Q value (with the target net and Bellman equation. 
@@ -101,20 +94,6 @@ class Brain():
         d_loss[0, action] = Q_exp - Q_pred
         return loss,  d_loss
         
-    def mean_squared_error(self, pred, exp):
-        deboog(f'{pred}')
-        pred = np.asarray(pred)
-        exp = np.asarray(exp)
-        error = exp - pred
-        squared_error = np.square(error)
-        # Creo que no tengo que devolver el mean aquí,
-        # tengo que devolver el vector con todos los errores, 
-        # pasárselo a las layers, 
-        # y ellas se ocuparán de recorrer ese vector y calcular sus gradientes
-        # Creo que tengo que devolver esto: 
-        # return squared_error / 2
-        return np.mean(squared_error)
-    
     def bellman_equation(self, reward, next_state):
         Q = self.target_net(next_state)
         maxQ = np.max(Q)
@@ -130,6 +109,7 @@ class Brain():
             self.best_mean_score = mean_score
         self.save_info(final_score, mean_score)
         self.show_info(final_score, mean_score)
+        self.costs.clear()
         if mean_score >= END_TRAINING_SCORE:
             # Trigger Training Ended event
             self.save_info_document()
@@ -150,6 +130,7 @@ class Brain():
         self.training_info['score'].append(final_score)
         self.training_info['mean_score'].append(mean_score)
         self.training_info['best_mean_score'].append(self.best_mean_score)
+        self.training_info['cost'].append(np.asarray(self.costs).mean())
     
     def show_info(self, final_score, mean_score):
         deboog(f"""Game No: {len(self.scores)}, 

@@ -18,15 +18,17 @@ class Network:
         return action
 
     def build_network(self):
-        # build convolutional layers
         self.layers.append(Conv2D(4, 32, kernel_size=7, stride=4, name='conv1'))
+        self.layers.append(ReLU())
         self.layers.append(Conv2D(32, 64, kernel_size=5, stride=2, name='conv2'))
+        self.layers.append(ReLU())
         self.layers.append(Conv2D(64, 64, kernel_size=3, stride=1, name='conv3'))
+        self.layers.append(ReLU())
         
         self.layers.append(Flatten())
 
-        #build fully connected layers
         self.layers.append(FullyConnected(1600, 512, name='fc1'))
+        self.layers.append(ReLU())
         self.layers.append(FullyConnected(512, 9, name='fc2'))
 
     def forward(self, state=None):

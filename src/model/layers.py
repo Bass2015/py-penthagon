@@ -37,10 +37,11 @@ class Conv2D:
             for w in range(0, WW, self.stride):
                 for h in range(0, HH, self.stride):
                     outputs[f,w,h] = np.sum(self.inputs[:,w:w+self.kernel_size,h:h+self.kernel_size] * self.weights[f,:,:,:]) + self.bias[f]
-        if self.activation == 'relu':
-            return ReLU(outputs)
-        else:
-            return outputs
+        # if self.activation == 'relu':
+            
+        #     return ReLU(outputs)
+        # else:
+        return outputs
 
     def zero_grad(self, batch_size):
         grads_shape = list(self.weights.shape)
@@ -51,8 +52,6 @@ class Conv2D:
         self.bias_gradients = np.zeros(b_grads_shape)
 
     def backward(self, dy, batch_index):
-        print(f'{self.name}--->, W.shape: {self.weights.shape}, DY.shape: {dy.shape}, Inputs: {self.inputs.shape}')
-
         C, W, H = self.inputs.shape
         dx = np.zeros(self.inputs.shape)
         dw = np.zeros(self.weights.shape)
@@ -71,7 +70,6 @@ class Conv2D:
         # Saving the gradiens to calculate the mean later
         self.weight_gradients[batch_index] = dw
         self.bias_gradients[batch_index] = db
-        print(f'\tDW.shape: {dw.shape}, Grads.shape: {self.weight_gradients.shape}')
         self.weights -= self.lr * dw
         self.bias -= self.lr * db
         return dx
@@ -108,7 +106,6 @@ class FullyConnected:
         
 
     def backward(self, dy, batch_index):
-        print(f'{self.name}--->, W.shape: {self.weights.shape}, DY.shape: {dy.shape}, Inputs: {self.inputs.shape}')
         if dy.shape[0] == self.inputs.shape[0]:
             dy = dy.T
         dw = dy.dot(self.inputs)
@@ -119,7 +116,6 @@ class FullyConnected:
         self.weight_gradients[batch_index] = dw.T
         self.bias_gradients[batch_index] = db
 
-        print(f'\tDW.shape: {dw.shape}, Grads.shape: {self.weight_gradients.shape}')
 
         # self.weights -= self.lr * dw.T
         # self.bias -= self.lr * db
@@ -150,8 +146,26 @@ class Flatten:
     def zero_grad(self, batch_size):
         return
 
-def ReLU(x):
-    return np.maximum(0, x)
+# def ReLU(x):
+#     return np.maximum(0, x)
 
-def ReLU_grad(x):
-    return np.greater(x, 0.).astype(np.float32)
+# def ReLU_grad(x):
+#     return np.greater(x, 0.).astype(np.float32)
+
+class ReLU:
+    def __init__(self):
+        pass
+
+    def forward(self, inputs):
+        self.inputs = inputs
+        return np.maximum(0, inputs)
+
+    def backward(self, *args):
+        return np.greater(self.inputs, 0.).astype(np.float32)
+
+        
+    def extract(self):
+        return
+    
+    def zero_grad(self, batch_size):
+        return

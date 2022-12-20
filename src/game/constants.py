@@ -12,7 +12,6 @@ INIT_LIFES = 1
 
 GAME = Game()
 # Game Events
-# meter todo esto en un diccionario
 UPDATE = events.UpdateEvent()
 RENDER = events.RenderEvent()
 KEYDOWN = events.KeyDownEvent()
