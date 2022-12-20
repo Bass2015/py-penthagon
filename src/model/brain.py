@@ -9,8 +9,8 @@ from events import deboog
 from js import document, Blob, URL
 
 
-XP_BUFFER_SIZE = 100 #10000
-BATCH_SIZE = 10
+XP_BUFFER_SIZE = 10000
+BATCH_SIZE = 32
 LEARNING_RATE = 0.01
 SYNC_NETS_FRAMES = 100
 EPSILON_MAX = 1.0
