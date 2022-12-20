@@ -62,7 +62,7 @@ def late_update():
 
 def game_loop(*args):
     if GAME.frame_count % 2 == 0:
-        # start = time.time()
+        start = time.time()
         act_agents(GAME.state)
         # acting = time.time() - start
         # start = time.time()
@@ -76,6 +76,7 @@ def game_loop(*args):
         # late_up = time.time() - start
         # start = time.time()
         save_state()
+        events.deboog(f'Frame time: {time.time() - start}')
         # show_times(acting, upd, ren, late_up, save_state)
     if LOOP_OBS.restart:
         on_match_end()

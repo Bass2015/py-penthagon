@@ -18,7 +18,7 @@ EPSILON_MIN = 0.01
 EPSILON_FINAL_FRAME_DECAY = 300000
 GAMMA = 0.99
 
-END_TRAINING_SCORE = 150
+END_TRAINING_SCORE = 400
 
 class Brain():
     def __init__(self) -> None:
@@ -137,7 +137,8 @@ class Brain():
                    Score: {final_score},
                    Frames: {self.frame_count}, 
                    Epsilon: {self.epsilon},
-                   Mean Score: {mean_score}""")
+                   Mean Score: {mean_score}, 
+                   Mean Cost: {np.asarray(self.costs).mean()}""")
 
 class ExperienceBuffer:
     def __init__(self, max_size):
