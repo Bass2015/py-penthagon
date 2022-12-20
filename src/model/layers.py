@@ -16,8 +16,8 @@ class Conv2D:
         self.activation = activation
 
     def init_params(self):
-        self.weights = np.zeros((self.num_filters, self.in_channels, self.kernel_size, self.kernel_size))
-        self.bias = np.zeros((self.num_filters, 1))
+        self.weights = np.zeros((self.num_filters, self.in_channels, self.kernel_size, self.kernel_size), dtype=np.float32)
+        self.bias = np.zeros((self.num_filters, 1), dtype=np.float32)
         for filter in range(0,self.num_filters):
             self.weights[filter,:,:,:] = np.random.normal(loc=0, 
                             scale=np.sqrt(1. / (self.in_channels * self.kernel_size * self.kernel_size)), 
@@ -32,7 +32,7 @@ class Conv2D:
         self.inputs = inputs #np.zeros((C, W, H))
         WW = int((W - self.kernel_size) / self.stride + 1)
         HH = int((H - self.kernel_size) / self.stride + 1)
-        outputs = np.zeros((self.num_filters, WW, HH))
+        outputs = np.zeros((self.num_filters, WW, HH), dtype=np.float32)
         for f in range(self.num_filters):
             for w in range(0, WW, self.stride):
                 for h in range(0, HH, self.stride):
@@ -43,19 +43,15 @@ class Conv2D:
         # else:
         return outputs
 
-    def zero_grad(self, batch_size):
-        grads_shape = list(self.weights.shape)
-        grads_shape.insert(0, batch_size)
-        self.weight_gradients = np.zeros(grads_shape)
-        b_grads_shape = list(self.bias.shape)
-        b_grads_shape.insert(0, batch_size)
-        self.bias_gradients = np.zeros(b_grads_shape)
+    def zero_grad(self):
+        self.weight_gradients = np.zeros(self.weights.shape, dtype=np.float32)
+        self.bias_gradients = np.zeros(self.bias.shape, dtype=np.float32)
 
-    def backward(self, dy, batch_index):
+    def backward(self, dy):
         C, W, H = self.inputs.shape
-        dx = np.zeros(self.inputs.shape)
-        dw = np.zeros(self.weights.shape)
-        db = np.zeros(self.bias.shape)
+        dx = np.zeros(self.inputs.shape, dtype=np.float32)
+        dw = np.zeros(self.weights.shape, dtype=np.float32)
+        db = np.zeros(self.bias.shape, dtype=np.float32)
         # Calcular derivada de relu
         F, W, H = dy.shape
         for f in range(F):
@@ -68,10 +64,8 @@ class Conv2D:
             db[f] = np.sum(dy[f, :, :])
 
         # Saving the gradiens to calculate the mean later
-        self.weight_gradients[batch_index] = dw
-        self.bias_gradients[batch_index] = db
-        self.weights -= self.lr * dw
-        self.bias -= self.lr * db
+        self.weight_gradients += dw
+        self.bias_gradients += db
         return dx
 
     def extract(self):
@@ -90,22 +84,17 @@ class FullyConnected:
 
     def init_params(self, num_inputs, num_outputs):
         self.weights = 0.01 * np.random.rand(num_inputs, num_outputs)
-        self.bias = np.zeros((num_outputs, 1))
+        self.bias = np.zeros((num_outputs, 1), dtype=np.float32)
 
     def forward(self, inputs):
         self.inputs = inputs
         return np.dot(self.inputs, self.weights) + self.bias.T
 
-    def zero_grad(self, batch_size):
-        w_grads_shape = list(self.weights.shape)
-        w_grads_shape.insert(0, batch_size)
-        self.weight_gradients = np.zeros(w_grads_shape)
-        b_grads_shape = list(self.bias.shape)
-        b_grads_shape.insert(0, batch_size)
-        self.bias_gradients = np.zeros(b_grads_shape)
+    def zero_grad(self):
+        self.weight_gradients = np.zeros(self.weights.shape, dtype=np.float32)
+        self.bias_gradients = np.zeros(self.bias.shape, dtype=np.float32)
         
-
-    def backward(self, dy, batch_index):
+    def backward(self, dy):
         if dy.shape[0] == self.inputs.shape[0]:
             dy = dy.T
         dw = dy.dot(self.inputs)
@@ -113,13 +102,8 @@ class FullyConnected:
         dx = np.dot(dy.T, self.weights.T)
         
         # Saving the gradiens to calculate the mean later
-        self.weight_gradients[batch_index] = dw.T
-        self.bias_gradients[batch_index] = db
-
-
-        # self.weights -= self.lr * dw.T
-        # self.bias -= self.lr * db
-
+        self.weight_gradients += dw.T
+        self.bias_gradients += db
         return dx
 
     def extract(self):
@@ -137,13 +121,13 @@ class Flatten:
         self.C, self.W, self.H = inputs.shape
         return inputs.reshape(1, self.C*self.W*self.H)
 
-    def backward(self, dy, batch_index):
+    def backward(self, dy):
         return dy.reshape(self.C, self.W, self.H)
         
     def extract(self):
         return
     
-    def zero_grad(self, batch_size):
+    def zero_grad(self):
         return
 
 # def ReLU(x):
@@ -160,12 +144,11 @@ class ReLU:
         self.inputs = inputs
         return np.maximum(0, inputs)
 
-    def backward(self, *args):
+    def backward(self):
         return np.greater(self.inputs, 0.).astype(np.float32)
-
         
     def extract(self):
         return
     
-    def zero_grad(self, batch_size):
+    def zero_grad(self):
         return

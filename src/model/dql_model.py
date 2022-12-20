@@ -39,13 +39,13 @@ class Network:
             x = output
         return output
     
-    def backward(self, dl, batch_index):
+    def backward(self, dl):
         for layer in reversed(self.layers):
-            dl = layer.backward(dl, batch_index)
+            dl = layer.backward(dl)
              
-    def zero_grad(self, batch_size):
+    def zero_grad(self):
         for layer in self.layers:
-            layer.zero_grad(batch_size)
+            layer.zero_grad()
 
     def get_params(self):
         params = {}

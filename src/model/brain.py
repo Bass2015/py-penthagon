@@ -76,7 +76,7 @@ class Brain():
         losses = np.zeros(BATCH_SIZE)
         for batch_index in range(len(states)):
             loss, d_loss = self.calculate_d_loss(states[batch_index], actions[batch_index], rewards[batch_index], next_states[batch_index])
-            self.network.backward(d_loss, batch_index)
+            self.network.backward(d_loss)
             losses[batch_index] = loss
         self.optim.step()
         self.costs.append(losses.mean())
