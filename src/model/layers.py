@@ -20,7 +20,7 @@ class Conv2D:
         self.bias = np.zeros((self.num_filters, 1), dtype=np.float32)
         for filter in range(0,self.num_filters):
             self.weights[filter,:,:,:] = np.random.normal(loc=0, 
-                            scale=np.sqrt(1. / (self.in_channels * self.kernel_size * self.kernel_size)), 
+                            scale=(2. / (self.in_channels * self.kernel_size * self.kernel_size)**0.5), 
                             size=(self.in_channels, self.kernel_size, self.kernel_size))
 
     def forward(self, inputs):
@@ -83,7 +83,7 @@ class FullyConnected:
         self.name = name
 
     def init_params(self, num_inputs, num_outputs):
-        self.weights = 0.01 * np.random.rand(num_inputs, num_outputs)
+        self.weights = np.random.normal(0, 2/num_inputs**0.5, (num_inputs, num_outputs))
         self.bias = np.zeros((num_outputs, 1), dtype=np.float32)
 
     def forward(self, inputs):
