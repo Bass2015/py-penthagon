@@ -3,7 +3,7 @@ import numpy as np
 
 class Conv2D:
     # Agregar la función de activación. 
-    def __init__(self, inputs_channel, num_filters, kernel_size=4, padding=0, stride=1, learning_rate=0.01, name="", activation='relu'):
+    def __init__(self, inputs_channel, num_filters, kernel_size=4, padding=0, stride=1, name="", activation='relu'):
         # weight size: (numfilters, inchannels, kernel_size, kernel_size)
         # bias size: (num_filters) 
         self.num_filters = num_filters
@@ -11,13 +11,12 @@ class Conv2D:
         self.in_channels = inputs_channel
         self.init_params()
         self.stride = stride
-        self.lr = learning_rate
         self.name = name
         self.activation = activation
 
     def init_params(self):
         self.weights = np.zeros((self.num_filters, self.in_channels, self.kernel_size, self.kernel_size), dtype=np.float32)
-        self.bias = np.zeros((self.num_filters, 1), dtype=np.float32)
+        self.bias = np.zeros((self.num_filters, 1), dtype=np.float32) +1
         for filter in range(0,self.num_filters):
             self.weights[filter,:,:,:] = np.random.normal(loc=0, 
                             scale=(2. / (self.in_channels * self.kernel_size * self.kernel_size)**0.5), 
@@ -37,10 +36,6 @@ class Conv2D:
             for w in range(0, WW, self.stride):
                 for h in range(0, HH, self.stride):
                     outputs[f,w,h] = np.sum(self.inputs[:,w:w+self.kernel_size,h:h+self.kernel_size] * self.weights[f,:,:,:]) + self.bias[f]
-        # if self.activation == 'relu':
-            
-        #     return ReLU(outputs)
-        # else:
         return outputs
 
     def zero_grad(self):
@@ -77,9 +72,8 @@ class Conv2D:
 
 class FullyConnected:
 
-    def __init__(self, num_inputs, num_outputs, learning_rate=0.01, name=''):
+    def __init__(self, num_inputs, num_outputs, name=''):
         self.init_params(num_inputs, num_outputs)
-        self.lr = learning_rate
         self.name = name
 
     def init_params(self, num_inputs, num_outputs):

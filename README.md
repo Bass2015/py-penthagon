@@ -4,3 +4,8 @@ https://madebyollin.github.io/convnet-calculator/
 https://github.com/AlessandroSaviolo/CNN-from-Scratch
 
 http://neuralnetworksanddeeplearning.com/chap1.html#learning_with_gradient_descent
+
+### TODOs
+- Add hour to training info
+- Learning rate schedule
+- np.einsum
