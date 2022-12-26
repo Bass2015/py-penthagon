@@ -17,7 +17,7 @@ class Optimizer:
 class SGD(Optimizer):
     def update_params(self, layer, batch_size):
         if not (isinstance(layer, Flatten) or (isinstance(layer, ReLU))):
-            dw = layer.weight_gradients / batch_size
-            db = layer.bias_gradients / batch_size
-            layer.weights -= self.lr * dw
-            layer.bias -= self.lr * db
+            # dw = layer.weight_gradients / batch_size
+            # db = layer.bias_gradients / batch_size
+            layer.weights -= self.lr * layer.dw
+            layer.bias -= self.lr * layer.db

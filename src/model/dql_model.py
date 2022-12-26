@@ -16,7 +16,7 @@ class Network:
     def __call__(self, state, vectorized=True):
         if not vectorized:
             return self.forward(state)
-        return self.vect_forward(state)
+        return self.forward(state)
         
 
     def build_network(self):
@@ -34,25 +34,20 @@ class Network:
         self.layers.append(FullyConnected(512, 9, name='fc2'))
 
     def forward(self, input=None):
-        """Accepts single input"""
-        for layer in self.layers:
-            output = layer.forward(input, False)
-            input = output
-        return output
-
-    def vect_forward(self, input=None):
-        """Accepts single and batch inputs"""
+        """Accepts batch inputs"""
         if len(input.shape) != 4:
-            input = input[np.newaxis, :,:,:]
+            input = input[np.newaxis, :, :, :]
         for layer in self.layers:
-            output = layer.forward(input, vectorized=True)
+            output = layer.forward(input)
             input = output
         return output
     
     def backward(self, dl):
+        """Accepts batch loss derivative"""
         for layer in reversed(self.layers):
             dl = layer.backward(dl)
              
+    # CAMBIAR ESTE, CREO QUE NO ES NECESARIOs
     def zero_grad(self):
         for layer in self.layers:
             layer.zero_grad()

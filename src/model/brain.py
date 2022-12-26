@@ -9,7 +9,7 @@ from events import deboog
 from js import document, Blob, URL
 
 
-XP_BUFFER_SIZE = 10000
+XP_BUFFER_SIZE = 100
 BATCH_SIZE = 32
 LEARNING_RATE = 0.0001
 SYNC_NETS_FRAMES = 100
@@ -67,38 +67,35 @@ class Brain():
         self.epsilon = max(EPSILON_MIN, EPSILON_MAX - self.frame_count/EPSILON_FINAL_FRAME_DECAY)
         return self.action
 
+    # CAMBIAR ESTE PARA QUE SEA VECTORIZADO!!!!
     def train_loop(self):
         if self.frame_count % SYNC_NETS_FRAMES == 0:
             self.sync_nets()
-        # Zero_grad -> vaciar las dw y db de las layers.
-        self.network.zero_grad()
         states, actions, rewards, next_states = self.xp_buffer.sample(BATCH_SIZE)
-        losses = np.zeros(BATCH_SIZE)
-        for batch_index in range(len(states)):
-            loss, d_loss = self.calculate_d_loss(states[batch_index], actions[batch_index], rewards[batch_index], next_states[batch_index])
-            self.network.backward(d_loss)
-            losses[batch_index] = loss
+        loss, d_loss = self.calculate_d_loss(states, actions, rewards, next_states)
+        self.network.backward(d_loss)
         self.optim.step(BATCH_SIZE)
-        self.costs.append(losses.mean())
+        self.costs.append(loss)
                
-    def calculate_d_loss(self, state, action, reward, next_state):
+    def calculate_d_loss(self, states, actions, rewards, next_states):
         """Calculates the predicted Q value (the state-action pairs that we chose) and 
-        the expected Q value (with the target net and Bellman equation. 
+        the expected Q value (with the target net and Bellman equation). 
         Then, calculate the derivative of the loss"""
-        Q = self.network(state)
-        Q_pred = Q[0,action]
-        Q_exp = self.bellman_equation(reward, next_state)
-        loss = 0.5 * (Q_pred - Q_exp)**2
-        # Derivative with respect of the action taken
-        d_loss = np.zeros_like(Q)
-        d_loss[0, action] = Q_exp - Q_pred
-        return loss,  d_loss
+        Q = self.network(states) 
+        Q_pred = np.take_along_axis(Q, actions, axis=1)
+        Q_exp = self.bellman_equation(rewards, next_states)
+        batch_mean_loss = (0.5 * (Q_pred - Q_exp)**2).mean()
+        d_loss, mask = np.zeros_like(Q), np.zeros_like(Q)
+        mask[np.arange(Q.shape[0]), actions.flatten()] = 1
+        d_loss[:,:] = Q_exp - Q_pred
+        d_loss *= mask
+        return batch_mean_loss, d_loss
         
-    def bellman_equation(self, reward, next_state):
-        Q = self.target_net(next_state)
-        maxQ = np.max(Q)
+    def bellman_equation(self, rewards, next_states):
+        Q = self.target_net(next_states) 
+        maxQ = Q.max(axis=1, keepdims=True)
         # Bellman equation
-        return reward + GAMMA * maxQ
+        return rewards + GAMMA * maxQ
 
     def on_match_ended(self, reward, final_score, env_state):
         self.xp_buffer.append(self.state, self.action, reward, env_state)
@@ -168,8 +165,8 @@ class ExperienceBuffer:
         actions = [self.buffer['actions'][i] for i in indices]
         rewards = [self.buffer['rewards'][i] for i in indices]
         next_states = [self.buffer['next_states'][i] for i in indices]
-        return np.array(states), \
-               np.array(actions), \
-               np.array(rewards, dtype=np.float32), \
-               np.array(next_states)
+        return np.array(states, dtype=np.float32), \
+               np.array(actions, dtype=np.int).reshape(len(actions), 1), \
+               np.array(rewards, dtype=np.float32).reshape(len(rewards), 1), \
+               np.array(next_states, dtype=np.float32)
         
