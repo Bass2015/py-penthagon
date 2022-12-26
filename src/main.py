@@ -76,7 +76,7 @@ def game_loop(*args):
         # late_up = time.time() - start
         # start = time.time()
         save_state()
-        # events.deboog(f'Frame time: {time.time() - start}')
+        events.deboog(f'Frame time: {time.time() - start}')
         # show_times(acting, upd, ren, late_up, save_state)
     if LOOP_OBS.restart:
         on_match_end()

@@ -5,6 +5,8 @@ https://github.com/AlessandroSaviolo/CNN-from-Scratch
 
 http://neuralnetworksanddeeplearning.com/chap1.html#learning_with_gradient_descent
 
+https://blog.ca.meron.dev/Vectorized-CNN/
+
 ### TODOs
 - Add hour to training info
 - Learning rate schedule

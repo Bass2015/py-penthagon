@@ -1,0 +1,1863 @@
+Game No: 13, 
+                   Score: 170,
+                   Frames: 10192, 
+                   Epsilon: 0.9660266666666667,
+                   Mean Score: 108.46153846153847, 
+                   Mean Cost: 7.819166331536152
+pyodide.asm.js:14 Game No: 14, 
+                   Score: 70,
+                   Frames: 10326, 
+                   Epsilon: 0.96558,
+                   Mean Score: 105.71428571428571, 
+                   Mean Cost: 7.684420511575842
+pyodide.asm.js:14 Game No: 15, 
+                   Score: 170,
+                   Frames: 10852, 
+                   Epsilon: 0.9638266666666666,
+                   Mean Score: 110.0, 
+                   Mean Cost: 6.802816561116501
+pyodide.asm.js:14 Game No: 16, 
+                   Score: 190,
+                   Frames: 11819, 
+                   Epsilon: 0.9606033333333334,
+                   Mean Score: 115.0, 
+                   Mean Cost: 8.890856632277398
+pyodide.asm.js:14 Game No: 17, 
+                   Score: 100,
+                   Frames: 11982, 
+                   Epsilon: 0.96006,
+                   Mean Score: 114.11764705882354, 
+                   Mean Cost: 7.918518957947079
+pyodide.asm.js:14 Game No: 18, 
+                   Score: 150,
+                   Frames: 12092, 
+                   Epsilon: 0.9596933333333333,
+                   Mean Score: 116.11111111111111, 
+                   Mean Cost: 8.807738509581753
+pyodide.asm.js:14 Game No: 19, 
+                   Score: 170,
+                   Frames: 12415, 
+                   Epsilon: 0.9586166666666667,
+                   Mean Score: 118.94736842105263, 
+                   Mean Cost: 9.129266489486547
+pyodide.asm.js:14 Game No: 20, 
+                   Score: 190,
+                   Frames: 12564, 
+                   Epsilon: 0.95812,
+                   Mean Score: 122.5, 
+                   Mean Cost: 8.652376311268046
+pyodide.asm.js:14 Game No: 21, 
+                   Score: -30,
+                   Frames: 12856, 
+                   Epsilon: 0.9571466666666667,
+                   Mean Score: 115.23809523809524, 
+                   Mean Cost: 7.363808983430187
+pyodide.asm.js:14 Game No: 22, 
+                   Score: 140,
+                   Frames: 13102, 
+                   Epsilon: 0.9563266666666667,
+                   Mean Score: 116.36363636363636, 
+                   Mean Cost: 11.541800565541893
+pyodide.asm.js:14 Game No: 23, 
+                   Score: 160,
+                   Frames: 13161, 
+                   Epsilon: 0.95613,
+                   Mean Score: 118.26086956521739, 
+                   Mean Cost: 8.687390148658451
+pyodide.asm.js:14 Game No: 24, 
+                   Score: 160,
+                   Frames: 13547, 
+                   Epsilon: 0.9548433333333334,
+                   Mean Score: 120.0, 
+                   Mean Cost: 12.376003866209793
+pyodide.asm.js:14 Game No: 25, 
+                   Score: -90,
+                   Frames: 13690, 
+                   Epsilon: 0.9543666666666667,
+                   Mean Score: 111.6, 
+                   Mean Cost: 8.90665713553505
+pyodide.asm.js:14 Game No: 26, 
+                   Score: 150,
+                   Frames: 13707, 
+                   Epsilon: 0.95431,
+                   Mean Score: 113.07692307692308, 
+                   Mean Cost: 2.8497711326336455
+pyodide.asm.js:14 Game No: 27, 
+                   Score: 190,
+                   Frames: 14035, 
+                   Epsilon: 0.9532166666666667,
+                   Mean Score: 115.92592592592592, 
+                   Mean Cost: 9.73311739273458
+pyodide.asm.js:14 Game No: 28, 
+                   Score: 120,
+                   Frames: 14263, 
+                   Epsilon: 0.9524566666666666,
+                   Mean Score: 116.07142857142857, 
+                   Mean Cost: 12.78968551579852
+pyodide.asm.js:14 Game No: 29, 
+                   Score: 370,
+                   Frames: 15155, 
+                   Epsilon: 0.9494833333333333,
+                   Mean Score: 124.82758620689656, 
+                   Mean Cost: 11.757648215428391
+pyodide.asm.js:14 Game No: 30, 
+                   Score: -150,
+                   Frames: 15303, 
+                   Epsilon: 0.94899,
+                   Mean Score: 115.66666666666667, 
+                   Mean Cost: 11.636954121688113
+pyodide.asm.js:14 Game No: 31, 
+                   Score: -90,
+                   Frames: 15624, 
+                   Epsilon: 0.94792,
+                   Mean Score: 109.03225806451613, 
+                   Mean Cost: 10.803374686699831
+pyodide.asm.js:14 Game No: 32, 
+                   Score: -90,
+                   Frames: 16163, 
+                   Epsilon: 0.9461233333333333,
+                   Mean Score: 102.8125, 
+                   Mean Cost: 12.197552412297641
+pyodide.asm.js:14 Game No: 33, 
+                   Score: 130,
+                   Frames: 16502, 
+                   Epsilon: 0.9449933333333334,
+                   Mean Score: 103.63636363636364, 
+                   Mean Cost: 12.801342822981182
+pyodide.asm.js:14 Game No: 34, 
+                   Score: 170,
+                   Frames: 16642, 
+                   Epsilon: 0.9445266666666666,
+                   Mean Score: 105.58823529411765, 
+                   Mean Cost: 13.14954812401875
+pyodide.asm.js:14 Game No: 35, 
+                   Score: -80,
+                   Frames: 16870, 
+                   Epsilon: 0.9437666666666666,
+                   Mean Score: 100.28571428571429, 
+                   Mean Cost: 14.777741358515199
+pyodide.asm.js:14 Game No: 36, 
+                   Score: 120,
+                   Frames: 16999, 
+                   Epsilon: 0.9433366666666667,
+                   Mean Score: 100.83333333333333, 
+                   Mean Cost: 14.669776587721856
+pyodide.asm.js:14 Game No: 37, 
+                   Score: 140,
+                   Frames: 17390, 
+                   Epsilon: 0.9420333333333333,
+                   Mean Score: 101.89189189189189, 
+                   Mean Cost: 11.707015791633557
+pyodide.asm.js:14 Game No: 38, 
+                   Score: 170,
+                   Frames: 18079, 
+                   Epsilon: 0.9397366666666667,
+                   Mean Score: 103.6842105263158, 
+                   Mean Cost: 13.685033676629669
+pyodide.asm.js:14 Game No: 39, 
+                   Score: 50,
+                   Frames: 18427, 
+                   Epsilon: 0.9385766666666666,
+                   Mean Score: 102.3076923076923, 
+                   Mean Cost: 14.83353800070045
+pyodide.asm.js:14 Game No: 40, 
+                   Score: 100,
+                   Frames: 18714, 
+                   Epsilon: 0.93762,
+                   Mean Score: 102.25, 
+                   Mean Cost: 15.411950290313136
+pyodide.asm.js:14 Game No: 41, 
+                   Score: 250,
+                   Frames: 19714, 
+                   Epsilon: 0.9342866666666667,
+                   Mean Score: 105.85365853658537, 
+                   Mean Cost: 13.969084754468312
+pyodide.asm.js:14 Game No: 42, 
+                   Score: 150,
+                   Frames: 19826, 
+                   Epsilon: 0.9339133333333334,
+                   Mean Score: 106.9047619047619, 
+                   Mean Cost: 14.068942117439317
+pyodide.asm.js:14 Game No: 43, 
+                   Score: -90,
+                   Frames: 19923, 
+                   Epsilon: 0.93359,
+                   Mean Score: 102.32558139534883, 
+                   Mean Cost: 13.004085166802144
+pyodide.asm.js:14 Game No: 44, 
+                   Score: 70,
+                   Frames: 20230, 
+                   Epsilon: 0.9325666666666667,
+                   Mean Score: 101.5909090909091, 
+                   Mean Cost: 14.92363515120107
+pyodide.asm.js:14 Game No: 45, 
+                   Score: 160,
+                   Frames: 20436, 
+                   Epsilon: 0.93188,
+                   Mean Score: 102.88888888888889, 
+                   Mean Cost: 13.235141835253796
+pyodide.asm.js:14 Game No: 46, 
+                   Score: 10,
+                   Frames: 20823, 
+                   Epsilon: 0.93059,
+                   Mean Score: 100.8695652173913, 
+                   Mean Cost: 16.134396195015622
+pyodide.asm.js:14 Game No: 47, 
+                   Score: 150,
+                   Frames: 20857, 
+                   Epsilon: 0.9304766666666666,
+                   Mean Score: 101.91489361702128, 
+                   Mean Cost: 16.919254695499713
+pyodide.asm.js:14 Game No: 48, 
+                   Score: 190,
+                   Frames: 21130, 
+                   Epsilon: 0.9295666666666667,
+                   Mean Score: 103.75, 
+                   Mean Cost: 17.83708639524209
+pyodide.asm.js:14 Game No: 49, 
+                   Score: 110,
+                   Frames: 21350, 
+                   Epsilon: 0.9288333333333333,
+                   Mean Score: 103.87755102040816, 
+                   Mean Cost: 15.831092316571281
+pyodide.asm.js:14 Game No: 50, 
+                   Score: 150,
+                   Frames: 21494, 
+                   Epsilon: 0.9283533333333334,
+                   Mean Score: 104.8, 
+                   Mean Cost: 21.530466960673394
+pyodide.asm.js:14 Game No: 51, 
+                   Score: 200,
+                   Frames: 21621, 
+                   Epsilon: 0.92793,
+                   Mean Score: 106.66666666666667, 
+                   Mean Cost: 17.359002241960628
+pyodide.asm.js:14 Game No: 52, 
+                   Score: -50,
+                   Frames: 21740, 
+                   Epsilon: 0.9275333333333333,
+                   Mean Score: 103.65384615384616, 
+                   Mean Cost: 15.200819606690033
+pyodide.asm.js:14 Game No: 53, 
+                   Score: 40,
+                   Frames: 22237, 
+                   Epsilon: 0.9258766666666667,
+                   Mean Score: 102.45283018867924, 
+                   Mean Cost: 18.57983466256696
+pyodide.asm.js:14 Undefined id -2147483647
+Hiwire.get_value @ pyodide.asm.js:14
+JsArray_Push @ pyodide.asm.js:14
+$JsMethod_ConvertArgs @ pyodide.asm.wasm:0xeebd1
+$func380 @ pyodide.asm.wasm:0xef51b
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9d9
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9ff
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9ff
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9ff
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+pyodide.asm.js:14 Undefined id -2147483645
+Hiwire.get_value @ pyodide.asm.js:14
+hiwire_is_comlink_proxy @ pyodide.asm.js:14
+$JsProxy_create_with_this @ pyodide.asm.wasm:0xee2ab
+$JsProxy_create @ pyodide.asm.wasm:0xeea6e
+Module.handle_js_error @ error_handling.gen.ts:251
+JsArray_Push @ pyodide.asm.js:14
+$JsMethod_ConvertArgs @ pyodide.asm.wasm:0xeebd1
+$func380 @ pyodide.asm.wasm:0xef51b
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9d9
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9ff
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9ff
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff9ff
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+error_handling.gen.ts:77 Pyodide has suffered a fatal error. Please report this to the Pyodide maintainers.
+API.fatal_error @ error_handling.gen.ts:77
+Module.callPyObjectKwargs @ pyproxy.gen.ts:368
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+error_handling.gen.ts:80 The cause of the fatal error was:
+API.fatal_error @ error_handling.gen.ts:80
+Module.callPyObjectKwargs @ pyproxy.gen.ts:368
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+requestAnimationFrame (async)
+hiwire_call_bound @ pyodide.asm.js:14
+$func380 @ pyodide.asm.wasm:0xef536
+$func3167 @ pyodide.asm.wasm:0x201f1b
+$_PyEval_EvalFrameDefault @ pyodide.asm.wasm:0x1ff173
+$_PyEval_Vector @ pyodide.asm.wasm:0x1f98b5
+$_PyFunction_Vectorcall @ pyodide.asm.wasm:0x135329
+$_pyproxy_apply @ pyodide.asm.wasm:0xf16d8
+Module.callPyObjectKwargs @ pyproxy.gen.ts:360
+Module.callPyObject @ pyproxy.gen.ts:384
+apply @ pyproxy.gen.ts:1145
+apply @ pyproxy.gen.ts:1022
+error_handling.gen.ts:87 Error: Undefined id -2147483645
+    at Hiwire.get_value (pyodide.asm.js:14:223661)
+    at hiwire_is_comlink_proxy (pyodide.asm.js:14:226321)
+    at pyodide.asm.wasm:0xee2ab
+    at pyodide.asm.wasm:0xeea6e

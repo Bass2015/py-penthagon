@@ -58,10 +58,10 @@ COLORS = {
     'bullet': 'rgb(240, 248, 255)', 
     'asteroid': 'rgb(240, 248, 255)'}
 
-ROT_SPEED_CNN = 0.4
-SHIP_SPEED_CNN = 30
-SHIP_ACC_CNN = 5
-SHIP_DEC_CNN = 3
+ROT_SPEED_CNN = 0.2
+SHIP_SPEED_CNN = 15
+SHIP_ACC_CNN = 2.5
+SHIP_DEC_CNN = 1.5
 
 # Miniship config
 PENTAGON_SIDE = 2*RADIUS*math.sin(math.pi/5)
@@ -81,5 +81,5 @@ AST_SPEED = 20
 AST_ROT_SPEED = math.pi/64
 AST_SPAWNING_LIMIT = CANVAS.width * 0.1
 AST_SPAWNING_CHANCE = 0.015
-AST_SPEED_CNN = 2
+AST_SPEED_CNN = 1
 AST_ROT_SPEED_CNN = math.pi/64

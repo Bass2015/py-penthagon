@@ -1,11 +1,11 @@
 import random
-import events
-import constants
+# import events
+# import constants
 import numpy as np
 import time
 import json
 from layers import *
-from js import document, Blob, URL
+# from js import document, Blob, URL
 
 class Network:
     def __init__(self):
@@ -13,9 +13,11 @@ class Network:
         self.build_network()
         # self.load_params()
         
-    def __call__(self, state):
-        action = self.forward(state)
-        return action
+    def __call__(self, state, vectorized=True):
+        if not vectorized:
+            return self.forward(state)
+        return self.vect_forward(state)
+        
 
     def build_network(self):
         self.layers.append(Conv2D(4, 32, kernel_size=7, stride=4, name='conv1'))
@@ -31,12 +33,20 @@ class Network:
         self.layers.append(ReLU())
         self.layers.append(FullyConnected(512, 9, name='fc2'))
 
-    def forward(self, state=None):
-        # hacer forward por las convolutional layers
-        x = state
+    def forward(self, input=None):
+        """Accepts single input"""
         for layer in self.layers:
-            output = layer.forward(x)
-            x = output
+            output = layer.forward(input, False)
+            input = output
+        return output
+
+    def vect_forward(self, input=None):
+        """Accepts single and batch inputs"""
+        if len(input.shape) != 4:
+            input = input[np.newaxis, :,:,:]
+        for layer in self.layers:
+            output = layer.forward(input, vectorized=True)
+            input = output
         return output
     
     def backward(self, dl):
