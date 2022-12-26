@@ -47,11 +47,6 @@ class Network:
         for layer in reversed(self.layers):
             dl = layer.backward(dl)
              
-    # CAMBIAR ESTE, CREO QUE NO ES NECESARIOs
-    def zero_grad(self):
-        for layer in self.layers:
-            layer.zero_grad()
-
     def get_params(self):
         params = {}
         for layer in range(len(self.layers)):

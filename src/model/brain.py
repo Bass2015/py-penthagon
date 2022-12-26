@@ -9,8 +9,8 @@ from events import deboog
 from js import document, Blob, URL
 
 
-XP_BUFFER_SIZE = 100
-BATCH_SIZE = 32
+XP_BUFFER_SIZE = 10000
+BATCH_SIZE = 24
 LEARNING_RATE = 0.0001
 SYNC_NETS_FRAMES = 100
 EPSILON_MAX = 1.0
@@ -156,8 +156,6 @@ class ExperienceBuffer:
         self.buffer['next_states'].append(next_state)
     
     def sample(self, batch_size):
-        # ERRORRR
-        # ragged nested sequence on actions while creating np.array
         indices = np.random.choice(len(self.buffer['states']), 
                             size=batch_size, 
                             replace=False)

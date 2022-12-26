@@ -8,12 +8,8 @@ class Layer:
     def forward(self, inputs):
         pass
     
-    def extract(self):
-        return {self.name+'.weights':self.weights, self.name+'.bias':self.bias}
-
-    def feed(self, weights, bias):
-        self.weights = weights
-        self.bias = bias
+    def backward(self, dl):
+        pass
 
 class Conv2D(Layer):
     def __init__(self, inputs_channel, num_filters, kernel_size=4, padding=0, stride=1, name="", activation='relu'):
