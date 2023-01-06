@@ -13,8 +13,6 @@ class Layer:
 
 class Conv2D(Layer):
     def __init__(self, inputs_channel, num_filters, kernel_size=4, padding=0, stride=1, name="", activation='relu'):
-        # weight size: (numfilters, inchannels, kernel_size, kernel_size)
-        # bias size: (num_filters) 
         self.num_filters = num_filters
         self.kernel_size = kernel_size
         self.in_channels = inputs_channel

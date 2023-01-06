@@ -44,9 +44,7 @@ class Brain():
 
     def sync_nets(self):
         self.target_net.set_params(self.network.get_params())
-        self.network.save_params('net')
-        self.target_net.save_params('tgt_net')
-    
+            
     def act(self, state=None):
         out = self.network(state)
         max_ind = np.argmax(out, axis=1)
@@ -130,7 +128,8 @@ class Brain():
         self.training_info['cost'].append(np.asarray(self.costs).mean())
     
     def show_info(self, final_score, mean_score):
-        deboog(f"""Game No: {len(self.scores)}, 
+        deboog(f"""Time: {time.asctime()},
+                   Game No: {len(self.scores)}, 
                    Score: {final_score},
                    Frames: {self.frame_count}, 
                    Epsilon: {self.epsilon},

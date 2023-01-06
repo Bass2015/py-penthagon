@@ -5,7 +5,7 @@ import numpy as np
 import time
 import json
 from layers import *
-# from js import document, Blob, URL
+from js import document, Blob, URL
 
 class Network:
     def __init__(self):
