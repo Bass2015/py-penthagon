@@ -14665,11 +14665,24 @@ $$ Width_{out} = \frac{Width_{in} - Width_{kernel}}{Stride} +1$$</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="What-do-we-want?">What do we want?<a class="anchor-link" href="#What-do-we-want?">&#182;</a></h2><p>The input for the layer is a tensor of shape (batch_size, channels, height, width), and we have the kernel weights with shape (num_kernels, channels, kernel_height, kernel_weight). We want a clever way to multiply the pixel values by the kernel values, and sum everything together, but only along specific axes. For example, we want to sum the values corresponding to the the whole little cube of shape (channels, kernel_size, kernel_size), but we don't want to sum the values of the different training examples that come in the batch, or the values of the different kernels. Turns out that Numpy has a special method for that. It takes to tensors of arbitrary shape, and it allows us to choose which axes we multiply and which ones we sum. It's called <code>np.einsum</code>, and follows the <a href="https://mathworld.wolfram.com/EinsteinSummation.html">Einstein Summation Convention</a> to do it. But before using it, we need to prepare a bit the input.</p>
-<p>In the previous section, we used different for loops to do it. But this approximation is evidently not the best option. At the end, we're "placing" the kernels on little sections of the original image, and then moving the kernel. Let's think it the other way round: we are <em>dividing</em> the input image in little <em>windows</em>, that we multiply and sum with the kernel weights in a special manner. So, we could arange the input to get those windows, and then do the operation.</p>
+<h2 id="What-do-we-want?">What do we want?<a class="anchor-link" href="#What-do-we-want?">&#182;</a></h2><p>The input for the layer is a tensor of shape (batch_size, channels, height, width), and we has kernel weights with shape (num_kernels, channels, kernel_height, kernel_weight). We want a clever way to multiply the pixel values by the kernel values, and sum everything together, but only along specific axes. For example, we want to sum the values corresponding to the the whole little cube of shape (channels, kernel_size, kernel_size), but we don't want to sum the values of the different training examples that come in the batch, or the values of the different kernels. Turns out that Numpy has a special method for that. It can take two tensors of arbitrary shape, and it allows us to choose which axes we multiply and which ones we sum. It's called <code>np.einsum</code>, and follows the <a href="https://mathworld.wolfram.com/EinsteinSummation.html">Einstein Summation Convention</a> to do it. But before using it, we need to prepare a bit the input.</p>
+<p>In the previous section, we used different <code>for</code> loops to do it. But this approximation is evidently not the best option. At the end, we're "placing" the kernels on little sections of the original image, and then moving the kernel. Let's think it the other way round: we are <em>dividing</em> the input image in little <em>windows</em>, that we multiply and sum with the kernel weights in a special manner. So, we could arange the input to get those windows, and then do the operation.</p>
 <p>Let's see it more clear with a 2D matrix, easier to visualize. The matrix has a shape of (9, 9), and we're using a kernel of shape (2,2), with a stride of 1.</p>
 <div style='text-align:center'>
     <img src='./img/strided.gif' width='250' style="border-radius: 20px">
+</div>
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Once we have the matrix divided in these little windows, we can multiply the kernel by them, and then sum all the values of each window, to get the final output:</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div style='text-align:center'>
+    <img src='./img/stride_op.png' width='500' style="border-radius: 20px">
 </div>
 </div>
 </div>
